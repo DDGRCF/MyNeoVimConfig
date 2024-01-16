@@ -1,0 +1,7 @@
+require("basic")
+require("keybindings")
+require("plugins")
+require("colorscheme")
+require("plugin-config")
+require("overseer-config")
+require("lsp-config")

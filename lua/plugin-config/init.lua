@@ -1,0 +1,8 @@
+require("plugin-config.neo-tree")
+require("plugin-config.dashboard")
+require("plugin-config.lualine")
+require("plugin-config.bufferline")
+require("plugin-config.treesitter")
+require("plugin-config.project")
+require("plugin-config.blankline")
+require("plugin-config.telescope")
