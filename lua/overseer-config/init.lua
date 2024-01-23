@@ -4,4 +4,4 @@ if not status then
   return
 end
 
-overseer.setup()
+overseer.setup({})

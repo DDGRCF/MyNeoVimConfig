@@ -1,7 +1,31 @@
 local status, autopairs = pcall(require, "nvim-autopairs")
 if not status then
-  vim.notify("没有找到 nvim-autopairs")
+  require("notify")("can't find nvim-autopairs")
   return
 end
 
-autopairs.setup({})
+-- 使用用处
+autopairs.setup {
+  disable_filetype = { "TelescopePrompt", "spectre_panel" },
+  fast_wrap = {
+    map = "<A-e>",
+    chars = { "{", "[", "(", '"', "'" },
+    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+    offset = 0, -- Offset from pattern match
+    end_key = "$",
+    keys = "qwertyuiopzxcvbnmasdfghjkl",
+    check_comma = true,
+    highlight = "PmenuSel",
+    highlight_grey = "LineNr",
+  },
+}
+
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp_status, cmp = pcall(require, "cmp")
+if not cmp_status then
+  require("notify")("can't find nvim-autopairs completion cmp")
+  return
+end
+
+-- 匹配用处
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

@@ -1,17 +1,44 @@
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  -- 在输入模式下也更新提示，设置为 true 也许会影响性能
-  update_in_insert = true,
+-- lsp handlers
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
 })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
+
 local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+vim.diagnostic.config({
+  -- Enable virtual text
+  virtual_text = true,
+  -- show signs
+  signs = {
+    active = signs,
+  },
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
+
+
 -- lspkind
-local lspkind = require('lspkind')
+local status, lspkind = pcall(require, "lspkind")
+if not status then
+  require("notify")("can't find lspkind")
+end
 lspkind.init({
   -- default: true
   -- with_text = true,
@@ -27,9 +54,10 @@ lspkind.init({
   preset = 'codicons',
   -- override preset symbols
   --
+
   -- default: {}
   symbol_map = {
-    Text = "",
+    Text = "󰉿",
     Method = "",
     Function = "",
     Constructor = "",
@@ -53,13 +81,15 @@ lspkind.init({
     Struct = "",
     Event = "",
     Operator = "",
-    TypeParameter = ""
+    TypeParameter = "",
+    Misc = " ",
   },
 })
 
 local M = {}
 -- 为 cmp.lua 提供参数格式
 M.formatting = {
+  -- fields = { "kind", "abbr", "menu" }, 补全出现的顺序
   format = lspkind.cmp_format({
     mode = 'symbol_text',
     --mode = 'symbol', -- show only symbol annotations
@@ -69,7 +99,12 @@ M.formatting = {
     -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
     before = function (entry, vim_item)
       -- Source 显示提示来源
-      vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+      vim_item.menu = ({
+        nvim_lsp = "[LSP]",
+        luasnip = "[Snip]",
+        buffer = "[Buf]",
+        path = "[Path]",
+      })[entry.source.name]
       return vim_item
     end
   })

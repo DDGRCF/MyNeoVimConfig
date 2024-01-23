@@ -1,3 +1,5 @@
+require("lsp-config.illuminate")
 require("lsp-config.lang")
 require("lsp-config.cmp")
 require("lsp-config.ui")
+require("lsp-config.conform")

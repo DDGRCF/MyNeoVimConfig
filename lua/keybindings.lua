@@ -34,10 +34,11 @@ map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 等比例
 map("n", "s=", "<C-w>=", opt)
 
--- Terminal相关
+-- Terminal相关 有一部分在toggletermjj
 map("n", "<leader>'", ":sp | terminal<CR>", opt)
 map("n", "<leader>v'", ":vsp | terminal<CR>", opt)
-map("t", "<Esc>", "<C-\\><C-N>", opt)
+map("t", "<Esc>", [[<C-\><C-N>]], opt)
+-- vim.api.nvim_del_keymap('t', '<Esc>')
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], opt)
 map("t", "<A-j>", [[<C-\><C-N><C-w>j]], opt)
 map("t", "<A-k>", [[<C-\><C-N><C-w>k]], opt)
@@ -51,8 +52,10 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neo-tree
-map("n", "<F3>", ":Neotree action=show toggle<CR>", opt)
+map("n", "<leader>fm", ":Neotree action=show toggle<CR>", opt)
+map("n", "<leader>fs", ":Neotree document_symbols<CR>", opt)
 map("n", "<leader>fo", ":Neotree reveal<CR>", opt)
+
 pluginKeys.neoTree = {
   filesystem = {
     window = {
@@ -83,6 +86,7 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
+map("n", "<leader>fd", ":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>", opt)
 
 pluginKeys.telescopeList = {
   i = {
@@ -102,49 +106,84 @@ pluginKeys.telescopeList = {
 
     ["<C-h>"] = "which_key"
   },
+  n = {
+    ["<j>"] = "move_selection_next",
+    ["<k>"] = "move_selection_previous",
+    ["q"] = "close",
+    ["n"] = "cycle_history_next",
+    ["p"] = "cycle_history_prev",
+    ["h"] = "which_key"
+  },
 }
 
 -- lsp 回调函数快捷键设置
+map("n", "gs", ":Lspsaga peek_definition<CR>", opt)
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
   -- code action
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  --  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
   mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+  mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
+  mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
+  mapbuf("n", "gr", ":lua vim.lsp.buf.references()<CR>", opt)
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+  mapbuf("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opt)
+  mapbuf("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opt)
+  mapbuf("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opt)
   -- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 
-pluginKeys.cmp = function(cmp)
+pluginKeys.cmp = function(cmp, snip)
+  local check_backspace = function()
+    local col = vim.fn.col "." - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  end
   return {
-    -- 出现补全
-    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-    -- 取消
-    ["<A-,>"] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close()
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+    ["<C-i>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ["<C-e>"] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    },
+    -- Accept currently selected item. If none selected, `select` first item.
+    -- Set `select` to `false` to only confirm explicitly selected items.
+    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif snip and snip.expandable() then
+        snip.expand()
+      elseif snip and snip.expand_or_jumpable() then
+        snip.expand_or_jump()
+      elseif check_backspace() then
+        fallback()
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
     }),
-    -- 上一个
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    -- 下一个
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    -- 确认
-    ["<CR>"] = cmp.mapping.confirm({
-        select = true,
-        behavior = cmp.ConfirmBehavior.Replace
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif snip and snip.jumpable(-1) then
+        snip.jump(-1)
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
     }),
-    -- 如果窗口内容太多，可以滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
   }
 end
-
 return pluginKeys

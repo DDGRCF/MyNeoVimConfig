@@ -1,19 +1,26 @@
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
-  vim.notify("没有找到 nvim-treesitter")
+  vim.notify("can't find nvim-treesitter")
   return
 end
 
 treesitter.setup({
   -- 安装 language parser
-  -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { "c", "cpp", "json", "markdown", "python", "html", "lua", "vimdoc", "vim", "query"},
+  sync_install = false,
+  auto_install = true,
+  modules = { },
+  ignore_install = { "" },
+  ensure_installed = {
+    "c", "cpp", "json", "markdown", "python",
+    "html", "lua", "vimdoc", "vim", "query",
+    "bash", "markdown_inline"
+  },
   -- 启用代码高亮模块
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-    -- 启用增量选择模块
+  -- 启用增量选择模块jkj
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -26,4 +33,12 @@ treesitter.setup({
   indent = {
     enable = true,
   },
+  autopairs = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 })
+

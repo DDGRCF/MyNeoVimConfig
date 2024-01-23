@@ -25,7 +25,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
     },
   },
   {
@@ -46,8 +46,9 @@ local plugins = {
     "arkav/lualine-lsp-progress"
   },
   {
-    "nvim-telescope/telescope.nvim", tag = "0.1.5",
-     dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" }
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" }
   },
   {
     "ahmedkhalf/project.nvim"
@@ -60,14 +61,18 @@ local plugins = {
     "neovim/nvim-lspconfig"
   },
   {
-    "williamboman/mason.nvim"
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "codelldb" })
+      end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim"
   },
   {
     'stevearc/overseer.nvim',
-    opts = {},
   },
   {
     "hrsh7th/cmp-nvim-lsp"
@@ -85,7 +90,11 @@ local plugins = {
     "hrsh7th/nvim-cmp"
   },
   {
-    "hrsh7th/cmp-vsnip"
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
   },
   {
     "hrsh7th/vim-vsnip"
@@ -108,7 +117,43 @@ local plugins = {
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    opts = {}, -- this is equalent to setup({}) function
   },
+  {
+    "RRethy/vim-illuminate",
+  },
+  {
+    "rcarriga/nvim-notify",
+  },
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+  },
+  {
+    "mfussenegger/nvim-dap"
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+  },
+  {
+    "stevearc/conform.nvim",
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    -- keys = {
+    --   { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+    --   { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+    --   { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+    --   { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    --   { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    -- },
+  }
 }
-require("lazy").setup(plugins)
+require("lazy").setup(plugins, {
+  ui = {
+    border = "rounded",
+  },
+})
