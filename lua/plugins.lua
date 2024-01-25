@@ -16,16 +16,15 @@ local plugins = {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
-      "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim",
     },
   },
   {
@@ -35,15 +34,16 @@ local plugins = {
   },
   {
     "akinsho/bufferline.nvim",
-    version = "4.4.1",
-    dependencies = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" }
-  },
-  {
-    "nvim-lualine/lualine.nvim",
+    version = "*",
     dependencies = { "nvim-tree/nvim-web-devicons" }
   },
   {
-    "arkav/lualine-lsp-progress"
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" }
+  },
+  {
+    "SmiteshP/nvim-navic",
+    lazy = true,
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -62,11 +62,6 @@ local plugins = {
   },
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "codelldb" })
-      end
-    end,
   },
   {
     "williamboman/mason-lspconfig.nvim"
@@ -91,16 +86,12 @@ local plugins = {
   },
   {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!).
+    version = "v2.*",
     build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
   },
   {
     "hrsh7th/vim-vsnip"
-  },
-  {
-    "rafamadriz/friendly-snippets"
   },
   {
     "onsails/lspkind-nvim"
@@ -115,7 +106,7 @@ local plugins = {
     config = true
   },
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
   },
   {
@@ -143,15 +134,27 @@ local plugins = {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    -- keys = {
-    --   { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-    --   { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-    --   { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-    --   { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    --   { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    -- },
+  },
+  {
+    'stevearc/dressing.nvim',
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+  },
+  {
+    "Joakker/lua-json5",
+    build = "bash install.sh"
+  },
+  {
+    "echasnovski/mini.bufremove",
+    version = "*"
+  },
+  {
+    "echasnovski/mini.surround",
+    version = "*"
   }
 }
+
 require("lazy").setup(plugins, {
   ui = {
     border = "rounded",

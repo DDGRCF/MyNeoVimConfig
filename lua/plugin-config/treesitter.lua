@@ -8,12 +8,12 @@ treesitter.setup({
   -- 安装 language parser
   sync_install = false,
   auto_install = true,
-  modules = { },
+  modules = {},
   ignore_install = { "" },
   ensure_installed = {
     "c", "cpp", "json", "markdown", "python",
     "html", "lua", "vimdoc", "vim", "query",
-    "bash", "markdown_inline"
+    "bash", "markdown_inline", "cmake"
   },
   -- 启用代码高亮模块
   highlight = {
@@ -41,4 +41,3 @@ treesitter.setup({
     enable_autocmd = false,
   },
 })
-

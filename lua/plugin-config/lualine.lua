@@ -5,20 +5,62 @@ if not status then
   return
 end
 
+local status_navic, navic = pcall(require, "nvim-navic")
+if status_navic then
+  local icons = {}
+  for key, value in pairs(require("lsp-config.ui").icons) do
+    icons[key] = value .. " "
+  end
+  navic.setup({
+    lsp = {
+      auto_attach = true,
+    },
+    icons = icons,
+  })
+else
+  require("notify")("can't find navic")
+end
+
+-- 不同地方的模块 - [a, b, c, x, y, z]
 lualine.setup({
   options = {
     theme = "auto",
+    globalstatus = true,
     component_separators = { left = "|", right = "|" },
-    -- https://github.com/ryanoasis/powerline-extra-symbols
     section_separators = { left = " ", right = "" },
+    disabled_filetypes = { statusline = { "dashboard" } },
   },
-  extensions = { "neo-tree", "toggleterm" },
+  extensions = {
+    "neo-tree",
+    "toggleterm",
+    "lazy",
+    "mason"
+  },
   sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
     lualine_c = {
       "filename",
       {
+        function()
+          return require("nvim-navic").get_location()
+        end,
+        cond = function()
+          return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+        end,
+      },
+      {
         "lsp_progress",
-        spinner_symbols = { " ", " ", " ", " ", " ", " " },
+        spinner_symbols =
+        { "🌑 ",
+          "🌒 ",
+          "🌓 ",
+          "🌔 ",
+          "🌕 ",
+          "🌖 ",
+          "🌗 ",
+          "🌘 "
+        },
       },
     },
     lualine_x = {
@@ -26,9 +68,9 @@ lualine.setup({
       {
         "fileformat",
         symbols = {
-          unix = '', -- e712
-          dos = '', -- e70f
-          mac = '', -- e711
+          unix = '',
+          dos = '',
+          mac = '',
         },
       },
       "encoding",

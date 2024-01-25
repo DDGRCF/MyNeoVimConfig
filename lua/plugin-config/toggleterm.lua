@@ -6,26 +6,26 @@ if not status then
 end
 
 toggleterm.setup({
-	size = 20,
-	open_mapping = [[<leader>f']],
-	hide_numbers = true,
-	shade_filetypes = {},
-	shade_terminals = true,
-	shading_factor = 2,
-	start_in_insert = true,
-	insert_mappings = false, -- 这个要是设置为false，要不然会导致space很慢
-	persist_size = true,
-	direction = "float",
-	close_on_exit = true,
-	shell = vim.o.shell,
-	float_opts = {
-		border = "curved",
-		winblend = 0,
-		highlights = {
-			border = "Normal",
-			background = "Normal",
-		},
-	},
+  size = 20,
+  open_mapping = require("keybindings").toggleterm.open_mapping,
+  hide_numbers = true,
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = 2,
+  start_in_insert = true,
+  insert_mappings = false, -- 这个要是设置为false，要不然会导致space很慢
+  persist_size = true,
+  direction = "float",
+  close_on_exit = true,
+  shell = vim.o.shell,
+  float_opts = {
+    border = "curved",
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+  },
 })
 
 -- TODO: move keybindings

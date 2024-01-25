@@ -44,6 +44,10 @@ map("t", "<A-j>", [[<C-\><C-N><C-w>j]], opt)
 map("t", "<A-k>", [[<C-\><C-N><C-w>k]], opt)
 map("t", "<A-l>", [[<C-\><C-N><C-w>l]], opt)
 
+pluginKeys.toggleterm = {
+  open_mapping = [[<leader>f']],
+}
+
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
@@ -57,6 +61,30 @@ map("n", "<leader>fs", ":Neotree document_symbols<CR>", opt)
 map("n", "<leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
+  window = {
+    mappings = {
+      ["<space>"] = "",
+      ["h"] = function(state)
+        local node = state.tree:get_node()
+        if node.type == "directory" and node:is_expanded() then
+          require "neo-tree.sources.filesystem".toggle_directory(state, node)
+        else
+          require "neo-tree.ui.renderer".focus_node(state, node:get_parent_id())
+        end
+      end,
+      ["l"] = function(state)
+        local node = state.tree:get_node()
+        if node.type == "directory" then
+          if not node:is_expanded() then
+            require "neo-tree.sources.filesystem".toggle_directory(state, node)
+          elseif node:has_children() then
+            require "neo-tree.ui.renderer".focus_node(state, node:get_child_ids()[1])
+          end
+        end
+      end, -- TODO: cr
+      ["<C-l>"] = "focus_preview",
+    },
+  },
   filesystem = {
     window = {
       fuzzy_finder_mappings = {
@@ -76,9 +104,10 @@ map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
---"moll/vim-bbye"
-map("n", "<leader>bk", ":Bdelete!<CR>", opt)
+map("n", "<leader>bp", ":BufferLineTogglePin<CR>", opt)
+map("n", "<leader>bk", ":lua require('mini.bufremove').delete(n, false)<CR>", opt)
 
 -- Telescope
 -- 查找文件
@@ -117,15 +146,13 @@ pluginKeys.telescopeList = {
 }
 
 -- lsp 回调函数快捷键设置
-map("n", "gs", ":Lspsaga peek_definition<CR>", opt)
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  -- mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-  mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
+  mapbuf("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
   --  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
   mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
   mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
@@ -137,6 +164,7 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 
+-- cmp 补全快捷键设置
 pluginKeys.cmp = function(cmp, snip)
   local check_backspace = function()
     local col = vim.fn.col "." - 1
@@ -186,4 +214,64 @@ pluginKeys.cmp = function(cmp, snip)
     }),
   }
 end
+
+-- surround 包围文字符号快捷键
+pluginKeys.surround = {
+  add = "sa",          -- Add surrounding in Normal and Visual modes
+  delete = "sd",       -- Delete surrounding
+  find = "",           -- Find surrounding (to the right)
+  find_left = "",      -- Find surrounding (to the left)
+  highlight = "",      -- Highlight surrounding
+  replace = "sr",      -- Replace surrounding
+  update_n_lines = "", -- Update `n_lines`
+
+  suffix_last = "",    -- Suffix to search with "prev" method
+  suffix_next = "",    -- Suffix to search with "next" method
+}
+
+-- dap 调试快捷键
+map("n", "<leader>dc", ":lua require('dap').continue()<CR>", opt)
+map("n", "<leader>do", ":lua require('dap').step_over()<CR>", opt)
+map("n", "<leader>di", ":lua require('dap').step_into()<CR>", opt)
+map("n", "<leader>dt", ":lua require('dap').step_out()<CR>", opt)
+map("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+map("n", "<leader>dk", ":lua require('dap').close()<CR>", opt)
+map("n", "<leader>dr", ":lua require('dap').run_last()<CR>", opt)
+map("n", "<leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
+map("n", "<leader>dC", ":lua require('dapui').close()<CR>", opt)
+map("n", "<leader>dP", ":lua require('dapui').open()<CR>", opt)
+
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
+
+pluginKeys.dapui = {
+  window = {
+    expand = { "l", "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    edit = "e",
+    repl = "r",
+    toggle = "t",
+  },
+  floating = {
+    close = { "q", "<Esc>" },
+  }
+}
+
+-- Lauange Specify
+-- Cpp
+map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
+
 return pluginKeys

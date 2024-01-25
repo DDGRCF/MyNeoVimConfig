@@ -5,7 +5,7 @@ if not status then
 end
 
 -- 使用用处
-autopairs.setup {
+autopairs.setup({
   disable_filetype = { "TelescopePrompt", "spectre_panel" },
   fast_wrap = {
     map = "<A-e>",
@@ -18,7 +18,7 @@ autopairs.setup {
     highlight = "PmenuSel",
     highlight_grey = "LineNr",
   },
-}
+})
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status, cmp = pcall(require, "cmp")

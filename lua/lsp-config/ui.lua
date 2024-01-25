@@ -7,7 +7,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   border = "rounded",
 })
 
-local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
+local signs = { Error = "", Warn = " ", Hint = "", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -34,6 +34,40 @@ vim.diagnostic.config({
 })
 
 
+local icons = {
+  File          = "󰈙",
+  Module        = "",
+  Namespace     = "󰌗",
+  Package       = "",
+  Value         = "󰎠",
+  Class         = "󰌗",
+  Method        = "󰆧",
+  Snippet       = "",
+  Property      = "",
+  Field         = "",
+  Unit          = "󰚯",
+  Constructor   = "",
+  Reference     = "",
+  Color         = "󰏘",
+  Enum          = "󰕘",
+  Interface     = "󰕘",
+  Function      = "󰊕",
+  Variable      = "󰆧",
+  Constant      = "󰏿",
+  String        = "󰀬",
+  Number        = "󰎠",
+  Boolean       = "◩",
+  Array         = "󰅪",
+  Object        = "󰅩",
+  Key           = "󰌋",
+  Null          = "󰟢",
+  EnumMember    = "",
+  Struct        = "󰌗",
+  Event         = "",
+  Operator      = "󰆕",
+  TypeParameter = "󰊄",
+}
+
 -- lspkind
 local status, lspkind = pcall(require, "lspkind")
 if not status then
@@ -55,35 +89,7 @@ lspkind.init({
   -- override preset symbols
   --
 
-  -- default: {}
-  symbol_map = {
-    Text = "󰉿",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "󰚯",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "󰈔",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "",
-    Struct = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-    Misc = " ",
-  },
+  symbol_map = icons,
 })
 
 local M = {}
@@ -97,7 +103,7 @@ M.formatting = {
     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
     -- The function below will be called before any actual modifications from lspkind
     -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-    before = function (entry, vim_item)
+    before = function(entry, vim_item)
       -- Source 显示提示来源
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
@@ -109,5 +115,7 @@ M.formatting = {
     end
   })
 }
+
+M.icons = icons
 
 return M

@@ -5,24 +5,19 @@ if not status_dap then
 end
 
 local adapter_opts = {
-  type = "server",
-  host = "localhost",
-  port = "${port}",
-  executable = {
-    command = "codelldb",
-    args = {
-      "--port",
-      "${port}",
-    },
+  type = "executable",
+  command = "/home/r/Anaconda3/bin/python3",
+  args = {
+    "-m",
+    "debugpy.adapter",
   },
 }
 
-
-for _, lang in ipairs({ "c", "cpp" }) do
+for _, lang in ipairs({ "python" }) do
   dap.configurations[lang] = {
     {
-      type = "codelldb",
-      request = "launch",
+      type = 'python',
+      request = 'launch',
       name = "Launch input file",
       program = function()
         return vim.fn.input({
@@ -31,9 +26,12 @@ for _, lang in ipairs({ "c", "cpp" }) do
           completion = "file"
         })
       end,
-      cwd = "${workspaceFolder}",
+      pythonPath = function()
+        return "/home/r/Anaconda3/bin/python3"
+      end,
     },
   }
 end
+
 
 return adapter_opts

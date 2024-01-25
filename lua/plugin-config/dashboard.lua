@@ -41,7 +41,8 @@ db.setup({
       enable = true,
     },
     shortcut = {
-      { desc = "󰊳 Update",
+      {
+        desc = "󰊳 Update",
         group = "@property",
         action = "Lazy update",
         key = "u",
@@ -79,11 +80,11 @@ db.setup({
 --     and vim.api.nvim_buf_get_option(buf, "buftype") == ""
 --     and vim.api.nvim_buf_get_option(buf, "filetype") == ""
 -- end
--- 
+--
 -- local mydashboard = vim.api.nvim_create_augroup("MyDashBoard", { clear = true })
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   group = mydashboard,
---   pattern = "*", 
+--   pattern = "*",
 --   callback = function(ev)
 --     if is_no_name_buf(vim.api.nvim_get_current_buf()) then
 --       require("dashboard"):instance()

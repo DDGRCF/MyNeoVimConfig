@@ -9,8 +9,16 @@ if not status_luasnip then
   require("notify")("can't find luasnip")
   return
 end
-require("luasnip/loaders/from_vscode").lazy_load()
 
+-- for vscode like snippet
+local status_luasnip_vscode, luasnip_vscode = pcall(require, "luasnip.loaders.from_vscode")
+if status_luasnip_vscode then
+  luasnip_vscode.lazy_load()
+else
+  require("notify")("can't find luasnip vscode")
+end
+
+-- 补全措施
 cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),

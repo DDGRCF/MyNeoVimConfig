@@ -29,21 +29,21 @@ mason.setup({
   max_concurrent_installers = 4,
 })
 
-local handlers = {
-  function (server_name)
-    lspconfig[server_name].setup{}
+local lsp_handlers = {
+  function(server_name)
+    lspconfig[server_name].setup {}
   end,
-  ["lua_ls"] = function ()
+  ["lua_ls"] = function()
     lspconfig.lua_ls.setup(
       require("lsp-config.lang-config.lua_ls")
     )
   end,
-  ["clangd"] = function ()
+  ["clangd"] = function()
     lspconfig.clangd.setup(
       require("lsp-config.lang-config.clang")
     )
   end,
-  ["pyright"] = function ()
+  ["pyright"] = function()
     lspconfig.pyright.setup(
       require("lsp-config.lang-config.pyright")
     )
@@ -52,5 +52,5 @@ local handlers = {
 
 mason_lspconfig.setup({
   ensure_installed = { "lua_ls", "pyright", "clangd", "gopls" },
-  handlers = handlers
+  handlers = lsp_handlers
 })

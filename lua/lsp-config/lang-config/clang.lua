@@ -1,22 +1,20 @@
 local opts = {
   capabilities = require("cmp_nvim_lsp").default_capabilities(),
   on_attach = function(client, bufnr)
+    -- 禁用格式化功能，交给专门插件插件处理
+    -- client.resolved_capabilities.document_formatting = false
+    -- client.resolved_capabilities.document_range_formatting = false
     local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     -- 绑定快捷键
     require('keybindings').mapLSP(buf_set_keymap)
     -- 保存时自动格式化
-    -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
-    local status, illuminate = pcall(require, "illuminate")
-    if not status then
-      return
+    local status_illuminate, illuminate = pcall(require, "illuminate")
+    if status_illuminate then
+      illuminate.on_attach(client)
     end
-    illuminate.on_attach(client)
   end,
-  -- keys = {
-  --   { "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
-  -- },
   cmd = {
     "clangd",
     "--background-index",
@@ -24,7 +22,7 @@ local opts = {
     "--header-insertion=iwyu",
     "--completion-style=detailed",
     "--function-arg-placeholders",
-    "--fallback-style=llvm"
+    "--fallback-style=google"
   },
   init_options = {
     usePlaceholders = true,
@@ -44,7 +42,6 @@ local opts = {
       fname
     ) or require("lspconfig.util").find_git_ancestor(fname)
   end,
-  single_file_support = true,
 }
 
 return opts

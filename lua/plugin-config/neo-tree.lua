@@ -15,8 +15,8 @@ end
 local keymappings = keybindings.neoTree
 local neo_tree_config = {
   sources = {
-    "document_symbols",
     "filesystem",
+    "document_symbols",
     "buffers",
     "git_status",
   },

@@ -4,12 +4,14 @@ if not status_conform then
   return
 end
 
+-- ConformInfo 检查是否安装需要手动安装
 conform.setup({
   formatters_by_ft = {
     lua = { "stylua" },
     python = { "isort", "black" },
     go = { "goimports", "gofmt" },
-    cpp = { "clang_format" },
+    cpp = { "clang_format" }, -- not working, using clangd
+    json = { "fixjson" },
     ["*"] = { "codespell" },
     ["_"] = { "trim_whitespace" },
   },
