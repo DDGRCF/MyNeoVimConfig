@@ -18,11 +18,17 @@ telescope.setup({
     -- 内置 pickers 配置
     find_files = {
       -- 查找文件换皮肤，支持的参数有： dropdown, cursor, ivy
-      -- theme = "dropdown", 
+      -- theme = "dropdown",
     }
   },
   extensions = {
-     -- 扩展插件配置
+    fzf = {
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+    }
   },
 })
 
+telescope.load_extension('fzf')
