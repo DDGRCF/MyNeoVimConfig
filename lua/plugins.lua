@@ -157,7 +157,7 @@ local plugins = {
   {
     "echasnovski/mini.animate",
     version = "*"
-  }
+  },
 }
 
 require("lazy").setup(plugins, {

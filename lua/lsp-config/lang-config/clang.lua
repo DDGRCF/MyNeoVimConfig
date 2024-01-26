@@ -1,5 +1,8 @@
+local caps = require("cmp_nvim_lsp").default_capabilities()
+caps["offsetEncoding"] = { "utf-16" }
+
 local opts = {
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  capabilities = caps,
   on_attach = function(client, bufnr)
     -- 禁用格式化功能，交给专门插件插件处理
     -- client.resolved_capabilities.document_formatting = false
