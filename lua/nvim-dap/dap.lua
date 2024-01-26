@@ -29,9 +29,9 @@ mason_dap.setup({
 -- load vscode config
 local status_dap_vscode, dap_vscode = pcall(require, "dap.ext.vscode")
 if status_dap_vscode then
-  local status_json5, json5 = pcall(require, "json5")
+  local status_json5, json5 = pcall(require, "overseer.json")
   if status_json5 then
-    dap_vscode.json_decode = json5.parse
+    dap_vscode.json_decode = json5.decode
   end
   dap_vscode.load_launchjs()
 else

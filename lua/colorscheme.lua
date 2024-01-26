@@ -1,6 +1,6 @@
 local colorscheme_name = "tokyonight"
-local status, colorscheme = pcall(require, colorscheme_name)
-if not status then
+local status_colorscheme, colorscheme = pcall(require, colorscheme_name)
+if not status_colorscheme then
   require("notify")("没有找到 colorscheme")
   return
 end

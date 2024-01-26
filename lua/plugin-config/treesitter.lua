@@ -11,9 +11,9 @@ treesitter.setup({
   modules = {},
   ignore_install = { "" },
   ensure_installed = {
-    "c", "cpp", "json", "markdown", "python",
+    "c", "cpp", "json", "json5", "jsonc", "markdown", "python",
     "html", "lua", "vimdoc", "vim", "query",
-    "bash", "markdown_inline", "cmake"
+    "bash", "markdown_inline", "cmake", "toml", "yaml",
   },
   -- 启用代码高亮模块
   highlight = {

@@ -35,18 +35,18 @@ map("n", "<C-Up>", ":resize -2<CR>", opt)
 map("n", "s=", "<C-w>=", opt)
 
 -- Terminal相关 有一部分在toggletermjj
-map("n", "<leader>'", ":sp | terminal<CR>", opt)
-map("n", "<leader>v'", ":vsp | terminal<CR>", opt)
+-- map("n", "<leader>'", ":sp | terminal<CR>", opt)
+-- map("n", "<leader>v'", ":vsp | terminal<CR>", opt)
+map("n", "<leader>'", ":ToggleTerm direction=horizontal<CR>", opt)
+map("n", "<leader>v'", ":ToggleTerm direction=vertical<CR>", opt)
+map("n", "<leader>f'", ":ToggleTerm direction=float<CR>", opt)
+map("n", "<leader>s'", ":TermSelect<CR>", opt)
 map("t", "<Esc>", [[<C-\><C-N>]], opt)
 -- vim.api.nvim_del_keymap('t', '<Esc>')
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], opt)
 map("t", "<A-j>", [[<C-\><C-N><C-w>j]], opt)
 map("t", "<A-k>", [[<C-\><C-N><C-w>k]], opt)
 map("t", "<A-l>", [[<C-\><C-N><C-w>l]], opt)
-
-pluginKeys.toggleterm = {
-  open_mapping = [[<leader>f']],
-}
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -67,22 +67,31 @@ pluginKeys.neoTree = {
       ["h"] = function(state)
         local node = state.tree:get_node()
         if node.type == "directory" and node:is_expanded() then
-          require "neo-tree.sources.filesystem".toggle_directory(state, node)
+          require("neo-tree.sources.filesystem").toggle_directory(state, node)
         else
-          require "neo-tree.ui.renderer".focus_node(state, node:get_parent_id())
+          require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
         end
       end,
       ["l"] = function(state)
         local node = state.tree:get_node()
         if node.type == "directory" then
           if not node:is_expanded() then
-            require "neo-tree.sources.filesystem".toggle_directory(state, node)
+            require("neo-tree.sources.filesystem").toggle_directory(state, node)
           elseif node:has_children() then
-            require "neo-tree.ui.renderer".focus_node(state, node:get_child_ids()[1])
+            require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
           end
         end
-      end, -- TODO: cr
-      ["<C-l>"] = "focus_preview",
+      end,
+      ["I"] = "focus_preview",
+      -- ["P"] = "toggle_preview",
+      -- ["<"] = "prev_source",
+      -- [">"] = "next_source",
+      -- ["<CR>"] = function(state)
+      --   local node = state.tree:get_node()
+      --   if node.type == "directory" then
+      --     require("neo-tree.sources.filesystem.commands").set_root(state)
+      --   end
+      -- end
     },
   },
   filesystem = {

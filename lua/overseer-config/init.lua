@@ -4,4 +4,11 @@ if not status then
   return
 end
 
-overseer.setup({})
+overseer.setup({
+  strategy = "toggleterm"
+})
+
+overseer.register_template(
+  require("overseer-config.template.user.run_script"),
+  require("overseer-config.template.user.cpp_build")
+)

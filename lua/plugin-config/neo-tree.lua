@@ -20,9 +20,35 @@ local neo_tree_config = {
     "buffers",
     "git_status",
   },
+  open_files_do_not_replace_types = {
+    "terminal", "qf"
+  },
+  filesystem = {
+    bind_to_cwd = false,
+    follow_current_file = { enabled = true },
+    use_libuv_file_watcher = true,
+  },
   source_selector = {
     winbar = true,
     statusline = false,
+    sources = {
+      {
+        source = "filesystem", -- string
+        display_name = " 󰉓 Files " -- string | nil
+      },
+      {
+        source = "buffers", -- string
+        display_name = " 󰈚 Buffers " -- string | nil
+      },
+      {
+        source = "git_status", -- string
+        display_name = " 󰊢 Git " -- string | nil
+      },
+      {
+        source = "document_symbols",
+        display_name = " Symbols "
+      }
+    }
   },
 }
 

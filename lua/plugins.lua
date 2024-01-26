@@ -147,15 +147,15 @@ local plugins = {
     "jay-babu/mason-nvim-dap.nvim",
   },
   {
-    "Joakker/lua-json5",
-    build = "bash install.sh"
-  },
-  {
     "echasnovski/mini.bufremove",
     version = "*"
   },
   {
     "echasnovski/mini.surround",
+    version = "*"
+  },
+  {
+    "echasnovski/mini.animate",
     version = "*"
   }
 }
