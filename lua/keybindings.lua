@@ -125,6 +125,9 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<leader>fd", ":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>", opt)
+map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
+map("n", "mf", ":lua require('telescope').extensions.vim_bookmarks.current_file()<CR>", opt)
+
 
 pluginKeys.telescopeList = {
   i = {
