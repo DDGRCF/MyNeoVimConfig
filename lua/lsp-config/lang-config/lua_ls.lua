@@ -4,6 +4,8 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
+local library = vim.api.nvim_get_runtime_file("", true)
+
 local opts = {
   capabilities = require("cmp_nvim_lsp").default_capabilities(),
   on_attach = function(client, bufnr)
@@ -39,7 +41,7 @@ local opts = {
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = library,
         checkThirdParty = false,
       },
       -- Do not send telemetry data containing a randomized but unique identifier

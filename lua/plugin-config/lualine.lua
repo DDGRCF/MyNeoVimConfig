@@ -22,13 +22,11 @@ else
   return
 end
 
-
 local status_overseer, overseer = pcall(require, "overseer")
 if not status_overseer then
   require("notify")("can't find navic")
   return
 end
-
 
 -- 不同地方的模块 - [a, b, c, x, y, z]
 lualine.setup({

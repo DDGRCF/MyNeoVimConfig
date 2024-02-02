@@ -9,7 +9,7 @@ treesitter.setup({
   sync_install = false,
   auto_install = true,
   modules = {},
-  ignore_install = { "" },
+  ignore_install = {},
   ensure_installed = {
     "c", "cpp", "json", "json5", "jsonc", "markdown", "python",
     "html", "lua", "vimdoc", "vim", "query",
@@ -20,7 +20,7 @@ treesitter.setup({
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-  -- 启用增量选择模块jkj
+  -- 启用增量选择模块
   incremental_selection = {
     enable = true,
     keymaps = {

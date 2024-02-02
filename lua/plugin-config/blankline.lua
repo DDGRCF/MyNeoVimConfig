@@ -20,6 +20,6 @@ ibl.setup({
     },
   },
   indent = {
-     char = "│",
+    char = "│",
   },
 })

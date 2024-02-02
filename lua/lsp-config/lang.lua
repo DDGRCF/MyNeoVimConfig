@@ -40,7 +40,7 @@ local lsp_handlers = {
   end,
   ["clangd"] = function()
     lspconfig.clangd.setup(
-      require("lsp-config.lang-config.clang")
+      require("lsp-config.lang-config.clangd")
     )
   end,
   ["pyright"] = function()

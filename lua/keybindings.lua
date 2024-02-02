@@ -10,10 +10,10 @@ map("n", "s", "", opt)
 -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
 map("n", "sh", ":sp<CR>", opt)
--- 关闭当前
-map("n", "q", "<C-w>c", opt)
 -- 关闭其他
 map("n", "so", "<C-w>o", opt)
+-- 关闭当前
+map("n", "q", "<C-w>c", opt)
 -- 窗口跳转
 -- Alt + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", opt)
@@ -34,7 +34,7 @@ map("n", "<C-Up>", ":resize -2<CR>", opt)
 -- 等比例
 map("n", "s=", "<C-w>=", opt)
 
--- Terminal相关 有一部分在toggletermjj
+-- Terminal相关 有一部分在toggleterm
 -- map("n", "<leader>'", ":sp | terminal<CR>", opt)
 -- map("n", "<leader>v'", ":vsp | terminal<CR>", opt)
 map("n", "<leader>'", ":ToggleTerm direction=horizontal<CR>", opt)
@@ -124,6 +124,7 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
+map("n", "<leader>fp", ":Telescope projects<CR>", opt)
 map("n", "<leader>fd", ":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>", opt)
 map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
 map("n", "mf", ":lua require('telescope').extensions.vim_bookmarks.current_file()<CR>", opt)

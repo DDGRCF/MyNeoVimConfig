@@ -19,7 +19,7 @@ local plugins = {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    -- branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -160,6 +160,9 @@ local plugins = {
       "tom-anders/telescope-vim-bookmarks.nvim"
     }
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  }
 }
 
 require("lazy").setup(plugins, {
