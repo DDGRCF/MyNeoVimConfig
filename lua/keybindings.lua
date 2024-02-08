@@ -228,6 +228,9 @@ pluginKeys.cmp = function(cmp, snip)
   }
 end
 
+-- neogen 自动文档快捷键
+map("n", "<leader>nf", ":lua require('neogen').generate()<CR>", opt)
+
 -- surround 包围文字符号快捷键
 pluginKeys.surround = {
   add = "sa",          -- Add surrounding in Normal and Visual modes

@@ -48,6 +48,11 @@ local lsp_handlers = {
       require("lsp-config.lang-config.pyright")
     )
   end,
+  ["gopls"] = function()
+    lspconfig.gopls.setup(
+      require("lsp-config.lang-config.gopls")
+    )
+  end,
 }
 
 mason_lspconfig.setup({

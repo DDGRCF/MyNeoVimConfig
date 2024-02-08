@@ -19,7 +19,6 @@ local plugins = {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    -- branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -162,6 +161,14 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+  },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
   }
 }
 
