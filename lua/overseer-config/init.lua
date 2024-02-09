@@ -1,6 +1,6 @@
 local status, overseer = pcall(require, "overseer")
 if not status then
-  vim.notify("没有找到 overseer")
+  vim.notify("can't find overseer")
   return
 end
 

@@ -3,10 +3,14 @@ return {
   builder = function()
     -- Full path to current file (see :help expand())
     local file = vim.fn.expand("%:p")
+    local cmd = { "g++", "-g", file }
     return {
-      cmd = { "g++" },
-      args = { file },
-      components = { { "on_output_quickfix", open = true }, "default" },
+      cmd = cmd,
+      components = {
+        {
+          "on_output_quickfix", open = true
+        }, "default"
+      },
     }
   end,
   condition = {

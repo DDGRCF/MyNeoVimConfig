@@ -16,6 +16,8 @@ if status_navic then
       auto_attach = true,
     },
     icons = icons,
+    separator = "  ",
+    highlight = true,
   })
 else
   require("notify")("can't find navic")
@@ -27,6 +29,19 @@ if not status_overseer then
   require("notify")("can't find navic")
   return
 end
+
+local colors = {
+  yellow = '#ECBE7B',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#98be65',
+  orange = '#FF8800',
+  violet = '#a9a1e1',
+  magenta = '#c678dd',
+  blue = '#51afef',
+  red = '#ed8796'
+}
+
 
 -- 不同地方的模块 - [a, b, c, x, y, z]
 lualine.setup({
@@ -48,26 +63,30 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = {
-      "filename",
+      { "filename", icon = { "", color = { fg = "#8aadf4" } } },
       {
-        function()
-          return navic.get_location()
-        end,
-        cond = function()
-          return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
-        end,
+        "navic",
+        color_correction = "static",
       },
       {
         "lsp_progress",
         spinner_symbols =
-        { "🌑 ",
-          "🌒 ",
-          "🌓 ",
-          "🌔 ",
-          "🌕 ",
-          "🌖 ",
-          "🌗 ",
-          "🌘 "
+        { "🌑",
+          "🌒",
+          "🌓",
+          "🌔",
+          "🌕",
+          "🌖",
+          "🌗",
+          "🌘"
+        },
+        colors = {
+          percentage      = colors.cyan,
+          title           = colors.cyan,
+          message         = colors.cyan,
+          spinner         = colors.cyan,
+          lsp_client_name = colors.magenta,
+          use             = true,
         },
       },
     },
@@ -92,9 +111,9 @@ lualine.setup({
       {
         "fileformat",
         symbols = {
-          unix = '',
-          dos = '',
-          mac = '',
+          unix = "",
+          dos = "",
+          mac = "",
         },
       },
       "encoding",
