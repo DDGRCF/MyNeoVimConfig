@@ -61,49 +61,49 @@ map("n", "<leader>fs", ":Neotree document_symbols<CR>", opt)
 map("n", "<leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
-  window = {
-    mappings = {
-      ["<space>"] = "",
-      ["h"] = function(state)
-        local node = state.tree:get_node()
-        if node.type == "directory" and node:is_expanded() then
-          require("neo-tree.sources.filesystem").toggle_directory(state, node)
-        else
-          require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
-        end
-      end,
-      ["l"] = function(state)
-        local node = state.tree:get_node()
-        if node.type == "directory" then
-          if not node:is_expanded() then
-            require("neo-tree.sources.filesystem").toggle_directory(state, node)
-          elseif node:has_children() then
-            require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
-          end
-        end
-      end,
-      ["I"] = "focus_preview",
-      -- ["P"] = "toggle_preview",
-      -- ["<"] = "prev_source",
-      -- [">"] = "next_source",
-      -- ["<CR>"] = function(state)
-      --   local node = state.tree:get_node()
-      --   if node.type == "directory" then
-      --     require("neo-tree.sources.filesystem.commands").set_root(state)
-      --   end
-      -- end
-    },
-  },
-  filesystem = {
-    window = {
-      fuzzy_finder_mappings = {
-        ["<down>"] = "move_cursor_down",
-        ["<C-j>"] = "move_cursor_down",
-        ["<up>"] = "move_cursor_up",
-        ["<C-k>"] = "move_cursor_up",
-      },
-    },
-  },
+	window = {
+		mappings = {
+			["<space>"] = "",
+			["h"] = function(state)
+				local node = state.tree:get_node()
+				if node.type == "directory" and node:is_expanded() then
+					require("neo-tree.sources.filesystem").toggle_directory(state, node)
+				else
+					require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+				end
+			end,
+			["l"] = function(state)
+				local node = state.tree:get_node()
+				if node.type == "directory" then
+					if not node:is_expanded() then
+						require("neo-tree.sources.filesystem").toggle_directory(state, node)
+					elseif node:has_children() then
+						require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+					end
+				end
+			end,
+			["I"] = "focus_preview",
+			["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+			-- ["<"] = "prev_source",
+			-- [">"] = "next_source",
+			-- ["<CR>"] = function(state)
+			--   local node = state.tree:get_node()
+			--   if node.type == "directory" then
+			--     require("neo-tree.sources.filesystem.commands").set_root(state)
+			--   end
+			-- end
+		},
+	},
+	filesystem = {
+		window = {
+			fuzzy_finder_mappings = {
+				["<down>"] = "move_cursor_down",
+				["<C-j>"] = "move_cursor_down",
+				["<up>"] = "move_cursor_up",
+				["<C-k>"] = "move_cursor_up",
+			},
+		},
+	},
 }
 
 -- bufferline
@@ -125,107 +125,111 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<leader>fp", ":Telescope projects<CR>", opt)
-map("n", "<leader>fd", ":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>", opt)
+map(
+	"n",
+	"<leader>fd",
+	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>",
+	opt
+)
 map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
 map("n", "mf", ":lua require('telescope').extensions.vim_bookmarks.current_file()<CR>", opt)
 
-
 pluginKeys.telescopeList = {
-  i = {
-    -- 上下移动
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<Down>"] = "move_selection_next",
-    ["<Up>"] = "move_selection_previous",
-    -- 历史记录
-    ["<C-n>"] = "cycle_history_next",
-    ["<C-p>"] = "cycle_history_prev",
-    -- 关闭窗口
-    ["<C-c>"] = "close",
-    -- 预览窗口上下滚动
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
+	i = {
+		-- 上下移动
+		["<C-j>"] = "move_selection_next",
+		["<C-k>"] = "move_selection_previous",
+		["<Down>"] = "move_selection_next",
+		["<Up>"] = "move_selection_previous",
+		-- 历史记录
+		["<C-n>"] = "cycle_history_next",
+		["<C-p>"] = "cycle_history_prev",
+		-- 关闭窗口
+		["<C-c>"] = "close",
+		-- 预览窗口上下滚动
+		["<C-u>"] = "preview_scrolling_up",
+		["<C-d>"] = "preview_scrolling_down",
 
-    ["<C-h>"] = "which_key"
-  },
-  n = {
-    ["<j>"] = "move_selection_next",
-    ["<k>"] = "move_selection_previous",
-    ["q"] = "close",
-    ["n"] = "cycle_history_next",
-    ["p"] = "cycle_history_prev",
-    ["h"] = "which_key"
-  },
+		["<C-h>"] = "which_key",
+	},
+	n = {
+		["<j>"] = "move_selection_next",
+		["<k>"] = "move_selection_previous",
+		["q"] = "close",
+		["n"] = "cycle_history_next",
+		["p"] = "cycle_history_prev",
+		["h"] = "which_key",
+	},
 }
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
-  -- rename
-  mapbuf("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
-  -- code action
-  --  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-  -- go xx
-  mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
-  mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
-  mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", ":lua vim.lsp.buf.references()<CR>", opt)
-  -- diagnostic
-  mapbuf("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opt)
-  -- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+	-- rename
+	mapbuf("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
+	-- code action
+	--  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+	-- go xx
+	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
+	mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
+	mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
+	mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
+	mapbuf("n", "gr", ":lua vim.lsp.buf.references()<CR>", opt)
+	-- diagnostic
+	mapbuf("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opt)
+	mapbuf("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opt)
+	mapbuf("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opt)
+	-- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 
 -- cmp 补全快捷键设置
 pluginKeys.cmp = function(cmp, snip)
-  local check_backspace = function()
-    local col = vim.fn.col "." - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-  end
-  return {
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-i>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif snip and snip.expandable() then
-        snip.expand()
-      elseif snip and snip.expand_or_jumpable() then
-        snip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif snip and snip.jumpable(-1) then
-        snip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-  }
+	local check_backspace = function()
+		local col = vim.fn.col(".") - 1
+		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+	end
+	return {
+		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<C-i>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+		-- Accept currently selected item. If none selected, `select` first item.
+		-- Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif snip and snip.expandable() then
+				snip.expand()
+			elseif snip and snip.expand_or_jumpable() then
+				snip.expand_or_jump()
+			elseif check_backspace() then
+				fallback()
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif snip and snip.jumpable(-1) then
+				snip.jump(-1)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+	}
 end
 
 -- neogen 自动文档快捷键
@@ -233,16 +237,16 @@ map("n", "<leader>nf", ":lua require('neogen').generate()<CR>", opt)
 
 -- surround 包围文字符号快捷键
 pluginKeys.surround = {
-  add = "sa",          -- Add surrounding in Normal and Visual modes
-  delete = "sd",       -- Delete surrounding
-  find = "",           -- Find surrounding (to the right)
-  find_left = "",      -- Find surrounding (to the left)
-  highlight = "",      -- Highlight surrounding
-  replace = "sr",      -- Replace surrounding
-  update_n_lines = "", -- Update `n_lines`
+	add = "sa", -- Add surrounding in Normal and Visual modes
+	delete = "sd", -- Delete surrounding
+	find = "", -- Find surrounding (to the right)
+	find_left = "", -- Find surrounding (to the left)
+	highlight = "", -- Highlight surrounding
+	replace = "sr", -- Replace surrounding
+	update_n_lines = "", -- Update `n_lines`
 
-  suffix_last = "",    -- Suffix to search with "prev" method
-  suffix_next = "",    -- Suffix to search with "next" method
+	suffix_last = "", -- Suffix to search with "prev" method
+	suffix_next = "", -- Suffix to search with "next" method
 }
 
 -- dap 调试快捷键
@@ -257,37 +261,47 @@ map("n", "<leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.inpu
 map("n", "<leader>dC", ":lua require('dapui').close()<CR>", opt)
 map("n", "<leader>dP", ":lua require('dapui').open()<CR>", opt)
 
-vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
-  require('dap.ui.widgets').hover()
-end)
-vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
-  require('dap.ui.widgets').preview()
-end)
-vim.keymap.set('n', '<Leader>df', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>ds', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.scopes)
-end)
+vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+	require("dap.ui.widgets").hover()
+end, opt)
+vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+	require("dap.ui.widgets").preview()
+end, opt)
+vim.keymap.set("n", "<Leader>df", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
+end, opt)
+vim.keymap.set("n", "<Leader>ds", function()
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.scopes)
+end, opt)
 
 pluginKeys.dapui = {
-  window = {
-    expand = { "l", "<CR>", "<2-LeftMouse>" },
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
-  floating = {
-    close = { "q", "<Esc>" },
-  }
+	window = {
+		expand = { "l", "<CR>", "<2-LeftMouse>" },
+		open = "o",
+		remove = "d",
+		edit = "e",
+		repl = "r",
+		toggle = "t",
+	},
+	floating = {
+		close = { "q", "<Esc>" },
+	},
 }
+
+-- conform 代码格式化
+vim.keymap.set("v", "<Leader>cm", function()
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 }, opt)
+end)
 
 -- Lauange Specify
 -- Cpp
 map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
+
+-- autopairs
+pluginKeys.autopairs = {
+	fast_wrap = "<A-n>",
+}
 
 return pluginKeys

@@ -15,7 +15,6 @@ toggleterm.setup({
       return 20
     end
   end,
-  -- open_mapping = require("keybindings").toggleterm.open_mapping,
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -23,7 +22,7 @@ toggleterm.setup({
   start_in_insert = true,
   insert_mappings = false, -- 这个要是设置为false，要不然会导致space很慢
   persist_size = true,
-  direction = "float",
+  direction = "horizontal",
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {

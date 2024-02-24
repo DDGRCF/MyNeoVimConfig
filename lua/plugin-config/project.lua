@@ -11,7 +11,7 @@ project.setup({
 
 local status, telescope = pcall(require, "telescope")
 if not status then
-  vim.notify("没有找到 telescope")
+  vim.notify("can't find telescope")
   return
 end
 

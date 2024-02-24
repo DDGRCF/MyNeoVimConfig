@@ -3,7 +3,8 @@ return {
   builder = function()
     -- Full path to current file (see :help expand())
     local file = vim.fn.expand("%:p")
-    local cmd = { "g++", "-g", file }
+    local file_noext = string.gsub(file, "%.%w+$", "")
+    local cmd = { "g++", "-g", file, "-o", file_noext }
     return {
       cmd = cmd,
       components = {

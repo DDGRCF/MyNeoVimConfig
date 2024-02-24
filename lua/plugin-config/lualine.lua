@@ -14,6 +14,7 @@ if status_navic then
   navic.setup({
     lsp = {
       auto_attach = true,
+      preference = nil,
     },
     icons = icons,
     separator = "  ",
@@ -50,6 +51,7 @@ lualine.setup({
     globalstatus = true,
     component_separators = { left = "|", right = "|" },
     section_separators = { left = " ", right = "" },
+    -- section_separators = { left = "", right = "" },
     disabled_filetypes = { statusline = { "dashboard" } },
   },
   extensions = {

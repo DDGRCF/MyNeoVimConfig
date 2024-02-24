@@ -4,11 +4,11 @@ if not status then
   return
 end
 
--- 使用用处
+-- fastwrap参考官网
 autopairs.setup({
   disable_filetype = { "TelescopePrompt", "spectre_panel" },
   fast_wrap = {
-    map = "<A-e>",
+    map = require("keybindings").autopairs.fast_wrap,
     chars = { "{", "[", "(", '"', "'" },
     pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
     offset = 0, -- Offset from pattern match
