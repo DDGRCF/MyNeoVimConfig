@@ -292,8 +292,8 @@ pluginKeys.dapui = {
 
 -- conform 代码格式化
 vim.keymap.set("v", "<Leader>cm", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms = 500 }, opt)
-end)
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
+end, opt)
 
 -- Lauange Specify
 -- Cpp

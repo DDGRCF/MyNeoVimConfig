@@ -10,7 +10,7 @@ conform.setup({
 		lua = { "stylua" },
 		python = { "isort", "black" },
 		go = { "goimports", "gofmt" },
-		cpp = { "clang_format" }, -- not working, using clangd
+		cpp = { "clang_format" },
 		json = { "fixjson" },
 		["*"] = { "codespell" },
 		["_"] = { "trim_whitespace" },
@@ -23,6 +23,10 @@ conform.setup({
 	log_level = vim.log.levels.ERROR,
 	notify_on_error = true,
 })
+
+conform.formatters.clang_format = {
+  prepend_args = { "-style", "google" }
+}
 
 -- vim.api.nvim_create_user_command('DiffFormat', function()
 --   local lines = vim.fn.system('git diff --unified=0'):gmatch('[^\n\r]+')
