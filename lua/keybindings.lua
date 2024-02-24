@@ -21,10 +21,10 @@ map("n", "<A-j>", "<C-w>j", opt)
 map("n", "<A-k>", "<C-w>k", opt)
 map("n", "<A-l>", "<C-w>l", opt)
 -- Leader + hjkl  窗口之间跳转
-map("n", "<leader>wh", "<C-w>h", opt)
-map("n", "<leader>wj", "<C-w>j", opt)
-map("n", "<leader>wk", "<C-w>k", opt)
-map("n", "<leader>wl", "<C-w>l", opt)
+map("n", "<Leader>wh", "<C-w>h", opt)
+map("n", "<Leader>wj", "<C-w>j", opt)
+map("n", "<Leader>wk", "<C-w>k", opt)
+map("n", "<Leader>wl", "<C-w>l", opt)
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
@@ -37,10 +37,10 @@ map("n", "s=", "<C-w>=", opt)
 -- Terminal相关 有一部分在toggleterm
 -- map("n", "<leader>'", ":sp | terminal<CR>", opt)
 -- map("n", "<leader>v'", ":vsp | terminal<CR>", opt)
-map("n", "<leader>'", ":ToggleTerm direction=horizontal<CR>", opt)
-map("n", "<leader>v'", ":ToggleTerm direction=vertical<CR>", opt)
-map("n", "<leader>f'", ":ToggleTerm direction=float<CR>", opt)
-map("n", "<leader>s'", ":TermSelect<CR>", opt)
+map("n", "<Leader>'", ":ToggleTerm direction=horizontal<CR>", opt)
+map("n", "<Leader>v'", ":ToggleTerm direction=vertical<CR>", opt)
+map("n", "<Leader>f'", ":ToggleTerm direction=float<CR>", opt)
+map("n", "<Leader>s'", ":TermSelect<CR>", opt)
 map("t", "<Esc>", [[<C-\><C-N>]], opt)
 -- vim.api.nvim_del_keymap('t', '<Esc>')
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], opt)
@@ -56,9 +56,9 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neo-tree
-map("n", "<leader>fm", ":Neotree action=show toggle<CR>", opt)
-map("n", "<leader>fs", ":Neotree document_symbols<CR>", opt)
-map("n", "<leader>fo", ":Neotree reveal<CR>", opt)
+map("n", "<Leader>fm", ":Neotree action=show toggle<CR>", opt)
+map("n", "<Leader>fs", ":Neotree document_symbols<CR>", opt)
+map("n", "<Leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
 	window = {
@@ -111,23 +111,23 @@ pluginKeys.neoTree = {
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
-map("n", "<leader>bp", ":BufferLineTogglePin<CR>", opt)
-map("n", "<leader>bk", ":lua require('mini.bufremove').delete(n, false)<CR>", opt)
+map("n", "<Leader>bl", ":BufferLineCloseRight<CR>", opt)
+map("n", "<Leader>bh", ":BufferLineCloseLeft<CR>", opt)
+map("n", "<Leader>bo", ":BufferLineCloseOthers<CR>", opt)
+map("n", "<Leader>bc", ":BufferLinePickClose<CR>", opt)
+map("n", "<Leader>bp", ":BufferLineTogglePin<CR>", opt)
+map("n", "<Leader>bk", ":lua require('mini.bufremove').delete(n, false)<CR>", opt)
 
 -- Telescope
 -- 查找文件
-map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
-map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
-map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
-map("n", "<leader>fp", ":Telescope projects<CR>", opt)
+map("n", "<Leader>ff", ":Telescope find_files<CR>", opt)
+map("n", "<Leader>fg", ":Telescope live_grep<CR>", opt)
+map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
+map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
+map("n", "<Leader>fp", ":Telescope projects<CR>", opt)
 map(
 	"n",
-	"<leader>fd",
+	"<Leader>fd",
 	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>",
 	opt
 )
@@ -165,7 +165,7 @@ pluginKeys.telescopeList = {
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
 	-- rename
-	mapbuf("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
+	mapbuf("n", "<Leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
 	-- code action
 	--  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 	-- go xx
@@ -233,7 +233,7 @@ pluginKeys.cmp = function(cmp, snip)
 end
 
 -- neogen 自动文档快捷键
-map("n", "<leader>nf", ":lua require('neogen').generate()<CR>", opt)
+map("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opt)
 
 -- surround 包围文字符号快捷键
 pluginKeys.surround = {
@@ -250,16 +250,16 @@ pluginKeys.surround = {
 }
 
 -- dap 调试快捷键
-map("n", "<leader>dc", ":lua require('dap').continue()<CR>", opt)
-map("n", "<leader>do", ":lua require('dap').step_over()<CR>", opt)
-map("n", "<leader>di", ":lua require('dap').step_into()<CR>", opt)
-map("n", "<leader>dt", ":lua require('dap').step_out()<CR>", opt)
-map("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
-map("n", "<leader>dk", ":lua require('dap').close()<CR>", opt)
-map("n", "<leader>dr", ":lua require('dap').run_last()<CR>", opt)
-map("n", "<leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
-map("n", "<leader>dC", ":lua require('dapui').close()<CR>", opt)
-map("n", "<leader>dP", ":lua require('dapui').open()<CR>", opt)
+map("n", "<Leader>dc", ":lua require('dap').continue()<CR>", opt)
+map("n", "<Leader>do", ":lua require('dap').step_over()<CR>", opt)
+map("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opt)
+map("n", "<Leader>dt", ":lua require('dap').step_out()<CR>", opt)
+map("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+map("n", "<Leader>dk", ":lua require('dap').close()<CR>", opt)
+map("n", "<Leader>dr", ":lua require('dap').run_last()<CR>", opt)
+map("n", "<Leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
+map("n", "<Leader>dC", ":lua require('dapui').close()<CR>", opt)
+map("n", "<Leader>dP", ":lua require('dapui').open()<CR>", opt)
 
 vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
 	require("dap.ui.widgets").hover()
