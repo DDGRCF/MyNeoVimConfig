@@ -50,6 +50,9 @@ local neo_tree_config = {
       }
     }
   },
+  git_status = {
+    symbols = require("plugin-config.gitsigns").icons
+  }
 }
 
 neo_tree_config = vim.tbl_extend("force", neo_tree_config, keymappings)
