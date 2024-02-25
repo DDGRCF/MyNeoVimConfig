@@ -24,8 +24,10 @@ local neo_tree_config = {
     "terminal", "qf"
   },
   filesystem = {
-    bind_to_cwd = true,
-    follow_current_file = { enabled = true },
+    follow_current_file = {
+      enabled = true,
+      leave_dirs_open = false,
+    },
     use_libuv_file_watcher = true,
   },
   source_selector = {

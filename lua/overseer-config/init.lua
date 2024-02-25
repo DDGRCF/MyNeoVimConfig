@@ -1,11 +1,14 @@
 local status, overseer = pcall(require, "overseer")
 if not status then
-  vim.notify("can't find overseer")
-  return
+	vim.notify("can't find overseer")
+	return
 end
 
 overseer.setup({
-  strategy = "toggleterm"
+	strategy = {
+		"toggleterm",
+		direction = "float",
+	},
 })
 
 overseer.register_template(require("overseer-config.template.user.run_script"))
