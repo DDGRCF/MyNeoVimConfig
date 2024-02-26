@@ -67,7 +67,7 @@ local plugins = {
     build = ":TSUpdate",
   },
   {
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
   },
   {
     "williamboman/mason.nvim",

@@ -53,9 +53,12 @@ local lsp_handlers = {
       require("lsp-config.lang-config.gopls")
     )
   end,
+  ["cmake"] = function()
+    lspconfig.cmake.setup(require("lsp-config.lang-config.cmake"))
+  end,
 }
 
 mason_lspconfig.setup({
-  ensure_installed = { "lua_ls", "pyright", "clangd", "gopls" },
+  ensure_installed = { "lua_ls", "pyright", "clangd", "gopls", "cmake" },
   handlers = lsp_handlers
 })
