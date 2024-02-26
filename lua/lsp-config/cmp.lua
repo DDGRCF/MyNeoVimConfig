@@ -6,6 +6,9 @@ end
 
 local status_luasnip, luasnip = pcall(require, "luasnip")
 if not status_luasnip then
+  luasnip.setup({
+    history = true,
+  })
   require("notify")("can't find luasnip")
   return
 end
