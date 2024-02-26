@@ -173,6 +173,9 @@ local plugins = {
   },
   {
     "lewis6991/gitsigns.nvim",
+  },
+  {
+    "folke/neodev.nvim",
   }
 }
 

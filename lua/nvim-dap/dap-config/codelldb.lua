@@ -32,6 +32,7 @@ for _, lang in ipairs({ "c", "cpp" }) do
         })
       end,
       cwd = "${workspaceFolder}",
+      stopOnEntry = true
     },
   }
 end

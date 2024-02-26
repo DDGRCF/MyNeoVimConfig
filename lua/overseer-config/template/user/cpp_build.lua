@@ -9,7 +9,7 @@ return {
       cmd = cmd,
       components = {
         {
-          "on_output_quickfix", open = true
+          "on_output_quickfix", open = false
         }, "default"
       },
     }
