@@ -320,6 +320,7 @@ vim.keymap.set("v", "<Leader>cm", function()
 	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
 end, opt)
 
+
 -- gitsigns
 vim.keymap.set("n", "<leader>hs", require("gitsigns").stage_hunk, opt)
 vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, opt)
