@@ -299,6 +299,21 @@ vim.keymap.set("v", "<Leader>cm", function()
 	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
 end, opt)
 
+-- gitsigns
+vim.keymap.set('n', '<leader>hs', require("gitsigns").stage_hunk, opt)
+vim.keymap.set('n', '<leader>hr', require("gitsigns").reset_hunk, opt)
+vim.keymap.set('v', '<leader>hs', function() require("gitsigns").stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, opt)
+vim.keymap.set('v', '<leader>hr', function() require("gitsigns").reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, opt)
+vim.keymap.set('n', '<leader>hS', require("gitsigns").stage_buffer, opt)
+vim.keymap.set('n', '<leader>hu', require("gitsigns").undo_stage_hunk, opt)
+vim.keymap.set('n', '<leader>hR', require("gitsigns").reset_buffer, opt)
+vim.keymap.set('n', '<leader>hp', require("gitsigns").preview_hunk, opt)
+vim.keymap.set('n', '<leader>hb', function() require("gitsigns").blame_line{full=true} end, opt)
+vim.keymap.set('n', '<leader>tb', require("gitsigns").toggle_current_line_blame, opt)
+vim.keymap.set('n', '<leader>hd', require("gitsigns").diffthis, opt)
+vim.keymap.set('n', '<leader>hD', function() require("gitsigns").diffthis('~') end, opt)
+vim.keymap.set('n', '<leader>td', require("gitsigns").toggle_deleted, opt)
+
 -- Lauange Specify
 -- Cpp
 map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
