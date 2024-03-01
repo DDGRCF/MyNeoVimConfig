@@ -7,7 +7,6 @@ end
 overseer.setup({
 	strategy = {
 		"toggleterm",
-		direction = "float",
 	},
 })
 
