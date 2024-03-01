@@ -104,6 +104,27 @@ pluginKeys.neoTree = {
 			},
 		},
 	},
+	git_status = {
+		window = {
+			position = "float",
+			mappings = {
+				["A"] = "git_add_all",
+				["gu"] = "git_unstage_file",
+				["ga"] = "git_add_file",
+				["gr"] = "git_revert_file",
+				["gc"] = "git_commit",
+				["gp"] = "git_push",
+				["gg"] = "git_commit_and_push",
+				["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+				["oc"] = { "order_by_created", nowait = false },
+				["od"] = { "order_by_diagnostics", nowait = false },
+				["om"] = { "order_by_modified", nowait = false },
+				["on"] = { "order_by_name", nowait = false },
+				["os"] = { "order_by_size", nowait = false },
+				["ot"] = { "order_by_type", nowait = false },
+			},
+		},
+	},
 }
 
 -- bufferline
@@ -256,8 +277,8 @@ map("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opt)
 map("n", "<Leader>dt", ":lua require('dap').step_out()<CR>", opt)
 map("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
 vim.keymap.set("n", "<Leader>dk", function()
-  require("dap").close()
-  require("dapui").close()
+	require("dap").close()
+	require("dapui").close()
 end, opt)
 map("n", "<Leader>dr", ":lua require('dap').run_last()<CR>", opt)
 map("n", "<Leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
@@ -300,19 +321,27 @@ vim.keymap.set("v", "<Leader>cm", function()
 end, opt)
 
 -- gitsigns
-vim.keymap.set('n', '<leader>hs', require("gitsigns").stage_hunk, opt)
-vim.keymap.set('n', '<leader>hr', require("gitsigns").reset_hunk, opt)
-vim.keymap.set('v', '<leader>hs', function() require("gitsigns").stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, opt)
-vim.keymap.set('v', '<leader>hr', function() require("gitsigns").reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, opt)
-vim.keymap.set('n', '<leader>hS', require("gitsigns").stage_buffer, opt)
-vim.keymap.set('n', '<leader>hu', require("gitsigns").undo_stage_hunk, opt)
-vim.keymap.set('n', '<leader>hR', require("gitsigns").reset_buffer, opt)
-vim.keymap.set('n', '<leader>hp', require("gitsigns").preview_hunk, opt)
-vim.keymap.set('n', '<leader>hb', function() require("gitsigns").blame_line{full=true} end, opt)
-vim.keymap.set('n', '<leader>tb', require("gitsigns").toggle_current_line_blame, opt)
-vim.keymap.set('n', '<leader>hd', require("gitsigns").diffthis, opt)
-vim.keymap.set('n', '<leader>hD', function() require("gitsigns").diffthis('~') end, opt)
-vim.keymap.set('n', '<leader>td', require("gitsigns").toggle_deleted, opt)
+vim.keymap.set("n", "<leader>hs", require("gitsigns").stage_hunk, opt)
+vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, opt)
+vim.keymap.set("v", "<leader>hs", function()
+	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end, opt)
+vim.keymap.set("v", "<leader>hr", function()
+	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+end, opt)
+vim.keymap.set("n", "<leader>hS", require("gitsigns").stage_buffer, opt)
+vim.keymap.set("n", "<leader>hu", require("gitsigns").undo_stage_hunk, opt)
+vim.keymap.set("n", "<leader>hR", require("gitsigns").reset_buffer, opt)
+vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, opt)
+vim.keymap.set("n", "<leader>hb", function()
+	require("gitsigns").blame_line({ full = true })
+end, opt)
+vim.keymap.set("n", "<leader>tb", require("gitsigns").toggle_current_line_blame, opt)
+vim.keymap.set("n", "<leader>hd", require("gitsigns").diffthis, opt)
+vim.keymap.set("n", "<leader>hD", function()
+	require("gitsigns").diffthis("~")
+end, opt)
+vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, opt)
 
 -- Lauange Specify
 -- Cpp

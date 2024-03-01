@@ -21,7 +21,7 @@ local neo_tree_config = {
     "git_status",
   },
   open_files_do_not_replace_types = {
-    "terminal", "qf"
+    "terminal", "qf", "trouble"
   },
   filesystem = {
     follow_current_file = {
