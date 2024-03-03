@@ -8,7 +8,7 @@ end
 conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "isort", "black" },
+		python = { "isort", "yapf" },
 		go = { "goimports", "gofmt" },
 		cpp = { "clang_format" },
 		json = { "fixjson" },
@@ -26,6 +26,10 @@ conform.setup({
 
 conform.formatters.clang_format = {
   prepend_args = { "-style", "google" }
+}
+
+conform.formatters.yapf = {
+  prepend_args = { "--style", "{ based_on_style: google }" }
 }
 
 -- vim.api.nvim_create_user_command('DiffFormat', function()
