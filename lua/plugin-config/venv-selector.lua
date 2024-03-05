@@ -4,7 +4,6 @@ if not status_venv_selector then
 	return
 end
 
--- TODO: figure it out
 venv_selector.setup({
 	name = {
 		"venv",
