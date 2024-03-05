@@ -179,6 +179,11 @@ local plugins = {
   },
   {
     "folke/neodev.nvim",
+  },
+  {
+      'linux-cultist/venv-selector.nvim',
+      dependencies = { 'mfussenegger/nvim-dap-python' },
+      event = 'VeryLazy',
   }
 }
 

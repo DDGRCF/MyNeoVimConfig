@@ -5,17 +5,17 @@ if not status_mason_dap then
 end
 
 local dap_handlers = {
-  function(config)
-    mason_dap.default_setup(config)
-  end,
-  python = function(config)
-    config.adapters = require("nvim-dap.dap-config.python")
-    mason_dap.default_setup(config)
-  end,
-  codelldb = function(config)
-    config.adapters = require("nvim-dap.dap-config.codelldb")
-    mason_dap.default_setup(config)
-  end,
+ --  function(config)
+	-- mason_dap.default_setup(config)
+ --  end,
+  -- python = function(config)
+  --   config.adapters = require("nvim-dap.dap-config.python")
+  --   mason_dap.default_setup(config)
+  -- end,
+  -- codelldb = function(config)
+  --   config.adapters = require("nvim-dap.dap-config.codelldb")
+  --   mason_dap.default_setup(config)
+  -- end,
 }
 
 mason_dap.setup({

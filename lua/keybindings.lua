@@ -283,6 +283,7 @@ end, opt)
 map("n", "<Leader>dr", ":lua require('dap').run_last()<CR>", opt)
 map("n", "<Leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
 map("n", "<Leader>dK", ":lua require('dap').close()<CR>", opt)
+map("n", "<Leader>dv", ":lua require('dapui').eval()<CR>", opt)
 map("n", "<Leader>dC", ":lua require('dapui').close()<CR>", opt)
 map("n", "<Leader>dP", ":lua require('dapui').open()<CR>", opt)
 
@@ -347,6 +348,10 @@ vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, opt)
 -- Lauange Specify
 -- Cpp
 map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
+
+-- Python
+map("n", "<leader>vs", ":VenvSelect<CR>", opt)
+map("n", "<leader>vc", ":VenvSelectCached<CR>", opt)
 
 -- autopairs
 pluginKeys.autopairs = {
