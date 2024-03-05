@@ -1,5 +1,4 @@
 local caps = require("cmp_nvim_lsp").default_capabilities()
-caps["offsetEncoding"] = { "utf-16" }
 
 local opts = {
 	capabilities = caps,
@@ -23,7 +22,9 @@ local opts = {
 		"--completion-style=detailed",
 		"--function-arg-placeholders",
 		"--fallback-style=google",
-    "--inlay-hints"
+    "--inlay-hints",
+    "--offset-encoding=utf-16",
+    "-j=4"
 	},
 	init_options = {
 		usePlaceholders = true,

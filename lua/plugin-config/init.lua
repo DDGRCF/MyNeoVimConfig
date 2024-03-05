@@ -1,4 +1,4 @@
-require("plugin-config.neo-tree")
+require("plugin-config.neotree")
 require("plugin-config.dashboard")
 require("plugin-config.lualine")
 require("plugin-config.bufferline")

@@ -15,7 +15,7 @@ treesitter.setup({
     "html", "lua", "vimdoc", "vim", "query",
     "bash", "markdown_inline", "cmake", "toml", "yaml",
     "go", "gomod", "gowork", "gosum", "gitignore", "gitcommit", "git_config",
-    "cuda", "c_sharp", "comment"
+    "cuda", "c_sharp", "comment", "rst", "ninja"
   },
   -- 启用代码高亮模块
   highlight = {

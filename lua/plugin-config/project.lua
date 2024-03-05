@@ -5,14 +5,13 @@ if not status then
 end
 
 project.setup({
-  detection_methods = { "pattern" },
+  detection_methods = { "pattern", "lsp" },
   patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".sln" },
 })
 
-local status, telescope = pcall(require, "telescope")
-if not status then
+local status_telescope, telescope = pcall(require, "telescope")
+if status_telescope then
+  telescope.load_extension("projects")
+else
   vim.notify("can't find telescope")
-  return
 end
-
-pcall(telescope.load_extension, "projects")

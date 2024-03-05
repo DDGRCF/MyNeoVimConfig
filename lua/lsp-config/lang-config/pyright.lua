@@ -1,12 +1,9 @@
 local opts = {
 	capabilities = require("cmp_nvim_lsp").default_capabilities(),
 	on_attach = function(client, bufnr)
-		-- client.resolved_capabilities.document_formatting = false
-		-- client.resolved_capabilities.document_range_formatting = false
 		local function buf_set_keymap(...)
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
 		end
-		-- 绑定快捷键
 		require("keybindings").mapLSP(buf_set_keymap)
 		local status, illuminate = pcall(require, "illuminate")
 		if not status then
@@ -14,16 +11,18 @@ local opts = {
 		end
 		illuminate.on_attach(client)
 	end,
+  filetypes = { "python" },
 	settings = {
 		python = {
 			analysis = {
 				autoSearchPaths = true,
-				diagnosticMode = "workspace",
+				diagnosticMode = "openFilesOnly", -- workspace
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "off",
 			},
 		},
 	},
+  single_file_support = true,
 }
 
 return opts
