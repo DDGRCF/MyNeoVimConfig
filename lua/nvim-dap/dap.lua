@@ -4,19 +4,7 @@ if not status_mason_dap then
   return
 end
 
-local dap_handlers = {
- --  function(config)
-	-- mason_dap.default_setup(config)
- --  end,
-  -- python = function(config)
-  --   config.adapters = require("nvim-dap.dap-config.python")
-  --   mason_dap.default_setup(config)
-  -- end,
-  -- codelldb = function(config)
-  --   config.adapters = require("nvim-dap.dap-config.codelldb")
-  --   mason_dap.default_setup(config)
-  -- end,
-}
+local dap_handlers = {}
 
 mason_dap.setup({
   automatic_installation = true,
@@ -25,6 +13,12 @@ mason_dap.setup({
   },
   handlers = dap_handlers,
 })
+
+local status_dap_python, dap_python = pcall(require, "dap-python")
+if status_dap_python then
+local path = require("mason-registry").get_package("debugpy"):get_install_path()
+  dap_python.setup(path .. "/venv/bin/python")
+end
 
 -- load vscode config
 local status_dap_vscode, dap_vscode = pcall(require, "dap.ext.vscode")
