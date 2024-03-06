@@ -18,11 +18,13 @@ local opts = {
 		"clangd",
 		"--background-index",
 		"--clang-tidy",
+    "--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*",
 		"--header-insertion=iwyu",
 		"--completion-style=detailed",
 		"--function-arg-placeholders",
 		"--fallback-style=google",
     "--inlay-hints",
+    "--all-scopes-completion",
     "--offset-encoding=utf-16",
     "-j=4"
 	},
