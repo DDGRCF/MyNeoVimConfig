@@ -22,39 +22,39 @@ end
 vim.api.nvim_set_hl(0, "DapStoppedSignLineHl", { underline = true })
 vim.api.nvim_set_hl(0, "DapStoppedSignTextHl", { fg = "#a6da95" })
 vim.api.nvim_set_hl(0, "DapBreakpointSignTextHl", { fg = "#ed8796" })
-vim.api.nvim_set_hl(0, "DapBreakpointRejectedTextHl", { fg = "#f5a97f" })
+vim.api.nvim_set_hl(0, "DapBreakpointConditionTextHl", { fg = "#f5a97f" })
 
 -- 定义各种图标
 vim.fn.sign_define("DapBreakpoint", {
 	text = "",
-	texthl = "LspDiagnosticsSignError",
+	texthl = "DapBreakpointSignTextHl",
 	linehl = "",
 	numhl = "",
 })
 
 vim.fn.sign_define("DapStopped", {
 	text = "",
-	texthl = "LspDiagnosticsSignInformation",
-	linehl = "DiagnosticUnderlineInfo",
+	texthl = "DapStoppedSignTextHl",
+	linehl = "DapStoppedSignLineHl",
 	numhl = "LspDiagnosticsSignInformation",
 })
 
 vim.fn.sign_define("DapBreakpointRejected", {
-	text = "",
+	text = "",
 	texthl = "LspDiagnosticsSignHint",
 	linehl = "",
 	numhl = "",
 })
 
 vim.fn.sign_define("DapBreakpointCondition", {
-	text = "",
-	texthl = "LspDiagnosticsSignError",
+	text = "󰔶",
+	texthl = "DapBreakpointConditionTextHl",
 	linehl = "",
 	numhl = "",
 })
 
 vim.fn.sign_define("DapLogPoint", {
-	text = "",
+	text = "",
 	texthl = "LspDiagnosticsSignInformation",
 	linehl = "",
 	numhl = "",
