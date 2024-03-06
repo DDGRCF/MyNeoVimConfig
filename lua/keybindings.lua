@@ -55,9 +55,9 @@ map("v", ">", ">gv", opt)
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
--- neo-tree
+-- neotree
 map("n", "<Leader>fm", ":Neotree action=show toggle<CR>", opt)
-map("n", "<Leader>fs", ":Neotree document_symbols<CR>", opt)
+map("n", "<Leader>fd", ":Neotree document_symbols<CR>", opt)
 map("n", "<Leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
@@ -148,7 +148,7 @@ map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<Leader>fp", ":Telescope projects<CR>", opt)
 map(
 	"n",
-	"<Leader>fd",
+	"<Leader>fs",
 	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>",
 	opt
 )
@@ -185,11 +185,11 @@ pluginKeys.telescopeList = {
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
-	-- rename action
+	-- rename
 	mapbuf("n", "<Leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
 	-- code action
-  mapbuf("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opt)
-	-- go to action
+	mapbuf("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opt)
+	-- go xx
 	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
 	mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
 	mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
@@ -276,6 +276,8 @@ map("n", "<Leader>do", ":lua require('dap').step_over()<CR>", opt)
 map("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opt)
 map("n", "<Leader>dt", ":lua require('dap').step_out()<CR>", opt)
 map("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+map("n", "<Leader>dl", ":lua require('dap').run_to_cursor()<CR>", opt)
+map("n", "<Leader>dL", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<CR>", opt)
 vim.keymap.set("n", "<Leader>dk", function()
 	require("dap").close()
 	require("dapui").close()
@@ -321,7 +323,6 @@ vim.keymap.set("v", "<Leader>cm", function()
 	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
 end, opt)
 
-
 -- gitsigns
 vim.keymap.set("n", "<Leader>hs", require("gitsigns").stage_hunk, opt)
 vim.keymap.set("n", "<Leader>hr", require("gitsigns").reset_hunk, opt)
@@ -350,8 +351,8 @@ vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted, opt)
 map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
 
 -- Python
-map("n", "<leader>vs", ":VenvSelect<CR>", opt)
-map("n", "<leader>vc", ":VenvSelectCached<CR>", opt)
+map("n", "<Leader>vs", ":VenvSelect<CR>", opt)
+map("n", "<Leader>vc", ":VenvSelectCached<CR>", opt)
 
 -- autopairs
 pluginKeys.autopairs = {
@@ -359,4 +360,3 @@ pluginKeys.autopairs = {
 }
 
 return pluginKeys
-
