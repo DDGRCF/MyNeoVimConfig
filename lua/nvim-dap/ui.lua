@@ -19,6 +19,11 @@ else
 	require("notify")("can't find nvim-dap-virtual-text")
 end
 
+vim.api.nvim_set_hl(0, "DapStoppedSignLineHl", { underline = true })
+vim.api.nvim_set_hl(0, "DapStoppedSignTextHl", { fg = "#a6da95" })
+vim.api.nvim_set_hl(0, "DapBreakpointSignTextHl", { fg = "#ed8796" })
+vim.api.nvim_set_hl(0, "DapBreakpointRejectedTextHl", { fg = "#f5a97f" })
+
 -- 定义各种图标
 vim.fn.sign_define("DapBreakpoint", {
 	text = "",
