@@ -36,3 +36,14 @@ if status_dap_vscode then
 else
   require("notify")("can't load dap vscode extension")
 end
+
+-- for codelldb stop on start
+-- "initCommands": [
+--     "breakpoint set -n main -N entry"
+-- ],
+-- "exitCommands": [
+--     "breakpoint delete entry"
+-- ]
+
+
+

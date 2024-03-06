@@ -185,11 +185,11 @@ pluginKeys.telescopeList = {
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
-	-- rename
+	-- rename action
 	mapbuf("n", "<Leader>rn", ":lua vim.lsp.buf.rename()<CR>", opt)
 	-- code action
-	--  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
-	-- go xx
+  mapbuf("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opt)
+	-- go to action
 	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
 	mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
 	mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
@@ -323,27 +323,27 @@ end, opt)
 
 
 -- gitsigns
-vim.keymap.set("n", "<leader>hs", require("gitsigns").stage_hunk, opt)
-vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, opt)
-vim.keymap.set("v", "<leader>hs", function()
+vim.keymap.set("n", "<Leader>hs", require("gitsigns").stage_hunk, opt)
+vim.keymap.set("n", "<Leader>hr", require("gitsigns").reset_hunk, opt)
+vim.keymap.set("v", "<Leader>hs", function()
 	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, opt)
-vim.keymap.set("v", "<leader>hr", function()
+vim.keymap.set("v", "<Leader>hr", function()
 	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, opt)
-vim.keymap.set("n", "<leader>hS", require("gitsigns").stage_buffer, opt)
-vim.keymap.set("n", "<leader>hu", require("gitsigns").undo_stage_hunk, opt)
-vim.keymap.set("n", "<leader>hR", require("gitsigns").reset_buffer, opt)
-vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, opt)
-vim.keymap.set("n", "<leader>hb", function()
+vim.keymap.set("n", "<Leader>hS", require("gitsigns").stage_buffer, opt)
+vim.keymap.set("n", "<Leader>hu", require("gitsigns").undo_stage_hunk, opt)
+vim.keymap.set("n", "<Leader>hR", require("gitsigns").reset_buffer, opt)
+vim.keymap.set("n", "<Leader>hp", require("gitsigns").preview_hunk, opt)
+vim.keymap.set("n", "<Leader>hb", function()
 	require("gitsigns").blame_line({ full = true })
 end, opt)
-vim.keymap.set("n", "<leader>tb", require("gitsigns").toggle_current_line_blame, opt)
-vim.keymap.set("n", "<leader>hd", require("gitsigns").diffthis, opt)
-vim.keymap.set("n", "<leader>hD", function()
+vim.keymap.set("n", "<Leader>tb", require("gitsigns").toggle_current_line_blame, opt)
+vim.keymap.set("n", "<Leader>hd", require("gitsigns").diffthis, opt)
+vim.keymap.set("n", "<Leader>hD", function()
 	require("gitsigns").diffthis("~")
 end, opt)
-vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, opt)
+vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted, opt)
 
 -- Lauange Specify
 -- Cpp
@@ -359,3 +359,4 @@ pluginKeys.autopairs = {
 }
 
 return pluginKeys
+
