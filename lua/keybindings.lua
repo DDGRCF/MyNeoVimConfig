@@ -166,7 +166,7 @@ pluginKeys.telescopeList = {
 		["<C-n>"] = "cycle_history_next",
 		["<C-p>"] = "cycle_history_prev",
 		-- 关闭窗口
-		["<C-c>"] = "close",
+		["<C-e>"] = "close",
 		-- 预览窗口上下滚动
 		["<C-u>"] = "preview_scrolling_up",
 		["<C-d>"] = "preview_scrolling_down",
@@ -317,6 +317,10 @@ pluginKeys.dapui = {
 		close = { "q", "<Esc>" },
 	},
 }
+
+-- overseer
+map("n", "<Leader>os", ":OverseerRun<CR>", opt)
+map("n", "<Leader>oo", ":OverseerToggle<CR>", opt)
 
 -- conform 代码格式化
 vim.keymap.set("v", "<Leader>cm", function()
