@@ -48,6 +48,9 @@ local lsp_handlers = {
 	["cmake"] = function()
 		lspconfig.cmake.setup(require("lsp-config.lang-config.cmake"))
 	end,
+  ["marksman"] = function()
+    lspconfig.marksman.setup(require("lsp-config.lang-config.marksman"))
+  end,
 }
 
 mason_lspconfig.setup({

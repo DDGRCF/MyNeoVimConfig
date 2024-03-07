@@ -84,8 +84,8 @@ pluginKeys.neoTree = {
 			end,
 			["I"] = "focus_preview",
 			["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
-			-- ["<"] = "prev_source",
-			-- [">"] = "next_source",
+			["<"] = "prev_source",
+			[">"] = "next_source",
 			-- ["<CR>"] = function(state)
 			--   local node = state.tree:get_node()
 			--   if node.type == "directory" then
@@ -328,8 +328,8 @@ vim.keymap.set("v", "<Leader>cm", function()
 end, opt)
 
 -- gitsigns
-vim.keymap.set("n", "<Leader>hs", require("gitsigns").stage_hunk, opt)
-vim.keymap.set("n", "<Leader>hr", require("gitsigns").reset_hunk, opt)
+vim.keymap.set("n", "<Leader>hs", require("gitsigns").stage_hunk, opt) -- save edit
+vim.keymap.set("n", "<Leader>hr", require("gitsigns").reset_hunk, opt) -- undo edit
 vim.keymap.set("v", "<Leader>hs", function()
 	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, opt)
@@ -337,7 +337,7 @@ vim.keymap.set("v", "<Leader>hr", function()
 	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, opt)
 vim.keymap.set("n", "<Leader>hS", require("gitsigns").stage_buffer, opt)
-vim.keymap.set("n", "<Leader>hu", require("gitsigns").undo_stage_hunk, opt)
+vim.keymap.set("n", "<Leader>hu", require("gitsigns").undo_stage_hunk, opt) -- undo save
 vim.keymap.set("n", "<Leader>hR", require("gitsigns").reset_buffer, opt)
 vim.keymap.set("n", "<Leader>hp", require("gitsigns").preview_hunk, opt)
 vim.keymap.set("n", "<Leader>hb", function()
@@ -348,7 +348,7 @@ vim.keymap.set("n", "<Leader>hd", require("gitsigns").diffthis, opt)
 vim.keymap.set("n", "<Leader>hD", function()
 	require("gitsigns").diffthis("~")
 end, opt)
-vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted, opt)
+vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted, opt) -- show deleted
 
 -- Lauange Specify
 -- Cpp
