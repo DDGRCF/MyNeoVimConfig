@@ -17,4 +17,6 @@ require("plugin-config.gitsigns")
 require("plugin-config.neodev")
 require("plugin-config.venv-selector")
 require("plugin-config.bookmarks")
+require("plugin-config.gotopreview")
 require("plugin-config.dressing")
+
