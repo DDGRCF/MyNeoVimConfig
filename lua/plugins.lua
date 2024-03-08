@@ -13,11 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
@@ -25,6 +20,7 @@ local plugins = {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -125,6 +121,7 @@ local plugins = {
 	},
 	{
 		"rcarriga/nvim-notify",
+    event = "VeryLazy"
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -186,6 +183,9 @@ local plugins = {
 		"linux-cultist/venv-selector.nvim",
 		event = "VeryLazy",
 	},
+  {
+    'rmagatti/goto-preview'
+  }
 }
 
 require("lazy").setup(plugins, {

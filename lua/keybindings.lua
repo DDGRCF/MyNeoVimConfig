@@ -86,6 +86,8 @@ pluginKeys.neoTree = {
 			["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
 			["<"] = "prev_source",
 			[">"] = "next_source",
+      ["z"] = "close_all_nodes",
+      ["Z"] = "expand_all_nodes"
 			-- ["<CR>"] = function(state)
 			--   local node = state.tree:get_node()
 			--   if node.type == "directory" then
@@ -195,6 +197,12 @@ pluginKeys.mapLSP = function(mapbuf)
 	mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
 	mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
 	mapbuf("n", "gr", ":lua vim.lsp.buf.references()<CR>", opt)
+  -- goto-preview
+  mapbuf("n", "gnd", ":lua require('goto-preview').goto_preview_definition()<CR>", opt)
+  mapbuf("n", "gni", ":lua require('goto-preview').goto_preview_implementation()<CR>", opt)
+  mapbuf("n", "gnD", ":lua require('goto-preview').goto_preview_declaration()<CR>", opt)
+  mapbuf("n", "gnr", ":lua require('goto-preview').goto_preview_references()<CR>", opt)
+  mapbuf("n", "gN", ":lua require('goto-preview').close_all_win()<CR>", opt)
 	-- diagnostic
 	mapbuf("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opt)
 	mapbuf("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opt)

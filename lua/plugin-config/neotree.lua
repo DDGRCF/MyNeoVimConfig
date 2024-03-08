@@ -33,23 +33,7 @@ local neo_tree_config = {
 		use_libuv_file_watcher = true,
 	},
 	document_symbols = {
-		follow_cursor = true,
-		renderers = {
-			root = {
-				{ "icon", default = "C" },
-				{ "name", zindex = 10 },
-			},
-			symbol = {
-				{ "indent", with_expanders = true },
-				{ "kind_icon", default = "?" },
-				{
-					"container",
-					content = {
-						{ "name", zindex = 10 },
-					},
-				},
-			},
-		},
+		follow_cursor = true
 	},
 	source_selector = {
 		winbar = true,
