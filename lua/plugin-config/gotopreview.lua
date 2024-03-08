@@ -5,4 +5,6 @@ if not status_gotopreview then
   return
 end
 
-gotopreview.setup({})
+gotopreview.setup({
+  border = {"↖", "─" ,"╮", "│", "╯", "─", "╰", "│"}
+})

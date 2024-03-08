@@ -151,7 +151,7 @@ map("n", "<Leader>fp", ":Telescope projects<CR>", opt)
 map(
 	"n",
 	"<Leader>fs",
-	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = OTHER_BUFFER_NUMBER })<CR>",
+	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = 0 })<CR>",
 	opt
 )
 map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
@@ -192,21 +192,26 @@ pluginKeys.mapLSP = function(mapbuf)
 	-- code action
 	mapbuf("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opt)
 	-- go xx
-	mapbuf("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opt)
+	mapbuf("n", "gd", ":lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown({}))<CR>", opt)
+  mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
 	mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opt)
-	mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opt)
-	mapbuf("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opt)
-	mapbuf("n", "gr", ":lua vim.lsp.buf.references()<CR>", opt)
+	mapbuf("n", "gi", ":lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_dropdown({}))<CR>", opt)
+  mapbuf("n", "gt", ":lua require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_dropdown({}))<CR>", opt)
+	mapbuf("n", "gr", ":lua require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({}))<CR>", opt)
+
   -- goto-preview
-  mapbuf("n", "gnd", ":lua require('goto-preview').goto_preview_definition()<CR>", opt)
-  mapbuf("n", "gni", ":lua require('goto-preview').goto_preview_implementation()<CR>", opt)
-  mapbuf("n", "gnD", ":lua require('goto-preview').goto_preview_declaration()<CR>", opt)
-  mapbuf("n", "gnr", ":lua require('goto-preview').goto_preview_references()<CR>", opt)
-  mapbuf("n", "gN", ":lua require('goto-preview').close_all_win()<CR>", opt)
+  mapbuf("n", "gpd", ":lua require('goto-preview').goto_preview_definition()<CR>", opt)
+  mapbuf("n", "gpi", ":lua require('goto-preview').goto_preview_implementation()<CR>", opt)
+  mapbuf("n", "gpD", ":lua require('goto-preview').goto_preview_declaration()<CR>", opt)
+  mapbuf("n", "gpr", ":lua require('goto-preview').goto_preview_references()<CR>", opt)
+  mapbuf("n", "gP", ":lua require('goto-preview').close_all_win()<CR>", opt)
+
 	-- diagnostic
-	mapbuf("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opt)
-	mapbuf("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opt)
-	mapbuf("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opt)
+	mapbuf("n", "gnn", ":lua vim.diagnostic.open_float()<CR>", opt)
+	mapbuf("n", "gnk", ":lua vim.diagnostic.goto_prev()<CR>", opt)
+	mapbuf("n", "gnj", ":lua vim.diagnostic.goto_next()<CR>", opt)
+
+  -- completion
 	-- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 

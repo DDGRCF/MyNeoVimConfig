@@ -1,5 +1,5 @@
-local status, telescope = pcall(require, "telescope")
-if not status then
+local status_telescope, telescope = pcall(require, "telescope")
+if not status_telescope then
   require("notify")("can't find telescope")
   return
 end
@@ -33,4 +33,3 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
-telescope.load_extension("vim_bookmarks")
