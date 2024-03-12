@@ -85,7 +85,7 @@ elseif colorscheme_name == "catppuccin" then
       treesitter = true,
       mini = { enabled = true },
       navic = { enabled = true, custom_bg = "lualine" },
-      neotree = false,
+      neotree = true,
       notify = true,
       telescope = true,
       native_lsp = {
