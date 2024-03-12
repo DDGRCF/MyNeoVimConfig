@@ -57,7 +57,7 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
 map("n", "<Leader>fm", ":Neotree action=show toggle<CR>", opt)
-map("n", "<Leader>fd", ":Neotree git_status position=left<CR>", opt)
+map("n", "<Leader>fd", ":Neotree document_symbols position=left<CR>", opt)
 map("n", "<Leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
