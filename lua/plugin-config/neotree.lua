@@ -33,7 +33,12 @@ local neo_tree_config = {
 		use_libuv_file_watcher = true,
 	},
 	document_symbols = {
-		follow_cursor = false
+		follow_cursor = false,
+    window = {
+      mappings = {
+        ["l"] = "toggle_node"
+      }
+    }
 	},
 	source_selector = {
 		winbar = true,
