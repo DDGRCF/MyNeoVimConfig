@@ -298,28 +298,28 @@ end, opt)
 map("n", "<Leader>dr", ":lua require('dap').run_last()<CR>", opt)
 map("n", "<Leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
 map("n", "<Leader>dK", ":lua require('dap').close()<CR>", opt)
-map("n", "<Leader>dv", ":lua require('dapui').eval()<CR>", opt)
+map("n", "<Leader>dh", ":lua require('dapui').eval(nil, { enter = true })<CR>", opt)
 map("n", "<Leader>dC", ":lua require('dapui').close()<CR>", opt)
 map("n", "<Leader>dP", ":lua require('dapui').open()<CR>", opt)
 
-vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-	require("dap.ui.widgets").hover()
-end, opt)
-vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-	require("dap.ui.widgets").preview()
-end, opt)
 vim.keymap.set("n", "<Leader>df", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.frames)
+  require("dapui").float_element("stacks",
+    { position = "center", width = 80, height = 20, enter = true })
 end, opt)
+
 vim.keymap.set("n", "<Leader>ds", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
+  require("dapui").float_element("scopes",
+    { position = "center", width = 80, height = 20, enter = true })
+end, opt)
+
+vim.keymap.set("n", "<Leader>dB", function()
+  require("dapui").float_element("breakpoints",
+    { position = "center", width = 80, height = 20, enter = true })
 end, opt)
 
 pluginKeys.dapui = {
 	window = {
-		expand = { "l", "<CR>", "<2-LeftMouse>" },
+		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "d",
 		edit = "e",
@@ -332,7 +332,7 @@ pluginKeys.dapui = {
 }
 
 -- overseer
-map("n", "<Leader>os", ":OverseerRun<CR>", opt)
+map("n", "<Leader>or", ":OverseerRun<CR>", opt)
 map("n", "<Leader>oo", ":OverseerToggle<CR>", opt)
 
 -- conform 代码格式化

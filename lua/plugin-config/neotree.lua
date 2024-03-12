@@ -33,7 +33,7 @@ local neo_tree_config = {
 		use_libuv_file_watcher = true,
 	},
 	document_symbols = {
-		follow_cursor = true
+		follow_cursor = false
 	},
 	source_selector = {
 		winbar = true,
