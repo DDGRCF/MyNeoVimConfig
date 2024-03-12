@@ -145,6 +145,7 @@ map("n", "<Leader>bk", ":lua require('mini.bufremove').delete(n, false)<CR>", op
 -- 查找文件
 map("n", "<Leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<Leader>fg", ":Telescope live_grep<CR>", opt)
+map("n", "<Leader>fc", ":Telescope current_buffer_fuzzy_find<CR>", opt)
 map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<Leader>fp", ":Telescope projects<CR>", opt)

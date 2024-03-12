@@ -66,7 +66,7 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = {
-      { "filename", icon = { "", color = { fg = "#8aadf4" } } },
+      { "filename", icon = { "", color = { fg = "#8aadf4" } } },
       {
         "navic",
         color_correction = "static",
@@ -114,9 +114,9 @@ lualine.setup({
       {
         "fileformat",
         symbols = {
-          unix = "",
+          unix = "",
           dos = "",
-          mac = "",
+          mac = "",
         },
       },
       "encoding",
