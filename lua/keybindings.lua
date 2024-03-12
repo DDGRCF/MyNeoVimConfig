@@ -57,7 +57,7 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
 map("n", "<Leader>fm", ":Neotree action=show toggle<CR>", opt)
-map("n", "<Leader>fd", ":Neotree document_symbols<CR>", opt)
+map("n", "<Leader>fd", ":Neotree git_status position=float<CR>", opt)
 map("n", "<Leader>fo", ":Neotree reveal<CR>", opt)
 
 pluginKeys.neoTree = {
@@ -157,6 +157,25 @@ map(
 map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
 map("n", "mf", ":lua require('telescope').extensions.vim_bookmarks.current_file()<CR>", opt)
 
+local function flash(prompt_bufnr)
+  require("flash").jump({
+    pattern = "^",
+    label = { after = { 0, 0 } },
+    search = {
+      mode = "search",
+      exclude = {
+        function(win)
+          return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+        end,
+      },
+    },
+    action = function(match)
+      local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+      picker:set_selection(match.pos[1] - 1)
+    end,
+  })
+end
+
 pluginKeys.telescopeList = {
 	i = {
 		-- 上下移动
@@ -174,6 +193,7 @@ pluginKeys.telescopeList = {
 		["<C-d>"] = "preview_scrolling_down",
 
 		["<C-h>"] = "which_key",
+    ["<C-s>"] = flash
 	},
 	n = {
 		["<j>"] = "move_selection_next",
@@ -182,6 +202,7 @@ pluginKeys.telescopeList = {
 		["n"] = "cycle_history_next",
 		["p"] = "cycle_history_prev",
 		["h"] = "which_key",
+    ["s"] = flash
 	},
 }
 
