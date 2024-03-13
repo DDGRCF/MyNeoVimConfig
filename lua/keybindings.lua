@@ -127,6 +127,13 @@ pluginKeys.neoTree = {
 			},
 		},
 	},
+  document_symbols = {
+    window = {
+      mappings = {
+        ["l"] = "toggle_node",
+      }
+    }
+  }
 }
 
 -- bufferline

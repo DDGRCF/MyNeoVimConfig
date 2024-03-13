@@ -34,11 +34,6 @@ local neo_tree_config = {
 	},
 	document_symbols = {
 		follow_cursor = false,
-    window = {
-      mappings = {
-        ["l"] = "toggle_node"
-      }
-    }
 	},
 	source_selector = {
 		winbar = true,
@@ -67,6 +62,6 @@ local neo_tree_config = {
 	},
 }
 
-neo_tree_config = vim.tbl_extend("force", neo_tree_config, keymappings)
 
+neo_tree_config = vim.tbl_extend("force", neo_tree_config, keymappings)
 neo_tree.setup(neo_tree_config)
