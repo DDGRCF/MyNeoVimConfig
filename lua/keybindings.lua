@@ -88,12 +88,6 @@ pluginKeys.neoTree = {
 			[">"] = "next_source",
       ["z"] = "close_all_nodes",
       ["Z"] = "expand_all_nodes"
-			-- ["<CR>"] = function(state)
-			--   local node = state.tree:get_node()
-			--   if node.type == "directory" then
-			--     require("neo-tree.sources.filesystem.commands").set_root(state)
-			--   end
-			-- end
 		},
 	},
 	filesystem = {
