@@ -56,7 +56,7 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
-map("n", "<Leader>fm", ":Neotree action=show toggle<CR>", opt)
+map("n", "<Leader>fm", ":Neotree action=focus toggle<CR>", opt)
 map("n", "<Leader>fd", ":Neotree document_symbols position=left<CR>", opt)
 map("n", "<Leader>fo", ":Neotree reveal<CR>", opt)
 
