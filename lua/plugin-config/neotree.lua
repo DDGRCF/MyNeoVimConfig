@@ -42,11 +42,7 @@ local neo_tree_config = {
 		sources = {
 			{
 				source = "filesystem",
-				display_name = " 󰉓 Files ",
-			},
-			{
-				source = "buffers",
-				display_name = " 󰈚 Buffers ",
+				display_name = " 󰈚 Files ",
 			},
 			{
 				source = "git_status",
