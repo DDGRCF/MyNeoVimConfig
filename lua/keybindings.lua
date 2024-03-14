@@ -86,8 +86,59 @@ pluginKeys.neoTree = {
 			["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
 			["<"] = "prev_source",
 			[">"] = "next_source",
-      ["z"] = "close_all_nodes",
-      ["Z"] = "expand_all_nodes"
+			["z"] = "close_all_nodes",
+			["Z"] = "expand_all_nodes",
+			["Y"] = function(state)
+				local node = state.tree:get_node()
+				local filepath = node:get_id()
+				local filename = node.name
+				local modify = vim.fn.fnamemodify
+
+				local results = {
+					filepath,
+					modify(filepath, ":."),
+					modify(filepath, ":~"),
+					filename,
+					modify(filename, ":r"),
+					modify(filename, ":e"),
+				}
+
+				vim.ui.select({
+					"1. Absolute path: " .. results[1],
+					"2. Path relative to CWD: " .. results[2],
+					"3. Path relative to HOME: " .. results[3],
+					"4. Filename: " .. results[4],
+					"5. Filename without extension: " .. results[5],
+					"6. Extension of the filename: " .. results[6],
+				}, { prompt = "Choose to copy to clipboard:" }, function(choice)
+					if choice then
+						local i = tonumber(choice:sub(1, 1))
+						if i then
+							local result = results[i]
+							vim.fn.setreg('"', result)
+              require("notify")("Copied: ".. result)
+						else
+              require("notify")("Invalid selection")
+						end
+					else
+            require("notify")("Selection cancelled")
+					end
+				end)
+			end,
+      ["y"] = function(state)
+        require("neo-tree.sources.common.commands").copy_to_clipboard(state, function()
+          local node = state.tree:get_node()
+          local filepath = node:get_id()
+          require("notify")("Copied file: " .. filepath)
+        end)
+      end,
+      ["x"] = function(state)
+        require("neo-tree.sources.common.commands").cut_to_clipboard(state, function()
+          local node = state.tree:get_node()
+          local filepath = node:get_id()
+          require("notify")("Cut file: " .. filepath)
+        end)
+      end
 		},
 	},
 	filesystem = {
@@ -121,13 +172,13 @@ pluginKeys.neoTree = {
 			},
 		},
 	},
-  document_symbols = {
-    window = {
-      mappings = {
-        ["l"] = "toggle_node",
-      }
-    }
-  }
+	document_symbols = {
+		window = {
+			mappings = {
+				["l"] = "toggle_node",
+			},
+		},
+	},
 }
 
 -- bufferline
