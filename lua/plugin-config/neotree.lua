@@ -26,6 +26,7 @@ local neo_tree_config = {
 		"trouble",
 	},
 	filesystem = {
+    bind_to_cwd = false, -- true creates a 2-way binding between vim's cwd and neo-tree's root
 		follow_current_file = {
 			enabled = true,
 			leave_dirs_open = false,
@@ -40,16 +41,16 @@ local neo_tree_config = {
 		statusline = false,
 		sources = {
 			{
-				source = "filesystem", -- string
-				display_name = " 󰉓 Files ", -- string | nil
+				source = "filesystem",
+				display_name = " 󰉓 Files ",
 			},
 			{
-				source = "buffers", -- string
-				display_name = " 󰈚 Buffers ", -- string | nil
+				source = "buffers",
+				display_name = " 󰈚 Buffers ",
 			},
 			{
-				source = "git_status", -- string
-				display_name = " 󰊢 Git ", -- string | nil
+				source = "git_status",
+				display_name = " 󰊢 Git ",
 			},
 			{
 				source = "document_symbols",

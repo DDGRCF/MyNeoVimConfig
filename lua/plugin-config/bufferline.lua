@@ -9,6 +9,8 @@ if not status_bufremove then
   require("notify")("can't find bufremove")
 end
 
+vim.api.nvim_set_hl(0, "NeoTreeDirectory", { fg = "#181926", bg = "#8aadf4", bold = true, blend = 100 })
+
 -- bufferline 配置
 bufferline.setup({
   options = {
@@ -34,8 +36,8 @@ bufferline.setup({
     offsets = {
       {
         filetype = "neo-tree",
-        text = " File Explorer",
-        highlight = "Directory",
+        text = " File Explorer",
+        highlight = "NeoTreeDirectory",
         text_align = "left",
         separator = true -- use a "true" to enable the default, or set your own character
       },

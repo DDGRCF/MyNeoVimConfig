@@ -169,13 +169,36 @@ pluginKeys.neoTree = {
 				["on"] = { "order_by_name", nowait = false },
 				["os"] = { "order_by_size", nowait = false },
 				["ot"] = { "order_by_type", nowait = false },
+        ["z"] = "",
+        ["Z"] = "",
+        ["y"] = "",
+        ["Y"] = ""
 			},
 		},
 	},
 	document_symbols = {
 		window = {
 			mappings = {
-				["l"] = "toggle_node",
+        ["l"] = function(state)
+          local node = state.tree:get_node()
+          if not node:is_expanded() then
+            require("neo-tree.sources.common.commands").toggle_node(state)
+          else
+						require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+          end
+        end,
+        ["h"] = function(state)
+          local node = state.tree:get_node()
+          if node:is_expanded() then
+            require("neo-tree.sources.common.commands").toggle_node(state)
+          else
+            require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+          end
+        end,
+        ["z"] = "",
+        ["Z"] = "",
+        ["y"] = "",
+        ["Y"] = ""
 			},
 		},
 	},
