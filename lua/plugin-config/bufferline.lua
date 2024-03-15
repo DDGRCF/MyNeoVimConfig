@@ -9,7 +9,7 @@ if not status_bufremove then
   require("notify")("can't find bufremove")
 end
 
-vim.api.nvim_set_hl(0, "NeoTreeDirectory", { fg = "#181926", bg = "#8aadf4", bold = true, blend = 100 })
+vim.api.nvim_set_hl(0, "NeoTreeDirectory", { link = "lualine_a_normal" })
 
 -- bufferline 配置
 bufferline.setup({

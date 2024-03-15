@@ -20,12 +20,11 @@ else
 end
 
 vim.api.nvim_set_hl(0, "DapStoppedSignLineHl", { underline = true })
-vim.api.nvim_set_hl(0, "DapStoppedSignTextHl", { fg = "#a6da95" })
 
 -- 定义各种图标
 vim.fn.sign_define("DapStopped", {
 	text = "",
-	texthl = "DapStoppedSignTextHl",
+	texthl = "DiagnosticOk",
 	linehl = "DapStoppedSignLineHl",
 	numhl = "LspDiagnosticsSignInformation",
 })

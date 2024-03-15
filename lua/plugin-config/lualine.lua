@@ -43,7 +43,6 @@ local colors = {
   red = '#ed8796'
 }
 
-
 -- 不同地方的模块 - [a, b, c, x, y, z]
 lualine.setup({
   options = {
@@ -111,14 +110,6 @@ lualine.setup({
         status_not = false, -- When true, invert the status search
       },
       "filesize",
-      {
-        "fileformat",
-        symbols = {
-          unix = "",
-          dos = "",
-          mac = "",
-        },
-      },
       "encoding",
       "filetype",
     },
