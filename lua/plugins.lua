@@ -110,7 +110,6 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
-		config = true,
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -185,6 +184,16 @@ local plugins = {
 	},
   {
     'rmagatti/goto-preview'
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
   }
 }
 

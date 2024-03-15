@@ -5,16 +5,35 @@ local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 local pluginKeys = {}
 
--- 取消s默认按键
-map("n", "s", "", opt)
+-- canel
+vim.api.nvim_set_keymap(
+  "n", "s", "",
+  vim.tbl_extend("force", opt, { desc = "cancel" })
+)
+
 -- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
+vim.api.nvim_set_keymap(
+  "n", "sv", ":vsp<CR>",
+  vim.tbl_extend("force", opt, { desc = "split vertically" })
+)
+vim.api.nvim_set_keymap(
+  "n", "sh", ":sp<CR>",
+  vim.tbl_extend("force", opt, { desc = "split horizontally" })
+)
+
 -- 关闭其他
-map("n", "so", "<C-w>o", opt)
+vim.api.nvim_set_keymap(
+  "n", "so", "<C-w>o",
+  vim.tbl_extend("force", opt, { desc = "close other window" })
+)
+
 -- 关闭当前
-map("n", "q", "<C-w>c", opt)
--- 窗口跳转
+vim.api.nvim_set_keymap(
+  "n", "q", "<C-w>c",
+  vim.tbl_extend("force", opt, { desc = "close current window" })
+)
+
+-- Window jump
 -- Alt + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
@@ -204,35 +223,71 @@ pluginKeys.neoTree = {
 	},
 }
 
--- bufferline
--- 左右Tab切换
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
--- 关闭
-map("n", "<Leader>bl", ":BufferLineCloseRight<CR>", opt)
-map("n", "<Leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<Leader>bo", ":BufferLineCloseOthers<CR>", opt)
-map("n", "<Leader>bc", ":BufferLinePickClose<CR>", opt)
-map("n", "<Leader>bp", ":BufferLineTogglePin<CR>", opt)
-map("n", "<Leader>bk", ":lua require('mini.bufremove').delete(n, false)<CR>", opt)
+-- Bufferline
+vim.keymap.set("n", "<C-h>",
+  function() vim.cmd("BufferLineCyclePrev") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline prev tab"}))
+vim.keymap.set("n", "<C-l>",
+  function() vim.cmd("BufferLineCycleNext") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline next tab"}))
+vim.keymap.set("n", "<Leader>bl",
+  function() vim.cmd("BufferLineCloseRight") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline close right tab"}))
+vim.keymap.set("n", "<Leader>bh",
+  function() vim.cmd("BufferLineCloseLeft") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline close left tab"}))
+vim.keymap.set("n", "<Leader>bo",
+  function() vim.cmd("BufferLineCloseOthers") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline close others"}))
+vim.keymap.set("n", "<Leader>bc",
+  function() vim.cmd("BufferLinePickClose") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline close pick"}))
+vim.keymap.set("n", "<Leader>bp",
+  function() vim.cmd("BufferLineTogglePin") end,
+  vim.tbl_extend("force", opt, { desc = "Bufferline toggle pin"}))
+vim.keymap.set("n", "<Leader>bk",
+  function(n)
+    require('mini.bufremove').delete(n, false)
+  end,
+  vim.tbl_extend("force", opt, { desc = "BufferLine Delete buffer"}))
 
 -- Telescope
--- 查找文件
-map("n", "<Leader>ff", ":Telescope find_files<CR>", opt)
-map("n", "<Leader>fg", ":Telescope live_grep<CR>", opt)
-map("n", "<Leader>fc", ":Telescope current_buffer_fuzzy_find<CR>", opt)
-map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
-map("n", "<Leader>fp", ":Telescope projects<CR>", opt)
-map(
-	"n",
-	"<Leader>fs",
-	":lua require('telescope.builtin').lsp_document_symbols({ bufnr = 0 })<CR>",
-	opt
-)
-map("n", "ma", ":lua require('telescope').extensions.vim_bookmarks.all()<CR>", opt)
-map("n", "mf", ":lua require('telescope').extensions.vim_bookmarks.current_file()<CR>", opt)
+vim.keymap.set("n", "<Leader>ff",
+  function() vim.cmd("Telescope find_files") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope find files"}))
+vim.keymap.set("n", "<Leader>fg",
+  function() vim.cmd("Telescope live_grep") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope live grep"}))
+vim.keymap.set("n", "<Leader>fc",
+  function() vim.cmd("Telescope current_buffer_fuzzy_find") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope current buffer fuzzy find"}))
+vim.keymap.set("n", "<Leader>fb",
+  function() vim.cmd("Telescope buffers") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope buffers"}))
+vim.keymap.set("n", "<Leader>fh",
+  function() vim.cmd("Telescope help_tags") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope help tags"}))
+vim.keymap.set("n", "<Leader>fp",
+  function() vim.cmd("Telescope projects") end,
+  vim.tbl_extend("force", opt, { desc = "Telescope projects"}))
+vim.keymap.set("n", "<Leader>fs",
+  function()
+    require('telescope.builtin').lsp_document_symbols({ bufnr = 0 })
+  end,
+  vim.tbl_extend("force", opt, { desc = "Telescope lsp document symbols"}))
+-- Bookmarks
+vim.keymap.set("n", "ma",
+  function()
+    require("telescope").extensions.vim_bookmarks.all()
+  end,
+  vim.tbl_extend("force", opt, { desc = "Telescope all vim_bookmarks"}))
+vim.keymap.set("n", "mf",
+  function()
+    require("telescope").extensions.vim_bookmarks.all()
+  end,
+  vim.tbl_extend("force", opt, { desc = "Telescope current vim_bookmarks"}))
 
+-- Telescope Key
 local function flash(prompt_bufnr)
   require("flash").jump({
     pattern = "^",
@@ -363,10 +418,12 @@ pluginKeys.cmp = function(cmp, snip)
 	}
 end
 
--- neogen 自动文档快捷键
-map("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opt)
+-- Neogen
+vim.keymap.set("n", "<Leader>nf", function()
+  require('neogen').generate()
+end, vim.tbl_extend("force", opt, { desc = "Neogen: generate doc" }))
 
--- surround 包围文字符号快捷键
+-- Surround
 pluginKeys.surround = {
 	add = "sa", -- Add surrounding in Normal and Visual modes
 	delete = "sd", -- Delete surrounding
@@ -380,39 +437,89 @@ pluginKeys.surround = {
 	suffix_next = "", -- Suffix to search with "next" method
 }
 
+-- Autopairs
+pluginKeys.autopairs = {
+	fast_wrap = "<A-n>",
+}
+
 -- dap 调试快捷键
-map("n", "<Leader>dc", ":lua require('dap').continue()<CR>", opt)
-map("n", "<Leader>do", ":lua require('dap').step_over()<CR>", opt)
-map("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opt)
-map("n", "<Leader>dt", ":lua require('dap').step_out()<CR>", opt)
-map("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
-map("n", "<Leader>dl", ":lua require('dap').run_to_cursor()<CR>", opt)
-map("n", "<Leader>dL", ":lua require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])<CR>", opt)
+vim.keymap.set("n", "<Leader>dc", function()
+  require('dap').continue()
+end, vim.tbl_extend("force", opt, { desc = "Dap: continue" }))
+vim.keymap.set("n", "<Leader>do", function()
+  require('dap').step_over()
+end, vim.tbl_extend("force", opt, { desc = "Dap: step over" }))
+vim.keymap.set("n", "<Leader>di", function()
+  require('dap').step_into()
+end, vim.tbl_extend("force", opt, { desc = "Dap: step into" }))
+vim.keymap.set("n", "<Leader>dt", function()
+  require('dap').step_out()
+end, vim.tbl_extend("force", opt, { desc = "Dap: step into" }))
+vim.keymap.set("n", "<Leader>db", function()
+  require('dap').toggle_breakpoint()
+end, vim.tbl_extend("force", opt, { desc = "Dap: toggle breakpoint" }))
+vim.keymap.set("n", "<Leader>dl", function()
+  require('dap').run_to_cursor()
+end, vim.tbl_extend("force", opt, { desc = "Dap: run to current line" }))
+vim.keymap.set("n", "<Leader>dL", function()
+  require('dap').goto_(vim.api.nvim_win_get_cursor(0)[1])
+end, vim.tbl_extend("force", opt, { desc = "Dap: goto current line" }))
 vim.keymap.set("n", "<Leader>dk", function()
 	require("dap").close()
 	require("dapui").close()
-end, opt)
-map("n", "<Leader>dr", ":lua require('dap').run_last()<CR>", opt)
-map("n", "<Leader>dI", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opt)
-map("n", "<Leader>dK", ":lua require('dap').close()<CR>", opt)
-map("n", "<Leader>dh", ":lua require('dapui').eval(nil, { enter = true })<CR>", opt)
-map("n", "<Leader>dC", ":lua require('dapui').close()<CR>", opt)
-map("n", "<Leader>dP", ":lua require('dapui').open()<CR>", opt)
+end, vim.tbl_extend("force", opt, { desc = "Dap: close dap and dap-ui" }))
+vim.keymap.set("n", "<Leader>dr", function()
+  require("dap").run_last()
+end, vim.tbl_extend("force", opt, { desc = "Dap: run last choice" }))
+vim.keymap.set("n", "<Leader>dI", function()
+  vim.ui.input({ prompt = "Enter message for breakpoint: "}, function(input)
+    require("dap").set_breakpoint(nil, nil, input)
+  end)
+end, vim.tbl_extend("force", opt, { desc = "Dap: set message breakpoint" }))
+vim.keymap.set("n", "<Leader>dK", function()
+  require('dap').close()
+end, vim.tbl_extend("force", opt, { desc = "Dap: close dap" }))
+vim.keymap.set("n", "<Leader>dh", function()
+  require('dapui').eval(nil, { enter = true })
+end, vim.tbl_extend("force", opt, { desc = "Dap: eval current variable" }))
+vim.keymap.set("n", "<Leader>dC", function()
+  require('dapui').close()
+end, vim.tbl_extend("force", opt, { desc = "Dap: close dap-ui" }))
+vim.keymap.set("n", "<Leader>dO", function()
+  require('dapui').open()
+end, vim.tbl_extend("force", opt, { desc = "Dap: open dap-ui" }))
 
+-- Dap Float Element
 vim.keymap.set("n", "<Leader>df", function()
   require("dapui").float_element("stacks",
     { position = "center", width = 80, height = 20, enter = true })
-end, opt)
+end, vim.tbl_extend("force", opt, { desc = "Dap: float stacks element" }))
 
 vim.keymap.set("n", "<Leader>ds", function()
   require("dapui").float_element("scopes",
     { position = "center", width = 80, height = 20, enter = true })
-end, opt)
+end, vim.tbl_extend("force", opt, { desc = "Dap: float scopes element" }))
+
+vim.keymap.set("n", "<Leader>dw", function()
+  require("dapui").float_element("watches",
+    { position = "center", width = 80, height = 20, enter = true })
+end, vim.tbl_extend("force", opt, { desc = "Dap: float watches element" }))
 
 vim.keymap.set("n", "<Leader>dB", function()
   require("dapui").float_element("breakpoints",
     { position = "center", width = 80, height = 20, enter = true })
-end, opt)
+end, vim.tbl_extend("force", opt, { desc = "Dap: float breakpoints element" }))
+
+-- Python Dap
+vim.keymap.set("n", "<Leader>dpm", function()
+  require('dap-python').test_method()
+end, vim.tbl_extend("force", opt, { desc = "Dap: python test method" }))
+vim.keymap.set("n", "<Leader>dpc", function()
+  require('dap-python').test_class()
+end, vim.tbl_extend("force", opt, { desc = "Dap: python test class" }))
+vim.keymap.set("n", "<Leader>dps", function()
+  require('dap-python').debug_selection()
+end, vim.tbl_extend("force", opt, { desc = "Dap: python debug selected code" }))
 
 pluginKeys.dapui = {
 	window = {
@@ -429,8 +536,12 @@ pluginKeys.dapui = {
 }
 
 -- overseer
-map("n", "<Leader>or", ":OverseerRun<CR>", opt)
-map("n", "<Leader>oo", ":OverseerToggle<CR>", opt)
+vim.keymap.set("n", "<Leader>or",
+  function() vim.cmd("OverseerRun") end,
+  vim.tbl_extend("force", opt, { desc = "Run Overseer" }))
+vim.keymap.set("n", "<Leader>oo",
+  function() vim.cmd("OverseerToggle") end,
+  vim.tbl_extend("force", opt, { desc = "Toggle Overseer" }))
 
 -- conform 代码格式化
 vim.keymap.set("v", "<Leader>cm", function()
@@ -462,15 +573,16 @@ vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted, opt) -- sh
 
 -- Lauange Specify
 -- Cpp
-map("n", "<A-o>", ":ClangdSwitchSourceHeader<CR>", opt) -- 头文件和源文件交换
+vim.keymap.set("n", "<A-o>",
+  function() vim.cmd("ClangdSwitchSourceHeader") end,
+  vim.tbl_extend("force", opt, { desc = "Cpp: source and header switch" } ))
 
 -- Python
-map("n", "<Leader>vs", ":VenvSelect<CR>", opt)
-map("n", "<Leader>vc", ":VenvSelectCached<CR>", opt)
-
--- autopairs
-pluginKeys.autopairs = {
-	fast_wrap = "<A-n>",
-}
+vim.keymap.set("n", "<Leader>vs",
+  function() vim.cmd("VenvSelect") end,
+  vim.tbl_extend("force", opt, { desc = "Python: select env" } ))
+vim.keymap.set("n", "<Leader>vc",
+  function() vim.cmd("VenvSelectCached") end,
+  vim.tbl_extend("force", opt, { desc = "Python: use cached env" } ))
 
 return pluginKeys

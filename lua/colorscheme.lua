@@ -112,7 +112,7 @@ elseif colorscheme_name == "catppuccin" then
       },
       dap = true,
       dap_ui = true,
-      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+      which_key = true
     },
   })
 end
