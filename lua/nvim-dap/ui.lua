@@ -1,12 +1,12 @@
 local status_dap, dap = pcall(require, "dap")
 if not status_dap then
-	require("notify")("can't find dap")
+	vim.notify("can't find dap", "error", { title = "Plugin" })
 	return
 end
 
 local status_dapui, dapui = pcall(require, "dapui")
 if not status_dapui then
-	require("notify")("can't find dap ui")
+	vim.notify("can't find dap ui", "error", { title = "Plugin" })
 	return
 end
 
@@ -16,7 +16,7 @@ if status_dvt then
 		commented = true,
 	})
 else
-	require("notify")("can't find nvim-dap-virtual-text")
+	vim.notify("can't find nvim-dap-virtual-text", "error", { title = "Plugin" })
 end
 
 vim.api.nvim_set_hl(0, "DapStoppedSignLineHl", { underline = true })

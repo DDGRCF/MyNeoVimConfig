@@ -1,6 +1,6 @@
 local status_comment, comment = pcall(require, "Comment")
 if not status_comment then
-  require("notify")("can't find Comment")
+  vim.notify("can't find Comment", "error", { title = "Plugin" })
   return
 end
 

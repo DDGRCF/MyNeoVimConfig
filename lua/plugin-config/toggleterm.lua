@@ -1,7 +1,6 @@
--- NOTE: no use
 local status, toggleterm = pcall(require, "toggleterm")
 if not status then
-  require("notify")("can't find toggleterm")
+  vim.notify("can't find toggleterm", "error", { title = "Plugin" })
   return
 end
 

@@ -167,7 +167,6 @@ local plugins = {
 	},
 	{
 		"danymat/neogen",
-		config = true,
 	},
 	{
 		"lewis6991/gitsigns.nvim",

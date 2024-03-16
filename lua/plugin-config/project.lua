@@ -1,6 +1,6 @@
 local status, project = pcall(require, "project_nvim")
 if not status then
-  require("notify")("can't find project_nvim")
+  vim.notify("can't find project_nvim", "error", { title = "Plugin" })
   return
 end
 

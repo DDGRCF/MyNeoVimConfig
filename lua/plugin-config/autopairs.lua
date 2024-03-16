@@ -1,6 +1,6 @@
 local status, autopairs = pcall(require, "nvim-autopairs")
 if not status then
-  require("notify")("can't find nvim-autopairs")
+  vim.notify("can't find nvim-autopairs", "error", { title = "Plugin" })
   return
 end
 

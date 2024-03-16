@@ -1,6 +1,6 @@
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
-  vim.notify("can't find nvim-treesitter")
+  vim.notify("can't find nvim-treesitter", "error", { title = "Plugin" })
   return
 end
 
@@ -12,8 +12,8 @@ treesitter.setup({
   ignore_install = {},
   ensure_installed = {
     "c", "cpp", "json", "json5", "jsonc", "markdown", "python",
-    "html", "lua", "vimdoc", "vim", "query",
-    "bash", "markdown_inline", "cmake", "toml", "yaml",
+    "html", "lua", "vimdoc", "vim", "query", "yaml",
+    "bash", "markdown_inline", "cmake", "toml",
     "go", "gomod", "gowork", "gosum", "gitignore", "gitcommit", "git_config",
     "cuda", "c_sharp", "comment", "rst", "ninja"
   },

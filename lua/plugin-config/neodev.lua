@@ -1,6 +1,6 @@
 local status_neodev, neodev = pcall(require, "neodev")
 if not status_neodev then
-	require("notify")("can't find neodev")
+	vim.notify("can't find neodev", "error", { title = "Plugin" })
 	return
 end
 

@@ -1,3 +1,4 @@
+require("plugin-config.notify")
 require("plugin-config.neotree")
 require("plugin-config.dashboard")
 require("plugin-config.lualine")

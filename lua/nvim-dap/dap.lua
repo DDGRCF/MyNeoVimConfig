@@ -1,6 +1,6 @@
 local status_mason_dap, mason_dap = pcall(require, "mason-nvim-dap")
 if not status_mason_dap then
-  require("notify")("can't find mason-nvim-dap")
+  vim.notify("can't find mason-nvim-dap", "error", { title = "Plugin" })
   return
 end
 
@@ -34,7 +34,7 @@ if status_dap_vscode then
   end
   dap_vscode.load_launchjs()
 else
-  require("notify")("can't load dap vscode extension")
+  vim.notify("can't load dap vscode extension", "error", { title = "Plugin" })
 end
 
 -- for codelldb stop on start

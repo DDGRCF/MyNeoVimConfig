@@ -1,6 +1,6 @@
 local status_cmp, cmp = pcall(require, "cmp")
 if not status_cmp then
-  require("notify")("can't find cmp")
+  vim.notify("can't find cmp", "error", { title = "Plugin" })
   return
 end
 
@@ -9,7 +9,7 @@ if not status_luasnip then
   luasnip.setup({
     history = true,
   })
-  require("notify")("can't find luasnip")
+  vim.notify("can't find luasnip", "error", { title = "Plugin" })
   return
 end
 
@@ -18,7 +18,7 @@ local status_luasnip_vscode, luasnip_vscode = pcall(require, "luasnip.loaders.fr
 if status_luasnip_vscode then
   luasnip_vscode.lazy_load()
 else
-  require("notify")("can't find luasnip vscode")
+  vim.notify("can't find luasnip vscode", "error", { title = "Plugin" })
 end
 
 -- 补全措施

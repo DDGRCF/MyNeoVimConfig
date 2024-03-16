@@ -1,6 +1,6 @@
 local status_conform, conform = pcall(require, "conform")
 if not status_conform then
-	require("notify")("can't find conform")
+	vim.notify("can't find conform", "error", { title = "Plugin" })
 	return
 end
 

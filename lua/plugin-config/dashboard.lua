@@ -1,6 +1,6 @@
 local status, db = pcall(require, "dashboard")
 if not status then
-  require("notify")("can't find dashboard")
+  vim.notify("can't find dashboard", "error", { title = "Plugin" })
   return
 end
 

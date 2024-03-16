@@ -1,6 +1,6 @@
 local status_venv_selector, venv_selector = pcall(require, "venv-selector")
 if not status_venv_selector then
-	require("notify")("can't find venv-selector")
+	vim.notify("can't find venv-selector", "error", { title = "Plugin" })
 	return
 end
 

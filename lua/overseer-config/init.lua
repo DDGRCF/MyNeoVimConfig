@@ -1,6 +1,6 @@
 local status, overseer = pcall(require, "overseer")
 if not status then
-	vim.notify("can't find overseer")
+	vim.notify("can't find overseer", "error", { title = "Plugin" })
 	return
 end
 

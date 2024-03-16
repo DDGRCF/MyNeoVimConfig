@@ -1,6 +1,6 @@
 local status, ibl = pcall(require, "ibl")
 if not status then
-  require("notify")("can't find indent_blankline")
+  vim.notify("can't find indent_blankline", "error", { title = "Plugin" })
   return
 end
 

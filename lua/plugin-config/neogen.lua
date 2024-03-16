@@ -1,6 +1,6 @@
 local status_neogen, neogen = pcall(require, "neogen")
 if not status_neogen then
-  require("neogen")("can't find neogen")
+  vim.notify("can't find neogen", "error", { title = "Plugin" })
   return
 end
 

@@ -1,6 +1,6 @@
 local status_flash, flash = pcall(require, "flash")
 if not status_flash then
-  require("notify")("can't find flash")
+  vim.notify("can't find flash", "error", { title = "Plugin" })
   return
 end
 

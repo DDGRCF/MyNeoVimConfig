@@ -1,6 +1,6 @@
 local status, bufferline = pcall(require, "bufferline")
 if not status then
-  require("notify")("can't find bufferline")
+  vim.notify("can't find bufferline", "error", { title = "Plugin" })
   return
 end
 

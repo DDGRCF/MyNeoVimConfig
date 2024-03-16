@@ -1,6 +1,6 @@
 local status_neo_tree, neo_tree = pcall(require, "neo-tree")
 if not status_neo_tree then
-	require("notify")("can't find neo-tree")
+	vim.notify("can't find neo-tree", "error", { title = "Plugin" })
 	return
 end
 

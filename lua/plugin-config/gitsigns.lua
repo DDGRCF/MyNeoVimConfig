@@ -1,6 +1,6 @@
 local status_gitsigns, gitsigns = pcall(require, "gitsigns")
 if not status_gitsigns then
-	require("notify")("can't find gitsigns")
+	vim.notify("can't find gitsigns", "error", { title = "Plugin" })
 	return
 end
 

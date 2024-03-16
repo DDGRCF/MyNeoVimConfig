@@ -1,6 +1,6 @@
 local status_treesitter_context, treesitter_context = pcall(require, "treesitter-context")
 if not status_treesitter_context then
-  require("notify")("can't find treesitter-context")
+  vim.notify("can't find treesitter-context", "error", { title = "Plugin" })
   return
 end
 
