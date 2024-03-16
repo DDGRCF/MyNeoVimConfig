@@ -262,10 +262,31 @@ vim.keymap.set("n", "<Leader>bp",
   function() vim.cmd("BufferLineTogglePin") end,
   vim.tbl_extend("force", opt, { desc = "[Bufferline] toggle pin"}))
 vim.keymap.set("n", "<Leader>bk",
-  function(n)
-    require('mini.bufremove').delete(n, false)
+  function()
+    local bd = require("mini.bufremove").delete
+    if vim.bo.modified then
+      local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+      if choice == 1 then -- Yes
+        vim.cmd.write()
+        bd(0)
+        vim.notify("Delete and save " .. vim.fn.bufname(), "info", { title= "BufferRemove" })
+      elseif choice == 2 then -- No
+        bd(0, true)
+        vim.notify("Delete and drop " .. vim.fn.bufname(), "info", { title = "BufferRemove" })
+      else
+        vim.notify("Cancel bufermove action", "info",  { title = "BufferRemove" })
+      end
+    else
+      bd(0)
+    end
   end,
   vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer"}))
+vim.keymap.set("n", "<Leader>bK",
+  function()
+    require("mini.bufremove").delete(0, true)
+    vim.notify("Delete and drop " .. vim.fn.bufname(), "warn", { title = "BufferRemove" })
+  end,
+  vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer force"}))
 
 -- Telescope
 vim.keymap.set("n", "<Leader>ff",
