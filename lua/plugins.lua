@@ -167,6 +167,7 @@ local plugins = {
 	},
 	{
 		"danymat/neogen",
+		event = "VeryLazy",
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -176,13 +177,15 @@ local plugins = {
 	},
 	{
 		"mfussenegger/nvim-dap-python",
+		event = "VeryLazy",
 	},
 	{
 		"linux-cultist/venv-selector.nvim",
 		event = "VeryLazy",
 	},
   {
-    'rmagatti/goto-preview'
+    "rmagatti/goto-preview",
+    event = "VeryLazy",
   },
   {
     "iamcco/markdown-preview.nvim",
