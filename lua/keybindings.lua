@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- 复用 opt 参数 和 map 函数
 local map = vim.api.nvim_set_keymap
-local opt = { noremap = true, silent = true }
+local opt = { noremap = true, silent = true, desc = "Unname" }
 local pluginKeys = {}
 
 -- canel
@@ -81,10 +81,10 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
 vim.keymap.set("n", "<Leader>fm",
-  function() vim.cmd("Neotree action=focus toggle") end,
+  function() vim.cmd("Neotree toggle show filesystem") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open filesystem" }))
 vim.keymap.set("n", "<Leader>fd",
-  function() vim.cmd("Neotree document_symbols position=left") end,
+  function() vim.cmd("Neotree toggle show document_symbols") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open document_symbols" }))
 vim.keymap.set("n", "<Leader>fo",
   function() vim.cmd("Neotree reveal") end,
@@ -188,7 +188,6 @@ pluginKeys.neoTree = {
 	},
 	git_status = {
 		window = {
-			position = "float",
 			mappings = {
 				["A"] = "git_add_all",
 				["gu"] = "git_unstage_file",
@@ -607,10 +606,20 @@ vim.keymap.set("n", "<Leader>oo",
 
 -- conform 代码格式化
 vim.keymap.set("v", "<Leader>cm", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 },
+  function(err, did_edit)
+    if not err and did_edit then
+      vim.notify("Format current selected lines", "info", { title = "Conform" })
+    end
+  end)
 end, vim.tbl_extend("force", opt, { desc = "[Conform] format selected lines" }))
 vim.keymap.set("n", "<Leader>cM", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 },
+  function(err, did_edit)
+    if not err and did_edit then
+      vim.notify("Format current buffer", "info", { title = "Conform" })
+    end
+  end)
 end, vim.tbl_extend("force", opt, { desc = "[Conform] format current buffer" }))
 
 -- gitsigns
@@ -624,12 +633,18 @@ end, vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage selected line"
 vim.keymap.set("v", "<Leader>hr", function()
 	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage selected line" }))
-vim.keymap.set("n", "<Leader>hS", require("gitsigns").stage_buffer,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current buffer" }))
-vim.keymap.set("n", "<Leader>hu", require("gitsigns").undo_stage_hunk,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] undo stage current buffer" }))
-vim.keymap.set("n", "<Leader>hR", require("gitsigns").reset_buffer,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current buffer" }))
+vim.keymap.set("n", "<Leader>hS", function()
+    require("gitsigns").stage_buffer()
+    vim.notify("Hunk current buffer stage", "info", { title = "GitSigns" })
+  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current buffer" }))
+vim.keymap.set("n", "<Leader>hu", function()
+    require("gitsigns").undo_stage_hunk()
+    vim.notify("Undo current buffer stage", "info", { title = "GitSigns" })
+  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] undo stage current buffer" }))
+vim.keymap.set("n", "<Leader>hR", function()
+  require("gitsigns").reset_buffer()
+  vim.notify("Reset current buffer stage", "info", { title = "GitSigns" })
+  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current buffer" }))
 vim.keymap.set("n", "<Leader>hp", require("gitsigns").preview_hunk,
   vim.tbl_extend("force", opt, { desc = "[GitSigns] preview stage hunk" }))
 vim.keymap.set("n", "<Leader>hb", function()
