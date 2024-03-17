@@ -94,6 +94,11 @@ lualine.setup({
     },
     lualine_x = {
       {
+        function() return " " .. require("dap").status() end,
+        cond = function() return require("dap").status() ~= "" end,
+        color = "Debug",
+      },
+      {
         "overseer",
         label = '',     -- Prefix for task counts
         colored = true, -- Color the task icons and counts
@@ -108,11 +113,6 @@ lualine.setup({
         name_not = false,   -- When true, invert the name search
         status = nil,       -- List of task statuses to display
         status_not = false, -- When true, invert the status search
-      },
-      {
-        function() return " " .. require("dap").status() end,
-        cond = function() return require("dap").status() ~= "" end,
-        color = "Debug",
       },
       "filesize",
       "encoding",
