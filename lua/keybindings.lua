@@ -98,7 +98,7 @@ pluginKeys.neoTree = {
 		mappings = {
 			["<space>"] = "",
 			["I"] = "focus_preview",
-			["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+			["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
 			["<"] = "prev_source",
 			[">"] = "next_source",
 			["z"] = "close_all_nodes",
