@@ -109,6 +109,11 @@ lualine.setup({
         status = nil,       -- List of task statuses to display
         status_not = false, -- When true, invert the status search
       },
+      {
+        function() return " " .. require("dap").status() end,
+        cond = function() return require("dap").status() ~= "" end,
+        color = "Debug",
+      },
       "filesize",
       "encoding",
       "filetype",

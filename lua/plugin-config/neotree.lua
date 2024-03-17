@@ -42,7 +42,7 @@ local neo_tree_config = {
     }
 	},
 	document_symbols = {
-		follow_cursor = true,
+		follow_cursor = false,
     commands = keymappings.document_symbols.commands,
     window = {
       mappings = keymappings.document_symbols.window.mappings

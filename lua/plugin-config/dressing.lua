@@ -4,4 +4,26 @@ if not status_dressing then
   return
 end
 
-dressing.setup({})
+dressing.setup({
+  input = {
+    mappings = {
+      n = {
+        ["<Esc>"] = "Close",
+        ["<CR>"] = "Confirm",
+      },
+      i = {
+        ["<C-e>"] = "Close",
+        ["<C-k>"] = "HistoryPrev",
+        ["<C-j>"] = "HistoryNext",
+        ["<CR>"] = "Confirm",
+      },
+    },
+  },
+  builtin = {
+    mappings = {
+      ["<Esc>"] = "Close",
+      ["<C-e>"] = "Close",
+      ["<CR>"] = "Confirm",
+    },
+  },
+})

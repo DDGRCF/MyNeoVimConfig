@@ -42,9 +42,7 @@ bufferline.setup({
         separator = true -- use a "true" to enable the default, or set your own character
       },
     },
-    -- 使用 nvim 内置 LSP  后续课程会配置
     diagnostics = "nvim_lsp",
-    -- 可选，显示 LSP 报错图标
     ---@diagnostic disable-next-line: unused-local
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local s = " "
