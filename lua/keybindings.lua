@@ -87,7 +87,7 @@ vim.keymap.set("n", "<Leader>fd",
   function() vim.cmd("Neotree toggle show document_symbols") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open document_symbols" }))
 vim.keymap.set("n", "<Leader>ft",
-  function() vim.cmd("Neotree toggle show git_status") end,
+  function() vim.cmd("Neotree toggle focus git_status") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open git_status" }))
 vim.keymap.set("n", "<Leader>fo",
   function() vim.cmd("Neotree reveal") end,
