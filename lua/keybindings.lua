@@ -581,9 +581,9 @@ end, vim.tbl_extend("force", opt, { desc = "[Dap] python test method" }))
 vim.keymap.set("n", "<Leader>dpc", function()
   require('dap-python').test_class()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] python test class" }))
-vim.keymap.set("n", "<Leader>dps", function()
-  require('dap-python').debug_selection()
-end, vim.tbl_extend("force", opt, { desc = "[Dap] python debug selected code" }))
+vim.api.nvim_set_keymap("v", "<Leader>dps",
+  "<ESC>:lua require('dap-python').debug_selection()<CR>",
+  vim.tbl_extend("force", opt, { desc = "[Dap] python debug selected code" }))
 
 pluginKeys.dapui = {
 	window = {
