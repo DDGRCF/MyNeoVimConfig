@@ -71,7 +71,7 @@ vim.keymap.set("v", "<Leader>sl", function()
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] send selected line to terminal (only last)" }))
 vim.keymap.set("v", "<Leader>ss", function()
   require("toggleterm").send_lines_to_terminal("visual_lines", true, { args = vim.v.count })
-end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] send selected line to terminal (only last)" }))
+end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] send selected line to terminal (all)" }))
 
 map("t", "<Esc>", [[<C-\><C-N>]], opt)
 map("t", "<A-h>", [[<C-\><C-N><C-w>h]], opt)
