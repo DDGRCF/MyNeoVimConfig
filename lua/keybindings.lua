@@ -566,14 +566,18 @@ vim.keymap.set("n", "<Leader>dT", function ()
   local list = {
     "[1] side layouts",
     "[2] bottom layouts",
-    "[3] do nothing",
+    "[3] all layouts",
   }
   vim.ui.select(list, { prompt = "Toggle layout id:" }, function (choice)
     if choice then
       local i = tonumber(choice:sub(2, 2))
-      require("dapui").toggle({
-        layout = i, reset = true
-      })
+      if i == 3 then
+        require("dapui").toggle({ reset = true })
+      end
+        require("dapui").toggle({
+          layout = i,
+          reset = true
+        })
     end
   end)
 end, vim.tbl_extend("force", opt, { desc = "[Dap] toggle layout id" }))
