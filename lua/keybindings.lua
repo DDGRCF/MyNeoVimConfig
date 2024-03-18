@@ -564,9 +564,9 @@ vim.keymap.set("n", "<Leader>dR", function ()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] reopen dap-ui with new layout" }))
 vim.keymap.set("n", "<Leader>dT", function ()
   local list = {
-    "[1] side layouts",
-    "[2] bottom layouts",
-    "[3] all layouts",
+    "[1] Sidebar layouts",
+    "[2] Bottombar layouts",
+    "[3] All layouts",
   }
   vim.ui.select(list, { prompt = "Toggle layout id:" }, function (choice)
     if choice then
