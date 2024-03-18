@@ -559,6 +559,24 @@ end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap-ui" }))
 vim.keymap.set("n", "<Leader>dO", function()
   require("dapui").open()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui" }))
+vim.keymap.set("n", "<Leader>dR", function ()
+  require("dapui").open({reset = true})
+end, vim.tbl_extend("force", opt, { desc = "[Dap] reopen dap-ui with new layout" }))
+vim.keymap.set("n", "<Leader>dT", function ()
+  local list = {
+    "[1] side layouts",
+    "[2] bottom layouts",
+    "[3] do nothing",
+  }
+  vim.ui.select(list, { prompt = "Toggle layout id:" }, function (choice)
+    if choice then
+      local i = tonumber(choice:sub(2, 2))
+      require("dapui").toggle({
+        layout = i, reset = true
+      })
+    end
+  end)
+end, vim.tbl_extend("force", opt, { desc = "[Dap] toggle layout id" }))
 
 -- Dap Float Element
 vim.keymap.set("n", "<Leader>df", function()

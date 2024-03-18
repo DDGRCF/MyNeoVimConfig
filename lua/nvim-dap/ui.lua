@@ -91,6 +91,24 @@ dapui.setup({
     {
       elements = {
         {
+          id = "scopes",
+          size = 0.25
+        }, {
+          id = "breakpoints",
+          size = 0.25
+        }, {
+          id = "stacks",
+          size = 0.25
+        }, {
+          id = "watches",
+          size = 0.25
+        } },
+      position = "left",
+      size = 35
+    },
+    {
+      elements = {
+        {
           id = "repl",
           size = 0.5
         },
@@ -100,7 +118,7 @@ dapui.setup({
         }
       },
       position = "bottom",
-      size = 10
+      size = 12
     }
   },
 	mappings = require("keybindings").dapui.window,
