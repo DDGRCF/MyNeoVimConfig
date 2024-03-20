@@ -593,10 +593,19 @@ vim.keymap.set("n", "<Leader>dC", function()
   require("dapui").close()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap-ui" }))
 vim.keymap.set("n", "<Leader>dO", function()
-  require("dapui").open()
-end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui" }))
+  require("dapui").toggle({
+    layout = 1,
+    reset = true
+  })
+end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui sidebar" }))
+vim.keymap.set("n", "<Leader>dS", function()
+  require("dapui").toggle({
+    layout = 2,
+    reset = true
+  })
+end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui bottom" }))
 vim.keymap.set("n", "<Leader>dR", function ()
-  require("dapui").open({reset = true})
+  require("dapui").open({ reset = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] reopen dap-ui with new layout" }))
 vim.keymap.set("n", "<Leader>dU", function ()
   local list = {
