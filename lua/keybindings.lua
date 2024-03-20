@@ -8,50 +8,86 @@ local pluginKeys = {}
 -- canel
 vim.api.nvim_set_keymap(
   "n", "s", "",
-  vim.tbl_extend("force", opt, { desc = "cancel" })
+  vim.tbl_extend("force", opt, { desc = "[Normal] cancel" })
 )
 
 -- windows 分屏快捷键
 vim.api.nvim_set_keymap(
   "n", "sv", ":vsp<CR>",
-  vim.tbl_extend("force", opt, { desc = "split vertically" })
+  vim.tbl_extend("force", opt, { desc = "[Window] split vertically" })
 )
 vim.api.nvim_set_keymap(
   "n", "sh", ":sp<CR>",
-  vim.tbl_extend("force", opt, { desc = "split horizontally" })
+  vim.tbl_extend("force", opt, { desc = "[Window] split horizontally" })
 )
 
 -- 关闭其他
 vim.api.nvim_set_keymap(
   "n", "so", "<C-w>o",
-  vim.tbl_extend("force", opt, { desc = "close other window" })
+  vim.tbl_extend("force", opt, { desc = "[Window] close other window" })
 )
 
 -- 关闭当前
 vim.api.nvim_set_keymap(
   "n", "q", "<C-w>c",
-  vim.tbl_extend("force", opt, { desc = "close current window" })
+  vim.tbl_extend("force", opt, { desc = "[Window] close current window" })
 )
 
 -- Window jump
--- Alt + hjkl  窗口之间跳转
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
--- Leader + hjkl  窗口之间跳转
-map("n", "<Leader>wh", "<C-w>h", opt)
-map("n", "<Leader>wj", "<C-w>j", opt)
-map("n", "<Leader>wk", "<C-w>k", opt)
-map("n", "<Leader>wl", "<C-w>l", opt)
+vim.api.nvim_set_keymap(
+  "n", "<A-h>", "<C-w>h",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to left window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<A-j>", "<C-w>j",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to up window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<A-k>", "<C-w>k",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to down window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<A-l>", "<C-w>l",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<Leader>wh", "<C-w>h",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to left window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<Leader>wj", "<C-w>j",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to up window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<Leader>wk", "<C-w>k",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to down window" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<Leader>wl", "<C-w>l",
+  vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
+)
 -- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
--- 上下比例
-map("n", "<C-Down>", ":resize +2<CR>", opt)
-map("n", "<C-Up>", ":resize -2<CR>", opt)
+vim.api.nvim_set_keymap(
+  "n", "<C-Left>", ":vertical resize -2<CR>",
+  vim.tbl_extend("force", opt, { desc = "[Window] vertical resize -2" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<C-Right>", ":vertical resize +2<CR>",
+  vim.tbl_extend("force", opt, { desc = "[Window] vertical resize +2" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<C-Down>", ":resize +2<CR>",
+  vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize +2" })
+)
+vim.api.nvim_set_keymap(
+  "n", "<C-Up>", ":resize -2<CR>",
+  vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize -2" })
+)
 -- 等比例
-map("n", "s=", "<C-w>=", opt)
+vim.api.nvim_set_keymap(
+  "n", "s=", "<C-w>=",
+  vim.tbl_extend("force", opt, { desc = "[Window] resize window to be equal" })
+)
 
 -- Terminal相关 有一部分在toggleterm
 vim.keymap.set("n", "<Leader>'", function()
