@@ -15,12 +15,12 @@ treesitter.setup({
     "html", "lua", "vimdoc", "vim", "query", "yaml",
     "bash", "markdown_inline", "cmake", "toml",
     "go", "gomod", "gowork", "gosum", "gitignore", "gitcommit", "git_config",
-    "cuda", "c_sharp", "comment", "rst", "ninja"
+    "cuda", "c_sharp", "comment", "rst", "ninja", "regex"
   },
   -- 启用代码高亮模块
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   -- 启用增量选择模块
   incremental_selection = {
@@ -48,5 +48,5 @@ treesitter.setup({
     if ok and stats and stats.size > max_filesize then
       return true
     end
-  end
+  end,
 })

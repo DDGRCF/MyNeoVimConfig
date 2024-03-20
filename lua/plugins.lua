@@ -130,10 +130,11 @@ local plugins = {
 		"mfussenegger/nvim-dap",
 	},
 	{
-		"theHamsta/nvim-dap-virtual-text",
+		"rcarriga/nvim-dap-ui",
+    dependencies = { "nvim-neotest/nvim-nio" },
 	},
 	{
-		"rcarriga/nvim-dap-ui",
+		"theHamsta/nvim-dap-virtual-text",
 	},
 	{
 		"stevearc/conform.nvim",
@@ -196,6 +197,10 @@ local plugins = {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+  },
+  {
+    'Sam-programs/cmdline-hl.nvim',
+    event = 'VimEnter',
   }
 }
 
