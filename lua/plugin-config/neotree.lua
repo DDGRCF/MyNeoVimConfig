@@ -4,15 +4,9 @@ if not status_neo_tree then
 	return
 end
 
-local status_keybindings, keybindings = pcall(require, "keybindings")
-if not status_keybindings then
-	require("notify")("can't find keybindings")
-	return
-end
-
 -- neo-tree 配置参数
--- https://github.com/nvim-neo-tree/neo-tree.nvim.git
-local keymappings = keybindings.neoTree
+local keymappings = require("keybindings").neoTree
+
 local neo_tree_config = {
 	open_files_do_not_replace_types = {
 		"terminal",
@@ -42,7 +36,7 @@ local neo_tree_config = {
     }
 	},
 	document_symbols = {
-		follow_cursor = false,
+		follow_cursor = true,
     commands = keymappings.document_symbols.commands,
     window = {
       mappings = keymappings.document_symbols.window.mappings
