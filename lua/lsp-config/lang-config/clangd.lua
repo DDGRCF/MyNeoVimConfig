@@ -7,12 +7,16 @@ local opts = {
 			vim.api.nvim_buf_set_keymap(bufnr, ...)
 		end
 
-		-- 绑定快捷键
 		require("keybindings").mapLSP(buf_set_keymap)
 		local status_illuminate, illuminate = pcall(require, "illuminate")
 		if status_illuminate then
 			illuminate.on_attach(client)
 		end
+
+    local status_navic, navic = pcall(require, "nvim-navic")
+    if status_navic and client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
 	end,
 	cmd = {
 		"clangd",
@@ -26,7 +30,7 @@ local opts = {
     "--inlay-hints",
     "--all-scopes-completion",
     "--offset-encoding=utf-16",
-    "-j=4"
+    "-j=8"
 	},
 	init_options = {
 		usePlaceholders = true,

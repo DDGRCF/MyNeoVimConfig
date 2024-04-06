@@ -10,6 +10,10 @@ local opts = {
 			return
 		end
 		illuminate.on_attach(client)
+    local status_navic, navic = pcall(require, "nvim-navic")
+    if status_navic and client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
 	end,
   filetypes = { "python" },
 	settings = {

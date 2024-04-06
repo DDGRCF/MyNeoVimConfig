@@ -12,6 +12,10 @@ local opts = {
 		if status_illuminate then
 			illuminate.on_attach(client)
 		end
+    local status_navic, navic = pcall(require, "nvim-navic")
+    if status_navic and client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
 	end,
 	settings = {
 		gopls = {

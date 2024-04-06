@@ -4,7 +4,7 @@ if not status_neodev then
 	return
 end
 
- neodev.setup({
+neodev.setup({
   library =
   {
     enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
@@ -27,4 +27,4 @@ end
   -- much faster, but needs a recent built of lua-language-server
   -- needs lua-language-server >= 3.6.0
   pathStrict = true,
- })
+})
