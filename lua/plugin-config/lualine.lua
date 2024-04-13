@@ -19,6 +19,7 @@ if status_navic then
     icons = icons,
     separator = "  ",
     highlight = true,
+    click = true
   })
 else
   require("notify")("can't find navic")
@@ -45,7 +46,7 @@ local colors = {
 
 -- 不同地方的模块 - [a, b, c, x, y, z]
 lualine.setup({
-  options = {
+ options = {
     theme = "auto",
     globalstatus = true,
     component_separators = { left = "\\", right = "/" },
