@@ -51,9 +51,12 @@ local lsp_handlers = {
   ["marksman"] = function()
     lspconfig.marksman.setup(require("lsp-config.lang-config.marksman"))
   end,
+  ["jsonls"] = function()
+    lspconfig.jsonls.setup(require("lsp-config.lang-config.json_ls"))
+  end
 }
 
 mason_lspconfig.setup({
-  ensure_installed = { "lua_ls", "pyright", "clangd", "gopls", "cmake" },
+  ensure_installed = { "lua_ls", "pyright", "clangd", "gopls", "cmake", "jsonls" },
   handlers = lsp_handlers
 })
