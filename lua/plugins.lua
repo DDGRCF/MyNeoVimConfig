@@ -200,6 +200,9 @@ local plugins = {
   {
     'Sam-programs/cmdline-hl.nvim',
     event = 'VimEnter',
+  },
+  {
+      "LunarVim/bigfile.nvim",
   }
 }
 
