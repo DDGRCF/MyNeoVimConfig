@@ -730,10 +730,10 @@ end, vim.tbl_extend("force", opt, { desc = "[GitSigns] stage blame current line"
 vim.keymap.set("n", "<Leader>tb", require("gitsigns").toggle_current_line_blame,
   vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle current line blame" }))
 vim.keymap.set("n", "<Leader>hd", require("gitsigns").diffthis,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] diff this buffer" }))
+  vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last stage" }))
 vim.keymap.set("n", "<Leader>hD", function()
 	require("gitsigns").diffthis("~")
-end, vim.tbl_extend("force", opt, { desc = "[GitSigns] diff all buffers" }))
+end, vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last commit" }))
 vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted,
   vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle deleted lines" }))
 
