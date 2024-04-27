@@ -354,7 +354,7 @@ vim.keymap.set("n", "<Leader>fp",
   vim.tbl_extend("force", opt, { desc = "[Telescope] projects"}))
 vim.keymap.set("n", "<Leader>fs",
   function()
-    require('telescope.builtin').lsp_document_symbols({ bufnr = 0 })
+    require("telescope.builtin").lsp_document_symbols({ bufnr = 0 })
   end,
   vim.tbl_extend("force", opt, { desc = "[Telescope] lsp document symbols"}))
 -- Bookmarks
@@ -592,13 +592,13 @@ end, vim.tbl_extend("force", opt, { desc = "[Dap] eval current variable" }))
 vim.keymap.set("n", "<Leader>dC", function()
   require("dapui").close()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap-ui" }))
-vim.keymap.set("n", "<Leader>dO", function()
+vim.keymap.set("n", "<Leader>dS", function()
   require("dapui").toggle({
     layout = 1,
     reset = true
   })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui sidebar" }))
-vim.keymap.set("n", "<Leader>dS", function()
+vim.keymap.set("n", "<Leader>dM", function()
   require("dapui").toggle({
     layout = 2,
     reset = true
@@ -730,7 +730,7 @@ end, vim.tbl_extend("force", opt, { desc = "[GitSigns] stage blame current line"
 vim.keymap.set("n", "<Leader>tb", require("gitsigns").toggle_current_line_blame,
   vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle current line blame" }))
 vim.keymap.set("n", "<Leader>hd", require("gitsigns").diffthis,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last stage" }))
+  vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last staged" }))
 vim.keymap.set("n", "<Leader>hD", function()
 	require("gitsigns").diffthis("~")
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last commit" }))

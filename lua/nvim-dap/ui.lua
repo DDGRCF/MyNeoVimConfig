@@ -118,7 +118,7 @@ dapui.setup({
         }
       },
       position = "bottom",
-      size = 12
+      size = 10
     }
   },
 	mappings = require("keybindings").dapui.window,
