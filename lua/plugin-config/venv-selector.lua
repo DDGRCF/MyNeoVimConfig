@@ -12,6 +12,6 @@ venv_selector.setup({
 		".env",
 	},
 	dap_enabled = true,
-  anaconda_base_path = "/home/r/Anaconda3", -- NOTE: change according to your system
-  anaconda_envs_path = "/home/r/Anaconda3/envs" -- NOTE: change according to your system
+  anaconda_base_path = "~/Anaconda3", -- NOTE: change according to your system
+  anaconda_envs_path = "~/Anaconda3/envs" -- NOTE: change according to your system
 })
