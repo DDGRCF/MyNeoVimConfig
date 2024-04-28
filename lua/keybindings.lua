@@ -124,10 +124,10 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
 vim.keymap.set("n", "<Leader>tm",
-  function() vim.cmd("Neotree toggle show filesystem") end,
+  function() vim.cmd("Neotree toggle focus filesystem") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open filesystem" }))
 vim.keymap.set("n", "<Leader>ts",
-  function() vim.cmd("Neotree toggle show document_symbols") end,
+  function() vim.cmd("Neotree toggle focus document_symbols") end,
   vim.tbl_extend("force", opt, { desc = "[Neotree] open document_symbols" }))
 vim.keymap.set("n", "<Leader>tg",
   function() vim.cmd("Neotree toggle focus git_status") end,
