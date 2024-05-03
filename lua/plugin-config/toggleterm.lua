@@ -16,7 +16,7 @@ toggleterm.setup({
   end,
   hide_numbers = true,
   shade_terminals = true,
-  shading_factor = 4,
+  shading_factor = 8,
   start_in_insert = true,
   insert_mappings = false, -- 这个要是设置为false，要不然会导致space很慢
   persist_size = true,

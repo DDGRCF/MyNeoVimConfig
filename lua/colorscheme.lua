@@ -112,7 +112,8 @@ elseif colorscheme_name == "catppuccin" then
       },
       dap = true,
       dap_ui = true,
-      which_key = true
+      which_key = true,
+      noice = true
     },
   })
 elseif colorscheme_name == "kanagawa" then

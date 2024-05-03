@@ -24,12 +24,12 @@ local plugins = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
-      {
-        "s1n7ax/nvim-window-picker",
-        name = "window-picker",
-        event = "VeryLazy",
-        version = "2.*",
-      }
+			{
+				"s1n7ax/nvim-window-picker",
+				name = "window-picker",
+				event = "VeryLazy",
+				version = "2.*",
+			},
 		},
 	},
 	{
@@ -125,7 +125,7 @@ local plugins = {
 	},
 	{
 		"rcarriga/nvim-notify",
-    event = "VeryLazy"
+		event = "VeryLazy",
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -136,7 +136,7 @@ local plugins = {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-neotest/nvim-nio" },
+		dependencies = { "nvim-neotest/nvim-nio" },
 	},
 	{
 		"theHamsta/nvim-dap-virtual-text",
@@ -189,27 +189,33 @@ local plugins = {
 		"linux-cultist/venv-selector.nvim",
 		event = "VeryLazy",
 	},
-  {
-    "rmagatti/goto-preview",
-    event = "VeryLazy",
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-  },
-  {
-    'Sam-programs/cmdline-hl.nvim',
-    event = 'VimEnter',
-  },
-  {
-    "LunarVim/bigfile.nvim",
-  }
+	{
+		"rmagatti/goto-preview",
+		event = "VeryLazy",
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"LunarVim/bigfile.nvim",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
 }
 
 require("lazy").setup(plugins, {
