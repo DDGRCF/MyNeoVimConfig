@@ -24,7 +24,7 @@ local neo_tree_config = {
   },
 	filesystem = {
     commands = keymappings.filesystem.commands,
-		bind_to_cwd = false, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+		bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
 		follow_current_file = {
 			enabled = true,
 			leave_dirs_open = false,
