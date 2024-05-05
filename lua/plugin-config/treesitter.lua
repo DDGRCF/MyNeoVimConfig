@@ -34,6 +34,9 @@ treesitter.setup({
     "vimdoc",
     "xml",
     "yaml",
+    "ninja",
+    "toml",
+    "rst"
   },
   -- 启用代码高亮模块
   highlight = {
