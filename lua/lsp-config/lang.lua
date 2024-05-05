@@ -10,6 +10,7 @@ if not status_lspconfig then
 	return
 end
 
+
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_mason_lspconfig then
 	vim.notify("can't find mason_lspconfig.nvim", "error", { title = "Plugin" })
@@ -48,15 +49,18 @@ local lsp_handlers = {
 	["cmake"] = function()
 		lspconfig.cmake.setup(require("lsp-config.lang-config.cmake"))
 	end,
-  ["marksman"] = function()
-    lspconfig.marksman.setup(require("lsp-config.lang-config.marksman"))
-  end,
-  ["jsonls"] = function()
-    lspconfig.jsonls.setup(require("lsp-config.lang-config.json_ls"))
+	["marksman"] = function()
+		lspconfig.marksman.setup(require("lsp-config.lang-config.marksman"))
+	end,
+	["jsonls"] = function()
+		lspconfig.jsonls.setup(require("lsp-config.lang-config.json_ls"))
+	end,
+  ["bashls"] = function()
+    lspconfig.bashls.setup(require("lsp-config.lang-config.bash_ls"))
   end
 }
 
 mason_lspconfig.setup({
-  ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman" },
+  ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman", "bashls" },
   handlers = lsp_handlers
 })

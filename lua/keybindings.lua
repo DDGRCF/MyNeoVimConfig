@@ -357,6 +357,7 @@ vim.keymap.set("n", "<Leader>fs",
     require("telescope.builtin").lsp_document_symbols({ bufnr = 0 })
   end,
   vim.tbl_extend("force", opt, { desc = "[Telescope] lsp document symbols"}))
+
 -- Bookmarks
 vim.keymap.set("n", "ma",
   function()
@@ -655,9 +656,9 @@ end, vim.tbl_extend("force", opt, { desc = "[Dap] python test method" }))
 vim.keymap.set("n", "<Leader>dpc", function()
   require('dap-python').test_class()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] python test class" }))
-vim.api.nvim_set_keymap("v", "<Leader>dps",
-  "<ESC>:lua require('dap-python').debug_selection()<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Dap] python debug selected code" }))
+vim.keymap.set("v", "<Leader>dps", function()
+  require("dap-python").debug_selection()
+end, vim.tbl_extend("force", opt, { desc = "[Dap] python debug selected code" }))
 
 pluginKeys.dapui = {
 	window = {
@@ -736,6 +737,14 @@ vim.keymap.set("n", "<Leader>hD", function()
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last commit" }))
 vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted,
   vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle deleted lines" }))
+
+-- multicursors
+vim.keymap.set({"n", "v"}, "<Leader>cs", function()
+  vim.cmd("MCstart")
+end, vim.tbl_extend("force", opt, { desc = "[MultiCursors] start multicursors" }))
+vim.keymap.set({"n", "v"}, "<Leader>cc", function()
+  vim.cmd("MCclear")
+end, vim.tbl_extend("force", opt, { desc = "[MultiCursors] clear multicursors" }))
 
 -- Lauange Specify
 -- Cpp

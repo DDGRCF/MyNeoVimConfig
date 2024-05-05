@@ -7,16 +7,17 @@ end
 ibl.setup({
   exclude = {
     filetypes = {
-      "dashboard",
-      "packer",
-      "terminal",
       "help",
-      "log",
-      "markdown",
-      "TelescopePrompt",
-      "lsp-installer",
-      "lspinfo",
+      "alpha",
+      "dashboard",
+      "neo-tree",
+      "Trouble",
+      "trouble",
+      "lazy",
+      "mason",
+      "notify",
       "toggleterm",
+      "lazyterm",
     },
   },
   indent = {

@@ -13,24 +13,24 @@ local opts = {
 			illuminate.on_attach(client)
 		end
 
-    local status_navic, navic = pcall(require, "nvim-navic")
-    if status_navic and client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
+		local status_navic, navic = pcall(require, "nvim-navic")
+		if status_navic and client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
 	end,
 	cmd = {
 		"clangd",
 		"--background-index",
 		"--clang-tidy",
-    "--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*",
+		"--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*",
 		"--header-insertion=iwyu",
 		"--completion-style=detailed",
 		"--function-arg-placeholders",
 		"--fallback-style=google",
-    "--inlay-hints",
-    "--all-scopes-completion",
-    "--offset-encoding=utf-16",
-    "-j=8"
+		"--inlay-hints",
+		"--all-scopes-completion",
+		"--offset-encoding=utf-16",
+		"-j=8",
 	},
 	init_options = {
 		usePlaceholders = true,
