@@ -10,7 +10,6 @@ if not status_lspconfig then
 	return
 end
 
-
 local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_mason_lspconfig then
 	vim.notify("can't find mason_lspconfig.nvim", "error", { title = "Plugin" })
