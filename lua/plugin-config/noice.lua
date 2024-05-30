@@ -126,7 +126,9 @@ noice.setup({
       silent = false, -- set to true to not show a message if hover is not available
       view = nil, -- when nil, use defaults from documentation
       ---@type NoiceViewOptions
-      opts = {}, -- merged with defaults from documentation
+      opts = {
+        border = { style = "rounded" },
+      }, -- merged with defaults from documentation
     },
     signature = {
       enabled = true,
@@ -138,7 +140,9 @@ noice.setup({
       },
       view = nil, -- when nil, use defaults from documentation
       ---@type NoiceViewOptions
-      opts = {}, -- merged with defaults from documentation
+      opts = {
+        border = { style = "rounded" },
+      }, -- merged with defaults from documentation
     },
     message = {
       -- Messages shown by lsp servers
@@ -156,6 +160,14 @@ noice.setup({
         render = "plain",
         format = { "{message}" },
         win_options = { concealcursor = "n", conceallevel = 3 },
+        position = {
+          row = 2,
+        },
+        winhighlight = {
+            Normal = 'LspFloat',
+            FloatBorder = 'LspFloatBorder',
+        },
+        border = { style = "rounded" },
       },
     },
   },
