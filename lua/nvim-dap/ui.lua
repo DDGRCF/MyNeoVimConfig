@@ -37,24 +37,24 @@ vim.fn.sign_define("DapBreakpointRejected", {
 })
 
 vim.fn.sign_define("DapBreakpoint", {
-  text = "",
-  texthl = "DapBreakpoint",
-  linehl = "",
-  numhl = ""
+	text = "",
+	texthl = "DapBreakpoint",
+	linehl = "",
+	numhl = "",
 })
 
 vim.fn.sign_define("DapBreakpointCondition", {
-  text = "󰔶",
-  texthl = "DapBreakpointCondition",
-  linehl = "",
-  numhl = ""
+	text = "󰔶",
+	texthl = "DapBreakpointCondition",
+	linehl = "",
+	numhl = "",
 })
 
 vim.fn.sign_define("DapLogPoint", {
-  text = "",
-  texthl = "DapLogPoint",
-  linehl = "",
-  numhl = ""
+	text = "",
+	texthl = "DapLogPoint",
+	linehl = "",
+	numhl = "",
 })
 
 dapui.setup({
@@ -78,8 +78,8 @@ dapui.setup({
 	floating = {
 		mappings = require("keybindings").dapui.floating,
 		border = "rounded",
-    max_height = 0.7,
-    max_width = 0.7
+		max_height = 0.7,
+		max_width = 0.7,
 	},
 	force_buffers = true,
 	icons = {
@@ -87,40 +87,44 @@ dapui.setup({
 		current_frame = "",
 		expanded = "",
 	},
-  layouts = {
-    {
-      elements = {
-        {
-          id = "scopes",
-          size = 0.25
-        }, {
-          id = "breakpoints",
-          size = 0.25
-        }, {
-          id = "stacks",
-          size = 0.25
-        }, {
-          id = "watches",
-          size = 0.25
-        } },
-      position = "left",
-      size = 35
-    },
-    {
-      elements = {
-        {
-          id = "repl",
-          size = 0.5
-        },
-        {
-          id = "console",
-          size = 0.5
-        }
-      },
-      position = "bottom",
-      size = 10
-    }
-  },
+	layouts = {
+		{
+			elements = {
+				{
+					id = "scopes",
+					size = 0.25,
+				},
+				{
+					id = "breakpoints",
+					size = 0.25,
+				},
+				{
+					id = "stacks",
+					size = 0.25,
+				},
+				{
+					id = "watches",
+					size = 0.25,
+				},
+			},
+			position = "left",
+			size = 35,
+		},
+		{
+			elements = {
+				{
+					id = "repl",
+					size = 0.5,
+				},
+				{
+					id = "console",
+					size = 0.5,
+				},
+			},
+			position = "bottom",
+			size = 10,
+		},
+	},
 	mappings = require("keybindings").dapui.window,
 	render = {
 		indent = 1,
@@ -130,14 +134,14 @@ dapui.setup({
 
 dap.listeners.before.attach.dapui_config = function()
 	dapui.open({
-    layout = 2,
-    reset = true
-  })
+		layout = 2,
+		reset = true,
+	})
 end
 
 dap.listeners.before.launch.dapui_config = function()
 	dapui.open({
-    layout = 2,
-    reset = true
-  })
+		layout = 2,
+		reset = true,
+	})
 end

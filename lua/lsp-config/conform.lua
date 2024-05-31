@@ -25,11 +25,11 @@ conform.setup({
 })
 
 conform.formatters.clang_format = {
-  prepend_args = { "-style", "{ BasedOnStyle: google, IndentWidth: 4 }" }
+	prepend_args = { "-style", "{ BasedOnStyle: google, IndentWidth: 4 }" },
 }
 
 conform.formatters.yapf = {
-  prepend_args = { "--style", "{ based_on_style: google }" }
+	prepend_args = { "--style", "{ based_on_style: google }" },
 }
 
 vim.api.nvim_create_user_command("ConformDiffFormat", function()

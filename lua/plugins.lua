@@ -54,12 +54,12 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		-- tag = "0.1.5",
 		dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-      },
-    },
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
+		},
 	},
 	{
 		"ahmedkhalf/project.nvim",
@@ -218,18 +218,18 @@ local plugins = {
 			"rcarriga/nvim-notify",
 		},
 	},
-  {
-     "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-        'smoka7/hydra.nvim',
-    },
-    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-  }
+	{
+		"smoka7/multicursors.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"smoka7/hydra.nvim",
+		},
+		cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+	},
 }
 
 require("lazy").setup(plugins, {
-  ui = {
-    border = "rounded",
-  },
+	ui = {
+		border = "rounded",
+	},
 })

@@ -6,107 +6,103 @@ local opt = { noremap = true, silent = true, desc = "Unname" }
 local pluginKeys = {}
 
 -- canel
-vim.api.nvim_set_keymap(
-  "n", "s", "",
-  vim.tbl_extend("force", opt, { desc = "[Normal] cancel" })
-)
+vim.api.nvim_set_keymap("n", "s", "", vim.tbl_extend("force", opt, { desc = "[Normal] cancel" }))
 
 -- windows 分屏快捷键
-vim.api.nvim_set_keymap(
-  "n", "sv", ":vsp<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] split vertically" })
-)
-vim.api.nvim_set_keymap(
-  "n", "sh", ":sp<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] split horizontally" })
-)
+vim.api.nvim_set_keymap("n", "sv", ":vsp<CR>", vim.tbl_extend("force", opt, { desc = "[Window] split vertically" }))
+vim.api.nvim_set_keymap("n", "sh", ":sp<CR>", vim.tbl_extend("force", opt, { desc = "[Window] split horizontally" }))
 
 -- 关闭其他
-vim.api.nvim_set_keymap(
-  "n", "so", "<C-w>o",
-  vim.tbl_extend("force", opt, { desc = "[Window] close other window" })
-)
+vim.api.nvim_set_keymap("n", "so", "<C-w>o", vim.tbl_extend("force", opt, { desc = "[Window] close other window" }))
 
 -- 关闭当前
-vim.api.nvim_set_keymap(
-  "n", "q", "<C-w>c",
-  vim.tbl_extend("force", opt, { desc = "[Window] close current window" })
-)
+vim.api.nvim_set_keymap("n", "q", "<C-w>c", vim.tbl_extend("force", opt, { desc = "[Window] close current window" }))
 
 -- Window jump
+vim.api.nvim_set_keymap("n", "<A-h>", "<C-w>h", vim.tbl_extend("force", opt, { desc = "[Window] move to left window" }))
+vim.api.nvim_set_keymap("n", "<A-j>", "<C-w>j", vim.tbl_extend("force", opt, { desc = "[Window] move to up window" }))
+vim.api.nvim_set_keymap("n", "<A-k>", "<C-w>k", vim.tbl_extend("force", opt, { desc = "[Window] move to down window" }))
 vim.api.nvim_set_keymap(
-  "n", "<A-h>", "<C-w>h",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to left window" })
+	"n",
+	"<A-l>",
+	"<C-w>l",
+	vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<A-j>", "<C-w>j",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to up window" })
+	"n",
+	"<Leader>wh",
+	"<C-w>h",
+	vim.tbl_extend("force", opt, { desc = "[Window] move to left window" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<A-k>", "<C-w>k",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to down window" })
+	"n",
+	"<Leader>wj",
+	"<C-w>j",
+	vim.tbl_extend("force", opt, { desc = "[Window] move to up window" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<A-l>", "<C-w>l",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
+	"n",
+	"<Leader>wk",
+	"<C-w>k",
+	vim.tbl_extend("force", opt, { desc = "[Window] move to down window" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<Leader>wh", "<C-w>h",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to left window" })
-)
-vim.api.nvim_set_keymap(
-  "n", "<Leader>wj", "<C-w>j",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to up window" })
-)
-vim.api.nvim_set_keymap(
-  "n", "<Leader>wk", "<C-w>k",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to down window" })
-)
-vim.api.nvim_set_keymap(
-  "n", "<Leader>wl", "<C-w>l",
-  vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
+	"n",
+	"<Leader>wl",
+	"<C-w>l",
+	vim.tbl_extend("force", opt, { desc = "[Window] move to right window" })
 )
 -- 左右比例控制
 vim.api.nvim_set_keymap(
-  "n", "<C-Left>", ":vertical resize -2<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] vertical resize -2" })
+	"n",
+	"<C-Left>",
+	":vertical resize -2<CR>",
+	vim.tbl_extend("force", opt, { desc = "[Window] vertical resize -2" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<C-Right>", ":vertical resize +2<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] vertical resize +2" })
+	"n",
+	"<C-Right>",
+	":vertical resize +2<CR>",
+	vim.tbl_extend("force", opt, { desc = "[Window] vertical resize +2" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<C-Down>", ":resize +2<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize +2" })
+	"n",
+	"<C-Down>",
+	":resize +2<CR>",
+	vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize +2" })
 )
 vim.api.nvim_set_keymap(
-  "n", "<C-Up>", ":resize -2<CR>",
-  vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize -2" })
+	"n",
+	"<C-Up>",
+	":resize -2<CR>",
+	vim.tbl_extend("force", opt, { desc = "[Window] horizontal resize -2" })
 )
 -- 等比例
 vim.api.nvim_set_keymap(
-  "n", "s=", "<C-w>=",
-  vim.tbl_extend("force", opt, { desc = "[Window] resize window to be equal" })
+	"n",
+	"s=",
+	"<C-w>=",
+	vim.tbl_extend("force", opt, { desc = "[Window] resize window to be equal" })
 )
 
 -- Terminal相关 有一部分在toggleterm
 vim.keymap.set("n", "<Leader>'", function()
-  vim.cmd("ToggleTerm direction=horizontal")
+	vim.cmd("ToggleTerm direction=horizontal")
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] open horizontally" }))
 vim.keymap.set("n", "<Leader>v'", function()
-  vim.cmd("ToggleTerm direction=vertical")
+	vim.cmd("ToggleTerm direction=vertical")
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] open vertically" }))
 vim.keymap.set("n", "<Leader>f'", function()
-  vim.cmd("ToggleTerm direction=float")
+	vim.cmd("ToggleTerm direction=float")
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] open float" }))
 vim.keymap.set("n", "<Leader>s'", function()
-  vim.cmd("TermSelect")
+	vim.cmd("TermSelect")
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] select open terminal" }))
 vim.keymap.set("v", "<Leader>sl", function()
-    require("toggleterm").send_lines_to_terminal("single_line", true, { args = vim.v.count })
+	require("toggleterm").send_lines_to_terminal("single_line", true, { args = vim.v.count })
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] send selected line to terminal (only last)" }))
 vim.keymap.set("v", "<Leader>ss", function()
-  require("toggleterm").send_lines_to_terminal("visual_lines", true, { args = vim.v.count })
+	require("toggleterm").send_lines_to_terminal("visual_lines", true, { args = vim.v.count })
 end, vim.tbl_extend("force", opt, { desc = "[ToggleTerm] send selected line to terminal (all)" }))
 
 map("t", "<Esc>", [[<C-\><C-N>]], opt)
@@ -123,18 +119,18 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- neotree
-vim.keymap.set("n", "<Leader>tm",
-  function() vim.cmd("Neotree toggle focus filesystem") end,
-  vim.tbl_extend("force", opt, { desc = "[Neotree] open filesystem" }))
-vim.keymap.set("n", "<Leader>ts",
-  function() vim.cmd("Neotree toggle focus document_symbols") end,
-  vim.tbl_extend("force", opt, { desc = "[Neotree] open document_symbols" }))
-vim.keymap.set("n", "<Leader>tg",
-  function() vim.cmd("Neotree toggle focus git_status") end,
-  vim.tbl_extend("force", opt, { desc = "[Neotree] open git_status" }))
-vim.keymap.set("n", "<Leader>to",
-  function() vim.cmd("Neotree reveal") end,
-  vim.tbl_extend("force", opt, { desc = "[Neotree] focus current file position" }))
+vim.keymap.set("n", "<Leader>tm", function()
+	vim.cmd("Neotree toggle focus filesystem")
+end, vim.tbl_extend("force", opt, { desc = "[Neotree] open filesystem" }))
+vim.keymap.set("n", "<Leader>ts", function()
+	vim.cmd("Neotree toggle focus document_symbols")
+end, vim.tbl_extend("force", opt, { desc = "[Neotree] open document_symbols" }))
+vim.keymap.set("n", "<Leader>tg", function()
+	vim.cmd("Neotree toggle focus git_status")
+end, vim.tbl_extend("force", opt, { desc = "[Neotree] open git_status" }))
+vim.keymap.set("n", "<Leader>to", function()
+	vim.cmd("Neotree reveal")
+end, vim.tbl_extend("force", opt, { desc = "[Neotree] focus current file position" }))
 
 pluginKeys.neoTree = {
 	window = {
@@ -146,14 +142,14 @@ pluginKeys.neoTree = {
 			[">"] = "next_source",
 			["z"] = "close_all_nodes",
 			["Z"] = "expand_all_nodes",
-      ["y"] = "",
-      ["Y"] = "",
-      ["l"] = "",
-      ["h"] = ""
+			["y"] = "",
+			["Y"] = "",
+			["l"] = "",
+			["h"] = "",
 		},
 	},
 	filesystem = {
-    commands = {
+		commands = {
 			my_close_node = function(state)
 				local node = state.tree:get_node()
 				if node.type == "directory" and node:is_expanded() then
@@ -186,7 +182,7 @@ pluginKeys.neoTree = {
 					modify(filename, ":r"),
 					modify(filename, ":e"),
 				}
-        local plugin = "Neo-tree"
+				local plugin = "Neo-tree"
 				vim.ui.select({
 					"[1] Absolute path: " .. results[1],
 					"[2] Path relative to CWD: " .. results[2],
@@ -200,30 +196,30 @@ pluginKeys.neoTree = {
 						if i then
 							local result = results[i]
 							vim.fn.setreg('"', result)
-              vim.notify("Copied: ".. result, "info", { title = plugin })
+							vim.notify("Copied: " .. result, "info", { title = plugin })
 						else
-              vim.notify("Invalid selection", "info", { title = plugin })
+							vim.notify("Invalid selection", "info", { title = plugin })
 						end
 					else
-            vim.notify("Selection cancelled", "info", { title = plugin })
+						vim.notify("Selection cancelled", "info", { title = plugin })
 					end
 				end)
 			end,
-      my_copy_file_to_clipboard = function(state)
-        require("neo-tree.sources.common.commands").copy_to_clipboard(state)
-      end,
-      my_cut_file_to_clipboard = function(state)
-        require("neo-tree.sources.common.commands").cut_to_clipboard(state)
-      end
-    },
+			my_copy_file_to_clipboard = function(state)
+				require("neo-tree.sources.common.commands").copy_to_clipboard(state)
+			end,
+			my_cut_file_to_clipboard = function(state)
+				require("neo-tree.sources.common.commands").cut_to_clipboard(state)
+			end,
+		},
 		window = {
-      mappings = {
-        ["y"] = "my_copy_file_to_clipboard",
-        ["Y"] = "my_copy_filepath_to_clipboard",
-        ["x"] = "my_cut_file_to_clipboard",
-        ["h"] = "my_close_node",
-        ["l"] = "my_open_node"
-      },
+			mappings = {
+				["y"] = "my_copy_file_to_clipboard",
+				["Y"] = "my_copy_filepath_to_clipboard",
+				["x"] = "my_cut_file_to_clipboard",
+				["h"] = "my_close_node",
+				["l"] = "my_open_node",
+			},
 			fuzzy_finder_mappings = {
 				["<down>"] = "move_cursor_down",
 				["<C-j>"] = "move_cursor_down",
@@ -249,151 +245,141 @@ pluginKeys.neoTree = {
 				["on"] = { "order_by_name", nowait = false },
 				["os"] = { "order_by_size", nowait = false },
 				["ot"] = { "order_by_type", nowait = false },
-        ["z"] = "",
-        ["Z"] = "",
+				["z"] = "",
+				["Z"] = "",
 			},
 		},
 	},
 	document_symbols = {
-    commands = {
-      my_open_node = function(state)
-        local node = state.tree:get_node()
-        if not node:is_expanded() then
-          require("neo-tree.sources.common.commands").toggle_node(state)
-        else
-          require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
-        end
-      end,
-      my_close_node = function(state)
-        local node = state.tree:get_node()
-        if node:is_expanded() then
-          require("neo-tree.sources.common.commands").toggle_node(state)
-        else
-          require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
-        end
-      end,
-    },
+		commands = {
+			my_open_node = function(state)
+				local node = state.tree:get_node()
+				if not node:is_expanded() then
+					require("neo-tree.sources.common.commands").toggle_node(state)
+				else
+					require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+				end
+			end,
+			my_close_node = function(state)
+				local node = state.tree:get_node()
+				if node:is_expanded() then
+					require("neo-tree.sources.common.commands").toggle_node(state)
+				else
+					require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+				end
+			end,
+		},
 		window = {
 			mappings = {
-        ["l"] = "my_open_node",
-        ["h"] = "my_close_node",
-        ["z"] = "",
-        ["Z"] = "",
+				["l"] = "my_open_node",
+				["h"] = "my_close_node",
+				["z"] = "",
+				["Z"] = "",
 			},
 		},
 	},
 }
 
 -- Bufferline
-vim.keymap.set("n", "<C-h>",
-  function() vim.cmd("BufferLineCyclePrev") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] prev tab"}))
-vim.keymap.set("n", "<C-l>",
-  function() vim.cmd("BufferLineCycleNext") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] next tab"}))
-vim.keymap.set("n", "<Leader>bl",
-  function() vim.cmd("BufferLineCloseRight") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] close right tab"}))
-vim.keymap.set("n", "<Leader>bh",
-  function() vim.cmd("BufferLineCloseLeft") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] close left tab"}))
-vim.keymap.set("n", "<Leader>bo",
-  function() vim.cmd("BufferLineCloseOthers") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] close others"}))
-vim.keymap.set("n", "<Leader>bc",
-  function() vim.cmd("BufferLinePickClose") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] close pick"}))
-vim.keymap.set("n", "<Leader>bp",
-  function() vim.cmd("BufferLineTogglePin") end,
-  vim.tbl_extend("force", opt, { desc = "[Bufferline] toggle pin"}))
-vim.keymap.set("n", "<Leader>bk",
-  function()
-    local bd = require("mini.bufremove").delete
-    if vim.bo.modified then
-      local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-      if choice == 1 then -- Yes
-        vim.cmd.write()
-        bd(0)
-        vim.notify("Delete and save " .. vim.fn.bufname(), "info", { title= "BufferRemove" })
-      elseif choice == 2 then -- No
-        bd(0, true)
-        vim.notify("Delete and drop " .. vim.fn.bufname(), "info", { title = "BufferRemove" })
-      else
-        vim.notify("Cancel bufermove action", "info",  { title = "BufferRemove" })
-      end
-    else
-      bd(0)
-    end
-  end,
-  vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer"}))
-vim.keymap.set("n", "<Leader>bK",
-  function()
-    require("mini.bufremove").delete(0, true)
-    vim.notify("Delete and drop " .. vim.fn.bufname(), "warn", { title = "BufferRemove" })
-  end,
-  vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer force"}))
+vim.keymap.set("n", "<C-h>", function()
+	vim.cmd("BufferLineCyclePrev")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] prev tab" }))
+vim.keymap.set("n", "<C-l>", function()
+	vim.cmd("BufferLineCycleNext")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] next tab" }))
+vim.keymap.set("n", "<Leader>bl", function()
+	vim.cmd("BufferLineCloseRight")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] close right tab" }))
+vim.keymap.set("n", "<Leader>bh", function()
+	vim.cmd("BufferLineCloseLeft")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] close left tab" }))
+vim.keymap.set("n", "<Leader>bo", function()
+	vim.cmd("BufferLineCloseOthers")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] close others" }))
+vim.keymap.set("n", "<Leader>bc", function()
+	vim.cmd("BufferLinePickClose")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] close pick" }))
+vim.keymap.set("n", "<Leader>bp", function()
+	vim.cmd("BufferLineTogglePin")
+end, vim.tbl_extend("force", opt, { desc = "[Bufferline] toggle pin" }))
+vim.keymap.set("n", "<Leader>bk", function()
+	local bd = require("mini.bufremove").delete
+	if vim.bo.modified then
+		local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+		if choice == 1 then -- Yes
+			vim.cmd.write()
+			bd(0)
+			vim.notify("Delete and save " .. vim.fn.bufname(), "info", { title = "BufferRemove" })
+		elseif choice == 2 then -- No
+			bd(0, true)
+			vim.notify("Delete and drop " .. vim.fn.bufname(), "info", { title = "BufferRemove" })
+		else
+			vim.notify("Cancel bufermove action", "info", { title = "BufferRemove" })
+		end
+	else
+		bd(0)
+	end
+end, vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer" }))
+vim.keymap.set("n", "<Leader>bK", function()
+	require("mini.bufremove").delete(0, true)
+	vim.notify("Delete and drop " .. vim.fn.bufname(), "warn", { title = "BufferRemove" })
+end, vim.tbl_extend("force", opt, { desc = "[BufferLine] Delete buffer force" }))
 
 -- Telescope
-vim.keymap.set("n", "<Leader>ff",
-  function() vim.cmd("Telescope find_files") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] find files"}))
-vim.keymap.set("n", "<Leader>fg",
-  function() vim.cmd("Telescope live_grep") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] live grep"}))
-vim.keymap.set("n", "<Leader>fc",
-  function() vim.cmd("Telescope current_buffer_fuzzy_find") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] current buffer fuzzy find"}))
-vim.keymap.set("n", "<Leader>fb",
-  function() vim.cmd("Telescope buffers") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] buffers"}))
-vim.keymap.set("n", "<Leader>fh",
-  function() vim.cmd("Telescope help_tags") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] help tags"}))
-vim.keymap.set("n", "<Leader>fp",
-  function() vim.cmd("Telescope projects") end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] projects"}))
-vim.keymap.set("n", "<Leader>fs",
-  function()
-    require("telescope.builtin").lsp_document_symbols({ bufnr = 0 })
-  end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] lsp document symbols"}))
+vim.keymap.set("n", "<Leader>ff", function()
+	vim.cmd("Telescope find_files")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] find files" }))
+vim.keymap.set("n", "<Leader>fg", function()
+	vim.cmd("Telescope live_grep")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] live grep" }))
+vim.keymap.set("n", "<Leader>fc", function()
+	vim.cmd("Telescope current_buffer_fuzzy_find")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] current buffer fuzzy find" }))
+vim.keymap.set("n", "<Leader>fb", function()
+	vim.cmd("Telescope buffers")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] buffers" }))
+vim.keymap.set("n", "<Leader>fh", function()
+	vim.cmd("Telescope help_tags")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] help tags" }))
+vim.keymap.set("n", "<Leader>fp", function()
+	vim.cmd("Telescope projects")
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] projects" }))
+vim.keymap.set("n", "<Leader>fs", function()
+	require("telescope.builtin").lsp_document_symbols({ bufnr = 0 })
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] lsp document symbols" }))
 
 -- Bookmarks
-vim.keymap.set("n", "ma",
-  function()
-    require("telescope").extensions.vim_bookmarks.all()
-  end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] all vim_bookmarks"}))
-vim.keymap.set("n", "mf",
-  function()
-    require("telescope").extensions.vim_bookmarks.all()
-  end,
-  vim.tbl_extend("force", opt, { desc = "[Telescope] current vim_bookmarks"}))
+vim.keymap.set("n", "ma", function()
+	require("telescope").extensions.vim_bookmarks.all()
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] all vim_bookmarks" }))
+vim.keymap.set("n", "mf", function()
+	require("telescope").extensions.vim_bookmarks.all()
+end, vim.tbl_extend("force", opt, { desc = "[Telescope] current vim_bookmarks" }))
 
 -- Telescope Key
-local telescope_flash = function (prompt_bufnr)
-  require("flash").jump({
-    pattern = "^",
-    label = { after = { 0, 0 } },
-    search = {
-      mode = "search",
-      exclude = {
-        function(win)
-          return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
-        end,
-      },
-    },
-    action = function(match)
-      local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-      picker:set_selection(match.pos[1] - 1)
-    end,
-  })
+local telescope_flash = function(prompt_bufnr)
+	require("flash").jump({
+		pattern = "^",
+		label = { after = { 0, 0 } },
+		search = {
+			mode = "search",
+			exclude = {
+				function(win)
+					return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+				end,
+			},
+		},
+		action = function(match)
+			local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+			picker:set_selection(match.pos[1] - 1)
+		end,
+	})
 end
 
 local find_files_with_hidden = function()
-  local action_state = require("telescope.actions.state")
-  local line = action_state.get_current_line()
-  require("telescope.builtin").find_files({ hidden = true, no_ignore = true, default_text = line })
+	local action_state = require("telescope.actions.state")
+	local line = action_state.get_current_line()
+	require("telescope.builtin").find_files({ hidden = true, no_ignore = true, default_text = line })
 end
 
 pluginKeys.telescopeList = {
@@ -413,8 +399,8 @@ pluginKeys.telescopeList = {
 		["<C-d>"] = "preview_scrolling_down",
 
 		["<C-h>"] = "which_key",
-    ["<C-s>"] = telescope_flash,
-    ["<A-h>"] = find_files_with_hidden
+		["<C-s>"] = telescope_flash,
+		["<A-h>"] = find_files_with_hidden,
 	},
 	n = {
 		["<j>"] = "move_selection_next",
@@ -423,51 +409,118 @@ pluginKeys.telescopeList = {
 		["n"] = "cycle_history_next",
 		["p"] = "cycle_history_prev",
 		["h"] = "which_key",
-    ["s"] = telescope_flash
+		["s"] = telescope_flash,
 	},
 }
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
 	-- rename
-	mapbuf("n", "<Leader>rn", ":lua vim.lsp.buf.rename()<CR>", vim.tbl_extend("force", opt, { desc = "[LSP] rename variable" }))
+	mapbuf(
+		"n",
+		"<Leader>rn",
+		":lua vim.lsp.buf.rename()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] rename variable" })
+	)
 	-- code action
-	mapbuf("n", "<Leader>ca", ":lua vim.lsp.buf.code_action()<CR>", vim.tbl_extend("force", opt, { desc = "[LSP] code action" }))
+	mapbuf(
+		"n",
+		"<Leader>ca",
+		":lua vim.lsp.buf.code_action()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] code action" })
+	)
 	-- go xx
-	mapbuf("n", "gd", ":lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown({}))<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto definitions" }))
-  mapbuf("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", vim.tbl_extend("force", opt, { desc = "[LSP] goto declarations" }))
+	mapbuf(
+		"n",
+		"gd",
+		":lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_dropdown({}))<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto definitions" })
+	)
+	mapbuf(
+		"n",
+		"gD",
+		":lua vim.lsp.buf.declaration()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto declarations" })
+	)
 	mapbuf("n", "gh", ":lua vim.lsp.buf.hover()<CR>", vim.tbl_extend("force", opt, { desc = "[LSP] hover" }))
-	mapbuf("n", "gi", ":lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_dropdown({}))<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto implementations" }))
-  mapbuf("n", "gt", ":lua require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_dropdown({}))<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto type definitions" }))
-	mapbuf("n", "gr", ":lua require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({}))<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto references" }))
+	mapbuf(
+		"n",
+		"gi",
+		":lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_dropdown({}))<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto implementations" })
+	)
+	mapbuf(
+		"n",
+		"gt",
+		":lua require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_dropdown({}))<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto type definitions" })
+	)
+	mapbuf(
+		"n",
+		"gr",
+		":lua require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({}))<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto references" })
+	)
 
-  -- goto-preview
-  mapbuf("n", "gpd", ":lua require('goto-preview').goto_preview_definition()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview definitions" }))
-  mapbuf("n", "gpi", ":lua require('goto-preview').goto_preview_implementation()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview implementations" }))
-  mapbuf("n", "gpD", ":lua require('goto-preview').goto_preview_declaration()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview declarations" }))
-  mapbuf("n", "gpr", ":lua require('goto-preview').goto_preview_references()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview references" }))
-  mapbuf("n", "gP", ":lua require('goto-preview').close_all_win()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview close all windows" }))
+	-- goto-preview
+	mapbuf(
+		"n",
+		"gpd",
+		":lua require('goto-preview').goto_preview_definition()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview definitions" })
+	)
+	mapbuf(
+		"n",
+		"gpi",
+		":lua require('goto-preview').goto_preview_implementation()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview implementations" })
+	)
+	mapbuf(
+		"n",
+		"gpD",
+		":lua require('goto-preview').goto_preview_declaration()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview declarations" })
+	)
+	mapbuf(
+		"n",
+		"gpr",
+		":lua require('goto-preview').goto_preview_references()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview references" })
+	)
+	mapbuf(
+		"n",
+		"gP",
+		":lua require('goto-preview').close_all_win()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview close all windows" })
+	)
 
 	-- diagnostic
-	mapbuf("n", "gnn", ":lua vim.diagnostic.open_float()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview open diagnostic float" }))
-  mapbuf("n", "gnl", ":lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown({}))<CR>", 
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto diagnostics list" }))
-	mapbuf("n", "gnk", ":lua vim.diagnostic.goto_prev()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview goto prev diagnostic " }))
-	mapbuf("n", "gnj", ":lua vim.diagnostic.goto_next()<CR>",
-    vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview goto next diagnostic " }))
+	mapbuf(
+		"n",
+		"gnn",
+		":lua vim.diagnostic.open_float()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview open diagnostic float" })
+	)
+	mapbuf(
+		"n",
+		"gnl",
+		":lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown({}))<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto diagnostics list" })
+	)
+	mapbuf(
+		"n",
+		"gnk",
+		":lua vim.diagnostic.goto_prev()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview goto prev diagnostic " })
+	)
+	mapbuf(
+		"n",
+		"gnj",
+		":lua vim.diagnostic.goto_next()<CR>",
+		vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview goto next diagnostic " })
+	)
 
-  -- completion
+	-- completion
 	-- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 
@@ -524,7 +577,7 @@ end
 
 -- Neogen
 vim.keymap.set("n", "<Leader>nf", function()
-  require('neogen').generate()
+	require("neogen").generate()
 end, vim.tbl_extend("force", opt, { desc = "[Neogen] generate doc" }))
 
 -- Surround
@@ -548,112 +601,108 @@ pluginKeys.autopairs = {
 
 -- dap 调试快捷键
 vim.keymap.set("n", "<Leader>dc", function()
-  require("dap").continue()
+	require("dap").continue()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] continue" }))
 vim.keymap.set("n", "<Leader>do", function()
-  require("dap").step_over()
+	require("dap").step_over()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] step over" }))
 vim.keymap.set("n", "<Leader>di", function()
-  require("dap").step_into()
+	require("dap").step_into()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] step into" }))
 vim.keymap.set("n", "<Leader>dt", function()
-  require("dap").step_out()
+	require("dap").step_out()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] step into" }))
 vim.keymap.set("n", "<Leader>db", function()
-  require("dap").toggle_breakpoint()
+	require("dap").toggle_breakpoint()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] toggle breakpoint" }))
 vim.keymap.set("n", "<Leader>dl", function()
-  require("dap").run_to_cursor()
+	require("dap").run_to_cursor()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] run to current line" }))
 vim.keymap.set("n", "<Leader>dL", function()
-  require("dap").goto_(vim.api.nvim_win_get_cursor(0)[1])
+	require("dap").goto_(vim.api.nvim_win_get_cursor(0)[1])
 end, vim.tbl_extend("force", opt, { desc = "[Dap] goto current line" }))
 vim.keymap.set("n", "<Leader>dk", function()
 	require("dap").close()
 	require("dapui").close()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap and dap-ui" }))
 vim.keymap.set("n", "<Leader>dr", function()
-  require("dap").run_last()
+	require("dap").run_last()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] run last choice" }))
 vim.keymap.set("n", "<Leader>dI", function()
-  vim.ui.input({ prompt = "Enter message for breakpoint: "}, function(input)
-    require("dap").set_breakpoint(nil, nil, input)
-  end)
+	vim.ui.input({ prompt = "Enter message for breakpoint: " }, function(input)
+		require("dap").set_breakpoint(nil, nil, input)
+	end)
 end, vim.tbl_extend("force", opt, { desc = "[Dap] set message breakpoint" }))
 vim.keymap.set("n", "<Leader>dK", function()
-  require("dap").close()
+	require("dap").close()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap" }))
 vim.keymap.set("n", "<Leader>dh", function()
-  require("dapui").eval(nil, { enter = true })
+	require("dapui").eval(nil, { enter = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] eval current variable" }))
 vim.keymap.set("n", "<Leader>dC", function()
-  require("dapui").close()
+	require("dapui").close()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] close dap-ui" }))
 vim.keymap.set("n", "<Leader>dS", function()
-  require("dapui").toggle({
-    layout = 1,
-    reset = true
-  })
+	require("dapui").toggle({
+		layout = 1,
+		reset = true,
+	})
 end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui sidebar" }))
 vim.keymap.set("n", "<Leader>dM", function()
-  require("dapui").toggle({
-    layout = 2,
-    reset = true
-  })
+	require("dapui").toggle({
+		layout = 2,
+		reset = true,
+	})
 end, vim.tbl_extend("force", opt, { desc = "[Dap] open dap-ui bottom" }))
-vim.keymap.set("n", "<Leader>dR", function ()
-  require("dapui").open({ reset = true })
+vim.keymap.set("n", "<Leader>dR", function()
+	require("dapui").open({ reset = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] reopen dap-ui with new layout" }))
-vim.keymap.set("n", "<Leader>dU", function ()
-  local list = {
-    "[1] Sidebar layouts",
-    "[2] Bottombar layouts",
-    "[3] All layouts",
-  }
-  vim.ui.select(list, { prompt = "Toggle layout id:" }, function (choice)
-    if choice then
-      local i = tonumber(choice:sub(2, 2))
-      if i == 3 then
-        require("dapui").toggle({ reset = true })
-      end
-        require("dapui").toggle({
-          layout = i,
-          reset = true
-        })
-    end
-  end)
+vim.keymap.set("n", "<Leader>dU", function()
+	local list = {
+		"[1] Sidebar layouts",
+		"[2] Bottombar layouts",
+		"[3] All layouts",
+	}
+	vim.ui.select(list, { prompt = "Toggle layout id:" }, function(choice)
+		if choice then
+			local i = tonumber(choice:sub(2, 2))
+			if i == 3 then
+				require("dapui").toggle({ reset = true })
+			end
+			require("dapui").toggle({
+				layout = i,
+				reset = true,
+			})
+		end
+	end)
 end, vim.tbl_extend("force", opt, { desc = "[Dap] toggle layout-id ui" }))
 
 -- Dap Float Element
 vim.keymap.set("n", "<Leader>df", function()
-  require("dapui").float_element("stacks",
-    { position = "center", width = 80, height = 20, enter = true })
+	require("dapui").float_element("stacks", { position = "center", width = 80, height = 20, enter = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] float stacks element" }))
 
 vim.keymap.set("n", "<Leader>ds", function()
-  require("dapui").float_element("scopes",
-    { position = "center", width = 80, height = 20, enter = true })
+	require("dapui").float_element("scopes", { position = "center", width = 80, height = 20, enter = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] float scopes element" }))
 
 vim.keymap.set("n", "<Leader>dw", function()
-  require("dapui").float_element("watches",
-    { position = "center", width = 80, height = 20, enter = true })
+	require("dapui").float_element("watches", { position = "center", width = 80, height = 20, enter = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] float watches element" }))
 
 vim.keymap.set("n", "<Leader>dB", function()
-  require("dapui").float_element("breakpoints",
-    { position = "center", width = 80, height = 20, enter = true })
+	require("dapui").float_element("breakpoints", { position = "center", width = 80, height = 20, enter = true })
 end, vim.tbl_extend("force", opt, { desc = "[Dap] float breakpoints element" }))
 
 -- Python Dap
 vim.keymap.set("n", "<Leader>dpm", function()
-  require('dap-python').test_method()
+	require("dap-python").test_method()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] python test method" }))
 vim.keymap.set("n", "<Leader>dpc", function()
-  require('dap-python').test_class()
+	require("dap-python").test_class()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] python test class" }))
 vim.keymap.set("v", "<Leader>dps", function()
-  require("dap-python").debug_selection()
+	require("dap-python").debug_selection()
 end, vim.tbl_extend("force", opt, { desc = "[Dap] python debug selected code" }))
 
 pluginKeys.dapui = {
@@ -671,36 +720,42 @@ pluginKeys.dapui = {
 }
 
 -- overseer
-vim.keymap.set("n", "<Leader>or",
-  function() vim.cmd("OverseerRun") end,
-  vim.tbl_extend("force", opt, { desc = "[Overseer] Run" }))
-vim.keymap.set("n", "<Leader>oo",
-  function() vim.cmd("OverseerToggle") end,
-  vim.tbl_extend("force", opt, { desc = "[Overseer] Toggle" }))
+vim.keymap.set("n", "<Leader>or", function()
+	vim.cmd("OverseerRun")
+end, vim.tbl_extend("force", opt, { desc = "[Overseer] Run" }))
+vim.keymap.set("n", "<Leader>oo", function()
+	vim.cmd("OverseerToggle")
+end, vim.tbl_extend("force", opt, { desc = "[Overseer] Toggle" }))
 
 -- conform 代码格式化
 vim.keymap.set("v", "<Leader>cm", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms = 500 },
-  function(err, did_edit)
-    if not err and did_edit then
-      vim.notify("Format current selected lines", "info", { title = "Conform" })
-    end
-  end)
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 }, function(err, did_edit)
+		if not err and did_edit then
+			vim.notify("Format current selected lines", "info", { title = "Conform" })
+		end
+	end)
 end, vim.tbl_extend("force", opt, { desc = "[Conform] format selected lines" }))
 vim.keymap.set("n", "<Leader>cM", function()
-	require("conform").format({ lsp_fallback = true, timeout_ms = 500 },
-  function(err, did_edit)
-    if not err and did_edit then
-      vim.notify("Format current buffer", "info", { title = "Conform" })
-    end
-  end)
+	require("conform").format({ lsp_fallback = true, timeout_ms = 500 }, function(err, did_edit)
+		if not err and did_edit then
+			vim.notify("Format current buffer", "info", { title = "Conform" })
+		end
+	end)
 end, vim.tbl_extend("force", opt, { desc = "[Conform] format current buffer" }))
 
 -- gitsigns
-vim.keymap.set("n", "<Leader>hs", require("gitsigns").stage_hunk,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current line" }))
-vim.keymap.set("n", "<Leader>hr", require("gitsigns").reset_hunk,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current line" }))
+vim.keymap.set(
+	"n",
+	"<Leader>hs",
+	require("gitsigns").stage_hunk,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current line" })
+)
+vim.keymap.set(
+	"n",
+	"<Leader>hr",
+	require("gitsigns").reset_hunk,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current line" })
+)
 vim.keymap.set("v", "<Leader>hs", function()
 	require("gitsigns").stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage selected line" }))
@@ -708,52 +763,68 @@ vim.keymap.set("v", "<Leader>hr", function()
 	require("gitsigns").reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage selected line" }))
 vim.keymap.set("n", "<Leader>hS", function()
-    require("gitsigns").stage_buffer()
-    vim.notify("Hunk current buffer stage", "info", { title = "GitSigns" })
-  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current buffer" }))
+	require("gitsigns").stage_buffer()
+	vim.notify("Hunk current buffer stage", "info", { title = "GitSigns" })
+end, vim.tbl_extend("force", opt, { desc = "[GitSigns] hunk stage current buffer" }))
 vim.keymap.set("n", "<Leader>hu", function()
-    require("gitsigns").undo_stage_hunk()
-    vim.notify("Undo current buffer stage", "info", { title = "GitSigns" })
-  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] undo stage current buffer" }))
+	require("gitsigns").undo_stage_hunk()
+	vim.notify("Undo current buffer stage", "info", { title = "GitSigns" })
+end, vim.tbl_extend("force", opt, { desc = "[GitSigns] undo stage current buffer" }))
 vim.keymap.set("n", "<Leader>hR", function()
-  require("gitsigns").reset_buffer()
-  vim.notify("Reset current buffer stage", "info", { title = "GitSigns" })
-  end, vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current buffer" }))
-vim.keymap.set("n", "<Leader>hp", require("gitsigns").preview_hunk,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] preview stage hunk" }))
+	require("gitsigns").reset_buffer()
+	vim.notify("Reset current buffer stage", "info", { title = "GitSigns" })
+end, vim.tbl_extend("force", opt, { desc = "[GitSigns] reset stage current buffer" }))
+vim.keymap.set(
+	"n",
+	"<Leader>hp",
+	require("gitsigns").preview_hunk,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] preview stage hunk" })
+)
 vim.keymap.set("n", "<Leader>hb", function()
 	require("gitsigns").blame_line({ full = true })
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] stage blame current line" }))
-vim.keymap.set("n", "<Leader>tb", require("gitsigns").toggle_current_line_blame,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle current line blame" }))
-vim.keymap.set("n", "<Leader>hd", require("gitsigns").diffthis,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last staged" }))
+vim.keymap.set(
+	"n",
+	"<Leader>tb",
+	require("gitsigns").toggle_current_line_blame,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle current line blame" })
+)
+vim.keymap.set(
+	"n",
+	"<Leader>hd",
+	require("gitsigns").diffthis,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last staged" })
+)
 vim.keymap.set("n", "<Leader>hD", function()
 	require("gitsigns").diffthis("~")
 end, vim.tbl_extend("force", opt, { desc = "[GitSigns] diff last commit" }))
-vim.keymap.set("n", "<Leader>td", require("gitsigns").toggle_deleted,
-  vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle deleted lines" }))
+vim.keymap.set(
+	"n",
+	"<Leader>td",
+	require("gitsigns").toggle_deleted,
+	vim.tbl_extend("force", opt, { desc = "[GitSigns] toggle deleted lines" })
+)
 
 -- multicursors
-vim.keymap.set({"n", "v"}, "<Leader>cs", function()
-  vim.cmd("MCstart")
+vim.keymap.set({ "n", "v" }, "<Leader>cs", function()
+	vim.cmd("MCstart")
 end, vim.tbl_extend("force", opt, { desc = "[MultiCursors] start multicursors" }))
-vim.keymap.set({"n", "v"}, "<Leader>cc", function()
-  vim.cmd("MCclear")
+vim.keymap.set({ "n", "v" }, "<Leader>cc", function()
+	vim.cmd("MCclear")
 end, vim.tbl_extend("force", opt, { desc = "[MultiCursors] clear multicursors" }))
 
 -- Lauange Specify
 -- Cpp
-vim.keymap.set("n", "<A-o>",
-  function() vim.cmd("ClangdSwitchSourceHeader") end,
-  vim.tbl_extend("force", opt, { desc = "[Cpp] source and header switch" } ))
+vim.keymap.set("n", "<A-o>", function()
+	vim.cmd("ClangdSwitchSourceHeader")
+end, vim.tbl_extend("force", opt, { desc = "[Cpp] source and header switch" }))
 
 -- Python
-vim.keymap.set("n", "<Leader>vs",
-  function() vim.cmd("VenvSelect") end,
-  vim.tbl_extend("force", opt, { desc = "[Python] select env" } ))
-vim.keymap.set("n", "<Leader>vc",
-  function() vim.cmd("VenvSelectCached") end,
-  vim.tbl_extend("force", opt, { desc = "[Python] use cached env" } ))
+vim.keymap.set("n", "<Leader>vs", function()
+	vim.cmd("VenvSelect")
+end, vim.tbl_extend("force", opt, { desc = "[Python] select env" }))
+vim.keymap.set("n", "<Leader>vc", function()
+	vim.cmd("VenvSelectCached")
+end, vim.tbl_extend("force", opt, { desc = "[Python] use cached env" }))
 
 return pluginKeys

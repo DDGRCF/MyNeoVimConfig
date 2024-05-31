@@ -6,5 +6,5 @@ vim.g["bookmark_annotation_sign"] = ""
 
 local status_telescope, telescope = pcall(require, "telescope")
 if status_telescope then
-  telescope.load_extension("vim_bookmarks")
+	telescope.load_extension("vim_bookmarks")
 end

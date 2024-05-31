@@ -54,12 +54,12 @@ local lsp_handlers = {
 	["jsonls"] = function()
 		lspconfig.jsonls.setup(require("lsp-config.lang-config.json_ls"))
 	end,
-  ["bashls"] = function()
-    lspconfig.bashls.setup(require("lsp-config.lang-config.bash_ls"))
-  end
+	["bashls"] = function()
+		lspconfig.bashls.setup(require("lsp-config.lang-config.bash_ls"))
+	end,
 }
 
 mason_lspconfig.setup({
-  ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman", "bashls" },
-  handlers = lsp_handlers
+	ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman", "bashls" },
+	handlers = lsp_handlers,
 })
