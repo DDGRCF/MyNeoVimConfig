@@ -390,15 +390,10 @@ local telescope_flash = function (prompt_bufnr)
   })
 end
 
-local find_files_no_ignore = function()
-  local action_state = require("telescope.actions.state")
-  local line = action_state.get_current_line()
-  require("telescope.builtin").find_files({ no_ignore = true, default_text = line })
-end
 local find_files_with_hidden = function()
   local action_state = require("telescope.actions.state")
   local line = action_state.get_current_line()
-  require("telescope.builtin").find_files({ hidden = true, default_text = line })
+  require("telescope.builtin").find_files({ hidden = true, no_ignore = true, default_text = line })
 end
 
 pluginKeys.telescopeList = {
@@ -419,7 +414,6 @@ pluginKeys.telescopeList = {
 
 		["<C-h>"] = "which_key",
     ["<C-s>"] = telescope_flash,
-    ["<A-i>"] = find_files_no_ignore,
     ["<A-h>"] = find_files_with_hidden
 	},
 	n = {
@@ -466,6 +460,8 @@ pluginKeys.mapLSP = function(mapbuf)
 	-- diagnostic
 	mapbuf("n", "gnn", ":lua vim.diagnostic.open_float()<CR>",
     vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview open diagnostic float" }))
+  mapbuf("n", "gnl", ":lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown({}))<CR>", 
+    vim.tbl_extend("force", opt, { desc = "[LSP] goto diagnostics list" }))
 	mapbuf("n", "gnk", ":lua vim.diagnostic.goto_prev()<CR>",
     vim.tbl_extend("force", opt, { desc = "[LSP] goto-preview goto prev diagnostic " }))
 	mapbuf("n", "gnj", ":lua vim.diagnostic.goto_next()<CR>",
