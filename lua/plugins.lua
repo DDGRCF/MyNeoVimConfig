@@ -40,11 +40,16 @@ local plugins = {
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+            "nvim-tree/nvim-web-devicons",
+		    "echasnovski/mini.bufremove",
+        },
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
+		dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "arkav/lualine-lsp-progress" },
 	},
 	{
 		"SmiteshP/nvim-navic",
@@ -144,6 +149,17 @@ local plugins = {
 		"theHamsta/nvim-dap-virtual-text",
 	},
 	{
+		"mfussenegger/nvim-dap-python",
+		event = "VeryLazy",
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+	},
+	{
+		"linux-cultist/venv-selector.nvim",
+		event = "VeryLazy",
+	},
+	{
 		"stevearc/conform.nvim",
 	},
 	{
@@ -152,13 +168,6 @@ local plugins = {
 	},
 	{
 		"stevearc/dressing.nvim",
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-	},
-	{
-		"echasnovski/mini.bufremove",
-		version = "*",
 	},
 	{
 		"echasnovski/mini.surround",
@@ -178,18 +187,10 @@ local plugins = {
 		event = "VeryLazy",
 	},
 	{
-		"lewis6991/gitsigns.nvim",
-	},
-	{
 		"folke/neodev.nvim",
 	},
 	{
-		"mfussenegger/nvim-dap-python",
-		event = "VeryLazy",
-	},
-	{
-		"linux-cultist/venv-selector.nvim",
-		event = "VeryLazy",
+		"lewis6991/gitsigns.nvim",
 	},
 	{
 		"rmagatti/goto-preview",
