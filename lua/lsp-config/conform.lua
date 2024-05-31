@@ -25,7 +25,7 @@ conform.setup({
 })
 
 conform.formatters.clang_format = {
-  prepend_args = { "-style", "google" }
+  prepend_args = { "-style", "{ BasedOnStyle: google, IndentWidth: 4 }" }
 }
 
 conform.formatters.yapf = {
