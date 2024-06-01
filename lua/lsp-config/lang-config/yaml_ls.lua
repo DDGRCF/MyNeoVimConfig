@@ -15,12 +15,19 @@ local opts = {
 			navic.attach(client, bufnr)
 		end
 	end,
-	cmd = {
-		"marksman",
-		"server",
+	cmd = { "yaml-language-server", "--stdio" },
+	filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
+	init_options = {
+		provideFormatter = false,
 	},
-	filetypes = { "markdown", "markdown.mdx" },
-	root_dir = require("lspconfig.util").root_pattern(".git", ".marksman.toml"),
+	{
+		redhat = {
+			telemetry = {
+				enabled = false,
+			},
+		},
+	},
+	root_dir = require("lspconfig.util").find_git_ancestor,
 	single_file_support = true,
 	handlers = {
 		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),

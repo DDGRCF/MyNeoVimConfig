@@ -9,7 +9,6 @@ conform.setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "isort", "yapf" },
-		go = { "goimports", "gofmt" },
 		cpp = { "clang_format" },
 		json = { "fixjson" },
 		["*"] = { "codespell" },

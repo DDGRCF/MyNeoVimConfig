@@ -12,10 +12,10 @@ local opts = {
 		if status_illuminate then
 			illuminate.on_attach(client)
 		end
-    local status_navic, navic = pcall(require, "nvim-navic")
-    if status_navic and client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
+		local status_navic, navic = pcall(require, "nvim-navic")
+		if status_navic and client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
 	end,
 	settings = {
 		gopls = {
@@ -53,10 +53,10 @@ local opts = {
 			semanticTokens = true,
 		},
 	},
-  handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded"}),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded"}),
-  }
+	handlers = {
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+	},
 }
 
 return opts

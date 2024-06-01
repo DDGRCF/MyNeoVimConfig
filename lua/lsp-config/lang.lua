@@ -42,9 +42,6 @@ local lsp_handlers = {
 	["pyright"] = function()
 		lspconfig.pyright.setup(require("lsp-config.lang-config.pyright"))
 	end,
-	-- ["gopls"] = function()
-	-- 	lspconfig.gopls.setup(require("lsp-config.lang-config.gopls"))
-	-- end,
 	["cmake"] = function()
 		lspconfig.cmake.setup(require("lsp-config.lang-config.cmake"))
 	end,
@@ -57,9 +54,15 @@ local lsp_handlers = {
 	["bashls"] = function()
 		lspconfig.bashls.setup(require("lsp-config.lang-config.bash_ls"))
 	end,
+    ["yamlls"] = function()
+        lspconfig.yamlls.setup(require("lsp-config.lang-config.yaml_ls"))
+    end
+	-- ["gopls"] = function()
+	-- 	lspconfig.gopls.setup(require("lsp-config.lang-config.gopls"))
+	-- end,
 }
 
 mason_lspconfig.setup({
-	ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman", "bashls" },
+	ensure_installed = { "lua_ls", "pyright", "clangd", "cmake", "jsonls", "marksman", "bashls", "yamlls" },
 	handlers = lsp_handlers,
 })

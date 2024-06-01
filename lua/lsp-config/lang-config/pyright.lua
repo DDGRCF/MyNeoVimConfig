@@ -10,12 +10,12 @@ local opts = {
 			return
 		end
 		illuminate.on_attach(client)
-    local status_navic, navic = pcall(require, "nvim-navic")
-    if status_navic and client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
+		local status_navic, navic = pcall(require, "nvim-navic")
+		if status_navic and client.server_capabilities.documentSymbolProvider then
+			navic.attach(client, bufnr)
+		end
 	end,
-  filetypes = { "python" },
+	filetypes = { "python" },
 	settings = {
 		python = {
 			analysis = {
@@ -26,11 +26,11 @@ local opts = {
 			},
 		},
 	},
-  single_file_support = true,
-  handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded"}),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded"}),
-  }
+	single_file_support = true,
+	handlers = {
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+	},
 }
 
 return opts
