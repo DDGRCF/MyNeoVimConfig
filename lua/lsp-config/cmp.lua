@@ -59,7 +59,7 @@ cmp.setup.cmdline("/", {
 
 -- : 命令行模式中使用 path 和 cmdline 源.
 cmp.setup.cmdline(":", {
-  completion = { autocomplete = false },
+  -- completion = { autocomplete = true },
   mapping = cmp.mapping.preset.cmdline(require("keybindings").cmp(cmp)),
   sources = {
     { name = "path", },
