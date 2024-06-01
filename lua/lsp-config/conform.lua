@@ -31,6 +31,10 @@ conform.formatters.yapf = {
 	prepend_args = { "--style", "{ based_on_style: google }" },
 }
 
+conform.formatters.fixjson = {
+    prepend_args = { "--indent", "4" }
+}
+
 vim.api.nvim_create_user_command("ConformDiffFormat", function()
 	local lines = vim.fn.system("git diff --unified=0"):gmatch("[^\n\r]+")
 	local ranges = {}

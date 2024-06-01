@@ -4,5 +4,5 @@ if not status_flash then
 	return
 end
 
----@type Flash.Config
+--- @type Flash.Config
 flash.setup({})
