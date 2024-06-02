@@ -54,9 +54,9 @@ local lsp_handlers = {
 	["bashls"] = function()
 		lspconfig.bashls.setup(require("lsp-config.lang-config.bash_ls"))
 	end,
-    ["yamlls"] = function()
-        lspconfig.yamlls.setup(require("lsp-config.lang-config.yaml_ls"))
-    end
+	["yamlls"] = function()
+		lspconfig.yamlls.setup(require("lsp-config.lang-config.yaml_ls"))
+	end,
 	-- ["gopls"] = function()
 	-- 	lspconfig.gopls.setup(require("lsp-config.lang-config.gopls"))
 	-- end,

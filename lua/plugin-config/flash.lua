@@ -5,4 +5,10 @@ if not status_flash then
 end
 
 --- @type Flash.Config
-flash.setup({})
+flash.setup({
+    modes = {
+        search = {
+            enabled = true
+        }
+    }
+})

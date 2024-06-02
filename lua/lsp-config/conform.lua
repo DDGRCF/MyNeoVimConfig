@@ -11,6 +11,7 @@ conform.setup({
 		python = { "isort", "yapf" },
 		cpp = { "clang_format" },
 		json = { "fixjson" },
+        yaml = { "yamlfix" },
 		["*"] = { "codespell" },
 		["_"] = { "trim_whitespace" },
 	},
@@ -34,6 +35,8 @@ conform.formatters.yapf = {
 conform.formatters.fixjson = {
     prepend_args = { "--indent", "4" }
 }
+
+conform.formatters.yapffix = {}
 
 vim.api.nvim_create_user_command("ConformDiffFormat", function()
 	local lines = vim.fn.system("git diff --unified=0"):gmatch("[^\n\r]+")

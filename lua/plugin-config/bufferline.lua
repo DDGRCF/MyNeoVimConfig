@@ -18,14 +18,14 @@ bufferline.setup({
 		style_preset = bufferline.style_preset.default,
 		-- 关闭 Tab 的命令
 		close_command = function(n)
-			if bufremove then
-				bufremove.delete(n, false)
-			end
+            if bufremove then
+                bufremove.delete(n, false)
+            end
 		end,
 		right_mouse_command = function(n)
-			if bufremove then
-				bufremove.delete(n, false)
-			end
+            if bufremove then
+                bufremove.delete(n, false)
+            end
 		end,
 		middle_mouse_command = nil,
 		indicator = {
@@ -45,13 +45,13 @@ bufferline.setup({
 		diagnostics = "nvim_lsp",
 		---@diagnostic disable-next-line: unused-local
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			local s = " "
-			for e, n in pairs(diagnostics_dict) do
-				local sym = e == "error" and " " or (e == "warning" and " " or "")
-				s = s .. n .. sym
-			end
-			return s
-		end,
+            local s = " "
+                for e, n in pairs(diagnostics_dict) do
+                    local sym = e == "error" and " " or (e == "warning" and " " or "")
+                    s = s .. n .. sym
+                end
+            return s
+        end,
 		-- groups
 		groups = {
 			items = {
