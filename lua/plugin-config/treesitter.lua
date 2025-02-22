@@ -37,6 +37,8 @@ treesitter.setup({
 		"ninja",
 		"toml",
 		"rst",
+        "css",
+        "vue"
 	},
 	-- 启用代码高亮模块
 	highlight = {
@@ -54,7 +56,7 @@ treesitter.setup({
 		},
 	},
 	indent = {
-		enable = true,
+		enable = false,
 	},
 	autopairs = {
 		enable = true,

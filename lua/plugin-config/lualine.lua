@@ -13,7 +13,7 @@ if status_navic then
 	end
 	navic.setup({
 		lsp = {
-			auto_attach = true,
+			auto_attach = false,
 			preference = nil,
 		},
 		icons = icons,
@@ -28,7 +28,7 @@ end
 
 local status_overseer, overseer = pcall(require, "overseer")
 if not status_overseer then
-	require("notify")("can't find navic")
+	vim.notify("can't find navic")
 	return
 end
 

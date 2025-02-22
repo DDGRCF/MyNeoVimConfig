@@ -155,8 +155,12 @@ local plugins = {
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 	},
+    {
+        "leoluz/nvim-dap-go"
+    },
 	{
 		"linux-cultist/venv-selector.nvim",
+        branch = "regexp", -- This is the regexp branch, use this for the new versio
 		event = "VeryLazy",
 	},
 	{
@@ -227,6 +231,17 @@ local plugins = {
 		},
 		cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
 	},
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown", "codecompanion" },
+    }
 }
 
 require("lazy").setup(plugins, {
