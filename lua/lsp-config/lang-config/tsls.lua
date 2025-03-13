@@ -19,6 +19,23 @@ return {
 			},
 		},
 	},
+	settings = {
+		typescript = {
+			tsserver = {
+				useSyntaxServer = false,
+			},
+			inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+		},
+	},
 	filetypes = filetypes,
 	single_file_support = true,
 	root_dir = get_root_dir,

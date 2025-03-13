@@ -90,6 +90,7 @@ local servers = {
 	"gopls",
 	"ts_ls",
 	"ruff",
+	"unocss",
 }
 loaded_plugins["mason-lspconfig"].setup({
 	ensure_installed = servers,
@@ -109,6 +110,7 @@ local server_config_map = {
 	volar = "lsp-config.lang-config.volar",
 	ts_ls = "lsp-config.lang-config.tsls",
 	ruff = "lsp-config.lang-config.ruff",
+	unocss = "lsp-config.lang-config.unocss",
 }
 
 -- 设置 LSP 服务器处理函数

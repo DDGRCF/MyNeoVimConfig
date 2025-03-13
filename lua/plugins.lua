@@ -105,6 +105,9 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter-context",
     },
+    {
+        "windwp/nvim-ts-autotag",
+    },
 
     -- LSP
     {

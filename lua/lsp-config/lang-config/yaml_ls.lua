@@ -1,4 +1,4 @@
-local opts = {
+return {
 	filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
 	init_options = {
 		provideFormatter = false,
@@ -17,5 +17,3 @@ local opts = {
 		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 	},
 }
-
-return opts
