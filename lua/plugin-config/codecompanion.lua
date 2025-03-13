@@ -7,7 +7,7 @@ end
 codecompanion.setup({
     strategies = {
         chat = {
-            adapter = "gemini",
+            adapter = "doubao",
         },
         inline = {
             adapter = "qwen",
@@ -23,7 +23,7 @@ codecompanion.setup({
                 },
                 schema = {
                     model = {
-                        default = "qwen2.5-coder-32b-instruct"
+                        default = "qwen-max-latest"
                     },
                     choices = {
                         "qwen-plus",

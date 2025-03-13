@@ -1,24 +1,18 @@
-local opts = {
-    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    on_attach = function(client, bufnr)
-        local function buf_set_keymap(...)
-            vim.api.nvim_buf_set_keymap(bufnr, ...)
-        end
-        if client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-        end
+local common_inlay_hints = {
+    padding = true,
+    parameterHints = {
+        enabled = true
+    },
+    variableTypes = {
+        enabled = true
+    },
+    parameterNames = {
+        enabled = true,
+        suppressParameterNames = {}
+    }
+}
 
-        require("keybindings").mapLSP(buf_set_keymap)
-        local status_illuminate, illuminate = pcall(require, "illuminate")
-        if status_illuminate then
-            illuminate.on_attach(client)
-        end
-
-        local status_navic, navic = pcall(require, "nvim-navic")
-        if status_navic and client.server_capabilities.documentSymbolProvider then
-            navic.attach(client, bufnr)
-        end
-    end,
+return {
     cmd = {
         "clangd",
         "--background-index",
@@ -31,29 +25,17 @@ local opts = {
         "--inlay-hints",
         "--all-scopes-completion",
         "--offset-encoding=utf-16",
-        "-j=8",
+        "-j=8"
     },
     offsetEncoding = { "utf-8", "utf-16" },
     init_options = {
         usePlaceholders = true,
         completeUnimported = true,
         clangdFileStatus = true,
-        inlayHints = {
-          padding = true,
-          parameterHints = {
-            enabled = true
-          },
-          variableTypes = {
-            enabled = true
-          },
-          parameterNames = {
-            enabled = true,
-            suppressParameterNames = {}
-          },
-        }
+        inlayHints = common_inlay_hints
     },
     root_dir = function(fname)
-        return require("lspconfig.util").root_pattern(
+        local root_patterns = {
             "Makefile",
             "configure.ac",
             "configure.in",
@@ -61,15 +43,16 @@ local opts = {
             "meson.build",
             "meson_options.txt",
             "build.ninja"
-        )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(fname) or
-        require(
-            "lspconfig.util"
-        ).find_git_ancestor(fname)
+        }
+        local root = require("lspconfig.util").root_pattern(unpack(root_patterns))(fname)
+        if root then
+            return root
+        end
+        root = require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(fname)
+        if root then
+            return root
+        end
+        return require("lspconfig.util").find_git_ancestor(fname)
     end,
-    handlers = {
-        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-    },
+    handlers = common_handlers
 }
-
-return opts

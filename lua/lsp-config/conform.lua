@@ -1,7 +1,30 @@
+-- Require mason and mason-null-ls
+local status_mason, mason = pcall(require, "mason")
+local status_mason_null_ls, mason_null_ls = pcall(require, "mason-null-ls")
 local status_conform, conform = pcall(require, "conform")
+
 if not status_conform then
 	vim.notify("can't find conform", "error", { title = "Plugin" })
 	return
+end
+
+if status_mason and status_mason_null_ls then
+	mason.setup()
+	mason_null_ls.setup({
+		automatic_installation = true,
+		ensure_installed = {
+			"stylua",
+			"isort",
+			"yapf",
+			"clang_format",
+			"fixjson",
+			"yamlfmt",
+			"goimports",
+			"gofumpt",
+			"trim_whitespace",
+			"prettier",
+		},
+	})
 end
 
 -- ConformInfo 检查是否安装需要手动安装
@@ -11,14 +34,16 @@ conform.setup({
 		python = { "isort", "yapf" },
 		cpp = { "clang_format" },
 		json = { "fixjson" },
-        yaml = { "yamlfmt" },
-        go = {"goimports", "gofumpt"},
-		["*"] = { "codespell" },
+		yaml = { "yamlfmt" },
+		go = { "goimports", "gofumpt" },
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
 		["_"] = { "trim_whitespace" },
 	},
 	-- format_on_save = {
-	-- 	-- These options will be passed to conform.format()
-	-- 	timeout_ms = 500,
+	-- 	timeout_ms = 1000,
 	-- 	lsp_fallback = true,
 	-- },
 	log_level = vim.log.levels.ERROR,
@@ -34,7 +59,7 @@ conform.formatters.yapf = {
 }
 
 conform.formatters.fixjson = {
-    prepend_args = { "--indent", "4" }
+	prepend_args = { "--indent", "4" },
 }
 
 conform.formatters.yapffix = {}

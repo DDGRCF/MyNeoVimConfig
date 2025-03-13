@@ -7,26 +7,6 @@ table.insert(runtime_path, "lua/?/init.lua")
 local library = vim.api.nvim_get_runtime_file("", true)
 
 local opts = {
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
-	on_attach = function(client, bufnr)
-		-- 禁用格式化功能，交给专门插件插件处理
-		-- client.resolved_capabilities.document_formatting = false
-		-- client.resolved_capabilities.document_range_formatting = false
-		local function buf_set_keymap(...)
-			vim.api.nvim_buf_set_keymap(bufnr, ...)
-		end
-		-- 绑定快捷键
-		require("keybindings").mapLSP(buf_set_keymap)
-		local status, illuminate = pcall(require, "illuminate")
-		if not status then
-			return
-		end
-		illuminate.on_attach(client)
-		local status_navic, navic = pcall(require, "nvim-navic")
-		if status_navic and client.server_capabilities.documentSymbolProvider then
-			navic.attach(client, bufnr)
-		end
-	end,
 	settings = {
 		Lua = {
 			runtime = {

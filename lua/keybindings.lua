@@ -846,10 +846,14 @@ end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat inline ex
 
 vim.keymap.set("v", "<Leader>aP", function()
     vim.cmd("CodeCompanionChat Comment this code")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat chat explain" }))
+end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion chat explain" }))
 
 vim.keymap.set("v", "<Leader>ai", function()
     vim.cmd("CodeCompanion Generate standard docstring for this function or class")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat docstring" }))
+end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion docstring" }))
+
+vim.keymap.set({"v", "n"}, "<Leader>au", function()
+    vim.cmd("CodeCompanion")
+end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion prompt" }))
 
 return pluginKeys
