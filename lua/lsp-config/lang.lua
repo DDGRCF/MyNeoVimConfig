@@ -91,6 +91,7 @@ local servers = {
 	"ts_ls",
 	"ruff",
 	"unocss",
+    "cssls"
 }
 loaded_plugins["mason-lspconfig"].setup({
 	ensure_installed = servers,
@@ -111,14 +112,15 @@ local server_config_map = {
 	ts_ls = "lsp-config.lang-config.tsls",
 	ruff = "lsp-config.lang-config.ruff",
 	unocss = "lsp-config.lang-config.unocss",
+    cssls = "lsp-config.lang-config.cssls"
 }
 
 -- 设置 LSP 服务器处理函数
 loaded_plugins["mason-lspconfig"].setup_handlers({
 	function(server_name)
-		local server_specific_config = server_config_map[server_name] and require(server_config_map[server_name]) or {}
-		loaded_plugins["lspconfig"][server_name].setup(
-			vim.tbl_deep_extend("force", {}, common_config, server_specific_config)
-		)
+	local server_specific_config = server_config_map[server_name] and require(server_config_map[server_name]) or {}
+	loaded_plugins["lspconfig"][server_name].setup(
+		vim.tbl_deep_extend("force", {}, common_config, server_specific_config)
+	)
 	end,
 })

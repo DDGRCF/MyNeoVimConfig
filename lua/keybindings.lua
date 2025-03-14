@@ -829,31 +829,15 @@ end, vim.tbl_extend("force", opt, { desc = "[Python] use cached env" }))
 
 -- Code
 vim.keymap.set({ "n", "v" }, "<Leader>av", function()
-    vim.cmd("CodeCompanionActions")
+	vim.cmd("CodeCompanionActions")
 end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionActions" }))
 
 vim.keymap.set({ "n", "v" }, "<Leader>an", function()
-    vim.cmd("CodeCompanionChat Toggle")
+	vim.cmd("CodeCompanionChat Toggle")
 end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat Toggle" }))
 
 vim.keymap.set("v", "<Leader>aa", function()
-    vim.cmd("CodeCompanionChat Add")
+	vim.cmd("CodeCompanionChat Add")
 end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat Add" }))
-
-vim.keymap.set("v", "<Leader>ap", function()
-    vim.cmd("CodeCompanion Comment this code")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanionChat inline explain" }))
-
-vim.keymap.set("v", "<Leader>aP", function()
-    vim.cmd("CodeCompanionChat Comment this code")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion chat explain" }))
-
-vim.keymap.set("v", "<Leader>ai", function()
-    vim.cmd("CodeCompanion Generate standard docstring for this function or class")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion docstring" }))
-
-vim.keymap.set({"v", "n"}, "<Leader>au", function()
-    vim.cmd("CodeCompanion")
-end, vim.tbl_extend("force", opt, { desc = "[AiCode] CodeCompanion prompt" }))
 
 return pluginKeys

@@ -5,13 +5,12 @@ if not status_venv_selector then
 end
 
 venv_selector.setup({
-	name = {
-		"venv",
-		".venv",
-		"env",
-		".env",
-	},
-	dap_enabled = true,
-	anaconda_base_path = "~/Anaconda3", -- NOTE: change according to your system
-	anaconda_envs_path = "~/Anaconda3/envs", -- NOTE: change according to your system
+    settings = {
+        search = {
+            anaconda_base = {
+                command = "fd /python$ /opt/anaconda/bin --full-path --color never -E /proc",
+                type = "anaconda"
+            },
+        },
+    },
 })

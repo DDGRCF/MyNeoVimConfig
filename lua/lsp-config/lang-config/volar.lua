@@ -7,9 +7,9 @@ local function get_root_dir(fname)
 end
 
 -- Get Mason installed TypeScript path
-local mason_registry = require("mason-registry")
-local typescript_package = mason_registry.get_package("typescript-language-server")
-local typescript_path = typescript_package:get_install_path() .. "/node_modules/typescript/lib"
+-- local mason_registry = require("mason-registry")
+-- local typescript_package = mason_registry.get_package("typescript-language-server")
+-- local typescript_path = typescript_package:get_install_path() .. "/node_modules/typescript/lib"
 
 return {
 	init_options = {

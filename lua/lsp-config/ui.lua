@@ -7,7 +7,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-local signs = { Error = "", Warn = " ", Hint = "", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = "💡", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -27,7 +27,7 @@ vim.diagnostic.config({
 		focusable = false,
 		style = "minimal",
 		border = "rounded",
-		source = "always",
+		source = true,
 		header = "",
 		prefix = "",
 	},
@@ -95,25 +95,33 @@ local M = {}
 -- 为 cmp.lua 提供参数格式
 M.formatting = {
 	-- fields = { "kind", "abbr", "menu" }, 补全出现的顺序
-	format = lspkind.cmp_format({
-		mode = "symbol_text",
-		--mode = 'symbol', -- show only symbol annotations
+	format = function(entry, item)
+		local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+		item = lspkind.cmp_format({
+			mode = "symbol_text",
+			--mode = 'symbol', -- show only symbol annotations
 
-		maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-		-- The function below will be called before any actual modifications from lspkind
-		-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-		ellipsis_char = "...",
-		before = function(entry, vim_item)
-			-- Source 显示提示来源
-			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				luasnip = "[Snip]",
-				buffer = "[Buf]",
-				path = "[Path]",
-			})[entry.source.name]
-			return vim_item
-		end,
-	}),
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			ellipsis_char = "...",
+			before = function(local_entry, local_item)
+				-- Source 显示提示来源
+				local_item.menu = ({
+					nvim_lsp = "[Lsp]",
+					luasnip = "[Snip]",
+					buffer = "[Buf]",
+					path = "[Path]",
+				})[entry.source.name]
+				return local_item
+			end,
+		})(entry, item)
+		if color_item.abbr_hl_group then
+			item.kind_hl_group = color_item.abbr_hl_group
+			item.kind = color_item.abbr
+		end
+		return item
+	end,
 }
 
 M.icons = icons

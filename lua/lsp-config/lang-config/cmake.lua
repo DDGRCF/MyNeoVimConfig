@@ -13,11 +13,7 @@ local opts = {
 		"build",
 		"cmake"
 	),
-	single_file_support = true,
-	handlers = {
-		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-	},
+	single_file_support = true
 }
 
 return opts
