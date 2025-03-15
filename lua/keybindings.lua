@@ -823,9 +823,6 @@ end, vim.tbl_extend("force", opt, { desc = "[Cpp] source and header switch" }))
 vim.keymap.set("n", "<Leader>vs", function()
 	vim.cmd("VenvSelect")
 end, vim.tbl_extend("force", opt, { desc = "[Python] select env" }))
-vim.keymap.set("n", "<Leader>vc", function()
-	vim.cmd("VenvSelectCached")
-end, vim.tbl_extend("force", opt, { desc = "[Python] use cached env" }))
 
 -- Code
 vim.keymap.set({ "n", "v" }, "<Leader>av", function()

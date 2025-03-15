@@ -5,12 +5,12 @@ if not status_venv_selector then
 end
 
 venv_selector.setup({
-    settings = {
-        search = {
-            anaconda_base = {
-                command = "fd /python$ /opt/anaconda/bin --full-path --color never -E /proc",
-                type = "anaconda"
-            },
-        },
-    },
+	settings = {
+		search = {
+			anaconda_base = {
+				command = "fd /python$ ~/ --full-path --color never -E /proc",
+				type = "anaconda",
+			},
+		},
+	},
 })
