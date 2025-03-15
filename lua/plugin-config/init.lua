@@ -1,5 +1,6 @@
 require("plugin-config.notify")
 require("plugin-config.dashboard")
+require("plugin-config.mini_diff")
 require("plugin-config.neotree")
 require("plugin-config.lualine")
 require("plugin-config.bufferline")

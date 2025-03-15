@@ -237,13 +237,6 @@ local plugins = {
 		cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
 	},
 	{
-		"olimorris/codecompanion.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown", "codecompanion" },
 	},
@@ -260,6 +253,14 @@ local plugins = {
 	},
 	{
 		"stevearc/overseer.nvim",
+	},
+	{
+		"olimorris/codecompanion.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+            "echasnovski/mini.diff"
+		},
 	},
 }
 
