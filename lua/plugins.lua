@@ -19,12 +19,12 @@ local plugins = {
 	-- 	lazy = false,
 	-- 	priority = 1000,
 	-- },
-    {
+	{
 		"rebelot/kanagawa.nvim",
-		-- name = "catppuccin",
+		name = "kanagawa",
 		lazy = false,
 		priority = 1000,
-    },
+	},
 
 	-- UI
 	{
@@ -265,7 +265,7 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-            "echasnovski/mini.diff"
+			"echasnovski/mini.diff"
 		},
 	},
 }

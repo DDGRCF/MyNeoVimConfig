@@ -15,7 +15,7 @@ codecompanion.setup({
 	},
 	strategies = {
 		chat = {
-			adapter = "gemini",
+			adapter = "qwen",
 		},
 		inline = {
 			adapter = "doubao",
