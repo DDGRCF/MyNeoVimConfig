@@ -1,4 +1,4 @@
-local colorscheme_name = "catppuccin"
+local colorscheme_name = "kanagawa"
 
 local status_colorscheme, colorscheme = pcall(require, colorscheme_name)
 if not status_colorscheme then

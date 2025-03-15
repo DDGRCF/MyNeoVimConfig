@@ -13,12 +13,18 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	-- Theme
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- },
+    {
+		"rebelot/kanagawa.nvim",
+		-- name = "catppuccin",
 		lazy = false,
 		priority = 1000,
-	},
+    },
 
 	-- UI
 	{
