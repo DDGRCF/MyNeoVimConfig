@@ -120,9 +120,17 @@ lualine.setup({
 				status = nil, -- List of task statuses to display
 				status_not = false, -- When true, invert the status search
 			},
-			"filesize",
 			"encoding",
 			"filetype",
+		},
+		lualine_y = {
+			{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+			{ "location", padding = { left = 0, right = 1 } },
+		},
+		lualine_z = {
+			function()
+				return " " .. os.date("%R")
+			end,
 		},
 	},
 })
