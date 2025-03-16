@@ -1,5 +1,5 @@
 -- Define local variables for repeated values
-local filetypes = { "javascript", "typescript" }
+local filetypes = { "javascript", "typescript", "vue" }
 local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server"):get_install_path()
 	.. "/node_modules/@vue/language-server"
 	.. "/node_modules/@vue/typescript-plugin"
@@ -11,13 +11,13 @@ end
 
 return {
 	init_options = {
-		-- plugins = {
-		-- 	{
-		-- 		name = "@vue/typescript-plugin",
-		-- 		location = vue_typescript_plugin,
-		-- 		languages = filetypes,
-		-- 	},
-		-- },
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = vue_typescript_plugin,
+				languages = filetypes,
+			},
+		},
 	},
 	settings = {
 		typescript = {
