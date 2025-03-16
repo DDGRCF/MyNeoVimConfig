@@ -79,7 +79,5 @@ vim.o.pumheight = 10
 vim.o.showtabline = 4
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
---三列标识
-vim.wo.signcolumn = "auto:3"
 -- 不再结尾添加换行
 vim.cmd("set nofixendofline")

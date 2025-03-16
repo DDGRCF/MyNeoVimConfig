@@ -8,11 +8,6 @@ codecompanion.setup({
 	-- opts = {
 	--     language = "Chinese",
 	-- },
-	display = {
-		diff = {
-			provider = "mini_diff",
-		},
-	},
 	strategies = {
 		chat = {
 			adapter = "qwen",

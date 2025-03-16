@@ -17,31 +17,31 @@ return {
 			hybridMode = false,
 			experimentalTemplateCompiler = true,
 		},
-		typescript = {
-			tsdk = typescript_path,
-		},
+		-- typescript = {
+		-- 	tsdk = typescript_path,
+		-- },
 	},
 	settings = {
-		typescript = {
-			inlayHints = {
-				enumMemberValues = {
-					enabled = true,
-				},
-				functionLikeReturnTypes = {
-					enabled = true,
-				},
-				propertyDeclarationTypes = {
-					enabled = true,
-				},
-				parameterTypes = {
-					enabled = true,
-					suppressWhenArgumentMatchesName = true,
-				},
-				variableTypes = {
-					enabled = true,
-				},
-			},
-		},
+		-- typescript = {
+		-- 	inlayHints = {
+		-- 		enumMemberValues = {
+		-- 			enabled = true,
+		-- 		},
+		-- 		functionLikeReturnTypes = {
+		-- 			enabled = true,
+		-- 		},
+		-- 		propertyDeclarationTypes = {
+		-- 			enabled = true,
+		-- 		},
+		-- 		parameterTypes = {
+		-- 			enabled = true,
+		-- 			suppressWhenArgumentMatchesName = true,
+		-- 		},
+		-- 		variableTypes = {
+		-- 			enabled = true,
+		-- 		},
+		-- 	},
+		-- },
 	},
 	filetypes = filetypes,
 	single_file_support = true,

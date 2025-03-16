@@ -264,8 +264,7 @@ local plugins = {
 		"olimorris/codecompanion.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"echasnovski/mini.diff"
+			"nvim-treesitter/nvim-treesitter"
 		},
 	},
 }
