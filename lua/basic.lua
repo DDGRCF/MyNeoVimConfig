@@ -81,3 +81,33 @@ vim.o.showtabline = 4
 vim.o.showmode = false
 -- 不再结尾添加换行
 vim.cmd("set nofixendofline")
+
+-- 检查是否存在 .editorconfig 文件
+local function has_editorconfig(bufnr)
+	local filename = vim.api.nvim_buf_get_name(bufnr)
+	local dir = vim.fn.fnamemodify(filename, ":h")
+	return vim.fn.findfile(".editorconfig", dir .. ";") ~= ""
+end
+
+-- 仅在没有 .editorconfig 时应用缩进规则
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "vue,javascript,typescript,json,html,css,lua",
+	callback = function(args)
+		if not has_editorconfig(args.buf) then
+			vim.api.nvim_buf_set_option(args.buf, "shiftwidth", 2)
+			vim.api.nvim_buf_set_option(args.buf, "tabstop", 2)
+			vim.api.nvim_buf_set_option(args.buf, "softtabstop", 2)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cpp,c,java,go",
+  callback = function(args)
+	if not has_editorconfig(args.buf) then
+		vim.api.nvim_buf_set_option(args.buf, "shiftwidth", 4)
+		vim.api.nvim_buf_set_option(args.buf, "tabstop", 4)
+		vim.api.nvim_buf_set_option(args.buf, "softtabstop", 4)
+	end
+  end,
+})
