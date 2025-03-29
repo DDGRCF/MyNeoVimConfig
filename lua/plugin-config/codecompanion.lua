@@ -5,12 +5,12 @@ if not status then
 end
 
 codecompanion.setup({
-	-- opts = {
-	--     language = "Chinese",
-	-- },
+	opts = {
+	    language = "Chinese",
+	},
 	strategies = {
 		chat = {
-			adapter = "qwen",
+			adapter = "deepseek",
 		},
 		inline = {
 			adapter = "doubao",
@@ -51,6 +51,23 @@ codecompanion.setup({
 					choices = {
 						"doubao-1-5-pro-32k-250115",
 						"doubao-1-5-lite-32k-250115",
+					},
+				},
+			})
+		end,
+		deepseek = function()
+			return require("codecompanion.adapters").extend("openai_compatible", {
+				env = {
+					url = "https://ark.cn-beijing.volces.com",
+					api_key = "ARK_API_KEY",
+					chat_url = "/api/v3/chat/completions",
+				},
+				schema = {
+					model = {
+						default = "deepseek-v3-250324",
+					},
+					choices = {
+            "deepseek-v3-250324"
 					},
 				},
 			})

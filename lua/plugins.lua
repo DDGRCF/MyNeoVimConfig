@@ -264,8 +264,11 @@ local plugins = {
 		"olimorris/codecompanion.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter"
+			"nvim-treesitter/nvim-treesitter",
 		},
+	},
+	{
+		"supermaven-inc/supermaven-nvim",
 	},
 }
 

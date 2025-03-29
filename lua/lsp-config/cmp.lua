@@ -52,6 +52,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
+    { name = "supermaven" },
 	},
 	-- 补全菜单设置
 	formatting = require("lsp-config.ui").formatting,

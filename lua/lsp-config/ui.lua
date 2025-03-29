@@ -65,6 +65,7 @@ local icons = {
 	Event = "",
 	Operator = "󰆕",
 	TypeParameter = "󰊄",
+  Supermaven = "",
 }
 
 -- lspkind
@@ -112,6 +113,7 @@ M.formatting = {
 					luasnip = "[Snip]",
 					buffer = "[Buf]",
 					path = "[Path]",
+          supermaven = "[SuperMaven]"
 				})[entry.source.name]
 				return local_item
 			end,
