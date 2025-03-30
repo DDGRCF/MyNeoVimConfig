@@ -48,11 +48,11 @@ cmp.setup({
 	},
 	-- 补全源
 	sources = {
+    { name = "supermaven" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "buffer" },
 		{ name = "path" },
-    { name = "supermaven" },
+		{ name = "buffer" },
 	},
 	-- 补全菜单设置
 	formatting = require("lsp-config.ui").formatting,
