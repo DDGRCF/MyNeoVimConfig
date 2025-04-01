@@ -5,9 +5,4 @@ if not status then
 end
 
 supermaven.setup({
-  keymaps = {
-    accept_suggestion = "<C-,>",
-    clear_suggestion = "<C-]>",
-    accept_word = "<C-.>",
-  },
 })
